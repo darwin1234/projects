@@ -19,7 +19,7 @@ class Actions extends CI_Controller {
 				'business_status'			=>  $this->input->post('business_status'),
 				'publish_date'				=>  $this->input->post('publish_date')
 			);
-		$this->actionmodel->createQuery($business);
+		$this->actions->createQuery($business);
 		
 	}
 	
