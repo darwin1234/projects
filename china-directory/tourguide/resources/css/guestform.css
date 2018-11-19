@@ -1,0 +1,236 @@
+
+.dropdown{
+
+  margin-top: -60px;
+}
+              
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 60px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}    
+
+#usherForm {
+  background: white;
+
+  font-family: myriad pro;
+  position: relative;
+  color: #333;
+  border-radius: 0px;
+  overflow:auto;
+
+}
+
+#seachUpdate {
+  background: white;
+
+  font-family: myriad pro;
+  position: relative;
+  color: #333;
+  border-radius: 0px;
+  overflow:auto;
+
+}
+
+#seachUpdate input[type="text"],#seachUpdate  select{
+  display: block;
+  width: 100%;
+  padding: 5px 20px;
+  font-size: 1em;
+  border-radius: 3px;
+  outline: none;
+  border: 1px solid #ccc;
+  font-size:15px;
+}
+
+#seachUpdate label {
+  display: inline-block;
+  margin-top: 30px;
+  margin-bottom: 5px;
+  position: relative;
+  font-size:12px;
+}
+ header#form_head{
+  background:#334394;
+  padding: 30px 20px;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  border-radius: 10px 10px 0 0;
+  overflow:auto;
+  margin-top: 30px;
+  border-bottom: 4px solid #FF9C40;
+}
+
+header#form_heade{
+  background: #FF3838;
+  padding: 30px 20px;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  border-radius: 10px 10px 0 0;
+  overflow:auto;
+  margin-top: 30px;
+  border-bottom: 4px solid #9ea7af;
+}
+
+header#form_head1{
+  background: #fb9d00;
+  padding: 30px 20px;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  border-radius: 10px 10px 0 0;
+  overflow:auto;
+  margin-top: 30px;
+  border-bottom: 4px solid #9ea7af;
+}
+
+header#form_head2{
+  background: rgb(180,4,164);
+  padding: 30px 20px;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  border-radius: 10px 10px 0 0;
+  overflow:auto;
+  margin-top: 30px;
+  border-bottom: 4px solid #9ea7af;
+}
+
+header#form_head3{
+  background: #00a0a4;
+  padding: 30px 20px;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  border-radius: 10px 10px 0 0;
+  overflow:auto;
+  margin-top: 30px;
+  border-bottom: 4px solid #9ea7af;
+}
+
+header#form_head4{
+  background: #0a324f;
+  padding: 30px 20px;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  border-radius: 10px 10px 0 0;
+  overflow:auto;
+  margin-top: 30px;
+  border-bottom: 4px solid #9ea7af;
+}
+
+header#form_head5{
+  background: rgb(30,16,93);
+  padding: 30px 20px;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  border-radius: 10px 10px 0 0;
+  overflow:auto;
+  margin-top: 30px;
+  border-bottom: 4px solid #9ea7af;
+}
+
+header#form_head6{
+  background: rgb(170,167,150);
+  padding: 30px 20px;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  border-radius: 10px 10px 0 0;
+  overflow:auto;
+  margin-top: 30px;
+  border-bottom: 4px solid #9ea7af;
+}
+
+#usherForm label {
+  display: inline-block;
+  margin-top: 30px;
+  margin-bottom: 5px;
+  position: relative;
+  font-size:12px;
+ }
+#usherForm label span {
+  color: #FF3838;
+  font-size: 2em;
+  position: absolute;
+  left: 2.3em;
+  top: -10px;
+}
+#usherForm input[type="text"],#usherForm input[type="password"] ,#usherForm input[type="date"],  #usherForm select{
+  display: block;
+  width: 100%;
+  margin:0 auto;
+  padding: 5px 20px;
+  font-size: 1em;
+  border-radius: 3px;
+  outline: none;
+  border: 1px solid #ccc;  
+  font-size:15px;
+}
+#usherForm .help {
+  margin-left: 20px;
+  font-size: 0.8em;
+  color: #777;
+}
+#usherForm  #input[type='submit'] {
+  position: relative!important;
+  margin-top: 30px!important;
+  margin-bottom: 30px!important;
+  right: 30%;
+  transform: translate(-50%, 0);
+  font-family: inherit;
+  color: white;
+  background: #FF3838;
+  outline: none;
+  border: none;
+
+  font-size: 1.3em;
+  font-weight: 400;
+  border-radius: 3px;
+  box-shadow: 0px 0px 10px rgba(51, 51, 51, 0.4);
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+#usherForm #input[type='submit']:hover {
+  background: #52c9e7;
+}
+
+#menu{display: inline-block;}
+
+@media only  screen and (min-width:240px) and (max-width:1024px){
+	.ui-dialog{width:100%!important;}
+	.ui-dialog .ui-dialog-buttonpane button{width:100%;}
+	.ui-dialog .ui-dialog-title{font-size:12px;}
+	.table > thead > tr > th{font-size:11px;}
+	.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{font-size:11px;}
+}
+
+@media only screen and (width:768px) and (orientation: portrait){
+	header#form_head1{margin-top:90px;}
+	
+}
+

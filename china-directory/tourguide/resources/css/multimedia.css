@@ -1,0 +1,68 @@
+body{
+		
+		background: #4d4d4d;
+		
+	}
+	#list {
+	  background: white;
+	  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
+	  font-family: lato;
+	  position: relative;
+	  color: #333;
+	  border-radius: 10px;
+	  overflow:auto;
+	  height:600px;
+
+	}
+	#list1 {
+	  background: #f4c017;
+	  font-family: myriad pro;
+	  position: relative;
+	  color: #333;
+	  /*border-radius: 10px;*/
+	  overflow:auto;
+	  height:600px;
+	  margin-top: 104px;
+
+	}
+	
+	#list2 {
+	  background: #df7cb9;
+	  font-family: myriad pro;
+	  position: relative;
+	  color: #333;
+	  /*border-radius: 10px;*/
+	  overflow:auto;
+	  height:600px;
+	  margin-top: 104px;
+
+	}
+	
+	#list3 {
+	  background: #3abfed;
+	  font-family: myriad pro;
+	  position: relative;
+	  color: #333;
+	  /*border-radius: 10px;*/
+	  overflow:auto;
+	  height:600px;
+	  margin-top: 104px;
+
+	}
+	
+	#list4 {
+	  background: #ee3135;
+	  font-family: myriad pro;
+	  position: relative;
+	  color: #333;
+	  /*border-radius: 10px;*/
+	  overflow:auto;
+	  height:600px;
+	  margin-top: 104px;
+
+	}
+	#total{color:#fff;}
+	
+	table td{color:#fff; font-size:12px; font-family: tahoma;}
+	
+	body{font-family: tahoma}

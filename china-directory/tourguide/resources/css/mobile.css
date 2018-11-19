@@ -1,0 +1,251 @@
+  #about_info{width:220px; float:right; font-weight:bold;}
+  .img-circle{margin-left:-65px;}
+
+  @media only screen and (min-width: 320px) and (max-width: 782px) {
+	  body{font-size:14px;}
+	  #about_info{float:left!important; width:100%; padding:10px;}
+	  #image_profile{width:40%; float:left;}
+	  
+	  #content{width:100%; margin:0;}
+	  #content #left{width:100%; position:relative;}
+	  #content #left #menu{margin:0;}
+	  .navbar-inverse .navbar-brand{font-size:20px!important;}
+	  
+	  #content #right{width:100%; margin:0;}
+	  .table .btn-info btn{width:100%;}
+	  #content div.box div.title{margin: 0;}
+	  #content div.box div.table{padding:0;}
+	  #content div.box table{margin-bottom:10px;}
+	 #content div.box table  .btn-info{width:100%;}
+	 .table .btn-info{width:90%; margin:auto; display:block;}
+	 #content div.box div.messages{width:100%; margin:0;}
+	 #opencellstatus{display:none;}
+	 #opencell{margin-top:10px;}
+	 .form_head h2,.form_head h3{font-size:20px;}
+	 .table{overflow-x: auto;width: 100%;display: block;}
+	  #g12login{width: 90%;}
+	  #usherslogin{width: 90%;}
+	  #listofrecords a{font-size:12px;}
+	  #listofrecords {font-size:12px;}
+	  #content div.box table th{padding:0; font-size:15px;}
+	  #content #left{left:0;}
+	  #content #left #menu h6{width:55%; float:right; clear:none; margin:5px;}
+	  #content #left #menu h6 span{padding:4px; line-height:20px;  }
+	  #about_info {font-size: 12px; margin-bottom: 100px; width: 100%!important; float: right; font-weight: bold; background: #fff; margin-top: 10px; padding:0;}
+	  #main_menu{width:100%!important;}
+	  #main_menu li{width:100%!important; border:0;}
+	  #main_menu > li{ border:0!important;}
+	  #main_menu li a{text-align:left!important;}
+	  #content #left #menu ul.opened {display: block; float: right; margin: 5px; width: 55%; margin-top: 0; padding: 0;}
+	  /*#search_data_info{margin: 103px 18px 40px 0!important;}*/
+  }
+   @media only screen and (width: 414px) and (orientation: portrait) {
+  	  #progresswrapper {width: 59%!important; margin: auto; clear: both;}
+   }	  
+   @media only screen and (width: 320px) and (orientation: portrait) {
+  	  #progresswrapper {width: 78%!important; margin: auto; clear: both;}
+   }	 
+  @media only screen and (width: 240px) and (orientation: portrait) {
+	   #secondNav{display:none!important;}
+	     
+  }
+
+  @media only screen and (width: 320px) and (orientation: landscape) {
+	   #secondNav{display:none!important;}
+	     
+  } 
+  @media only screen and (width: 384px) and (orientation: portrait) {
+	   #progresswrapper{width:65%!important;}
+	     
+  } 
+  @media only screen and (width: 768px) and (orientation: portrait) { 
+	#content #left {display:none!important;}
+  } 
+    @media only screen and (width: 1024px) and (orientation: landscape) { 
+	#progresswrapper {width: 80%!important; margin: auto; clear: both;}
+  } 
+  
+   @media only screen and (width: 375px) and (orientation: portrait) {
+	   #progresswrapper {width: 68%!important; margin: auto; clear: both;}
+	     
+  } 
+  @media only screen and (min-width: 320px) and (max-width: 568px) and (orientation: portrait) {
+		.title img{display:none!important;}
+		
+  }
+ 
+  @media only screen and (width: 640px) and (orientation : portrait) {
+	     #about_info{float:left!important; width:100%; padding:10px;}
+		
+   }
+  @media only screen and (width: 640px) and (orientation : landscape) {
+	  #content div.box div.title{margin: 50px 20px 0;}
+	  #content #right{float:left!important; margin:0;}
+	  #content div.box div.table{float: right;}
+	  #image_profile{display:none;}
+	  #about_info{display:none;}
+	  #h-menu-settings{display:none;}
+	  #content div.box table{margin-bottom:10px;}
+	  #content div.box div.title{margin:0;}
+	  #content div.box div.messages{width:100%; margin:0;}
+	  .base{width:100%;}
+	  #content #right{margin-top:42px;}
+	  #opencellstatus{display:none;}
+	  .table{overflow-x: auto;width: 100%;display: block;}
+	  #g12login{width: 90%;}
+	  #usherslogin{width: 90%;}
+	  
+  }
+    @media only screen and (width: 667px) and (orientation : landscape) {
+		 #content div.box div.title{margin: 50px 20px 0;}
+	  #content #right{float:left!important; margin:0;}
+	  #content div.box div.table{float: right;}
+	  #image_profile{display:none;}
+	  #about_info{display:none;}
+	  #h-menu-settings{display:none;}
+	  #content div.box table{margin-bottom:10px;}
+	  #content div.box div.title{margin:0;}
+	  #content div.box div.messages{width:100%; margin:0;}
+	  .base{width:100%;}
+	  #content #right{margin-top:42px;}
+	  #opencellstatus{display:none;}
+	  .table{overflow-x: auto;width: 100%;display: block;}
+	  #g12login{width: 90%;}
+	  #usherslogin{width: 90%;}
+	  #content #left{display:none!important;}
+	  #FullName{font-size:14px;}		
+		
+	}
+
+	@media only screen and (width: 568px) and (orientation : landscape) {
+		 #content div.box div.title{margin: 50px 20px 0;}
+	  #content #right{float:left!important; margin:0; margin-top:42px!important;}
+	  #content div.box div.table{float: right;}
+	  #image_profile{display:none;}
+	  #about_info{display:none;}
+	  #h-menu-settings{display:none;}
+	  #content div.box table{margin-bottom:10px;}
+	  #content div.box div.title{margin:0;}
+	  #content div.box div.messages{width:100%; margin:0;}
+	  .base{width:100%;}
+	  #content #right{margin-top:42px;}
+	  #opencellstatus{display:none;}
+	  .table{overflow-x: auto;width: 100%;display: block;}
+	  #g12login{width: 90%;}
+	  #usherslogin{width: 90%;}
+	  #secondNav{margin-top: -95px;}	
+	  #FullName{font-size:14px;}	
+	   #content #left{display:none!important;}
+	  
+	}
+
+ 
+
+
+  @media only screen and (min-width: 240px) and (max-width: 319px) {
+	  body{font-size:14px;}
+	  #about_info{width:100%; padding:10px;}
+	  #image_profile{width:80%; margin:0 auto;}
+	  
+	  #content{width:100%; margin:0;}
+	  #content #left{width:100%; position:relative;}
+	  #content #left #menu{margin:0;}
+	  .navbar-inverse .navbar-brand{font-size:12px!important;}
+	  #content #right{width:100%; margin:0;}
+	  .table .btn-info btn{width:100%;}
+	  #content div.box div.title{margin: 0;}
+	  #content div.box div.table{padding:0;}
+	  #content div.box table{margin-bottom:10px;}
+	 #content div.box table  .btn-info{width:100%;}
+	 .table .btn-info{width:90%; margin:auto; display:block;}
+	 #content div.box div.messages{width:100%; margin:0;}
+	 #content div.box div.title{font-size:10px;}
+	 #content div.box table th{font-size:14px;}
+	 #opencellstatus{display:none;}
+	 .table{overflow-x: auto;width: 100%;display: block;}
+	  
+  }
+  
+    @media only screen and (width: 600px) and (orientation : landscape) {
+	  #content div.box div.title{margin: 50px 20px 0;}
+	  #content #right{float:left!important; margin:0;}
+	  #content div.box div.table{float: right;}
+	  #image_profile{display:none;}
+	  #about_info{display:none;}
+	  #h-menu-settings{display:none;}
+	  #content div.box table{margin-bottom:10px;}
+	  #content div.box div.title{margin:0;}
+	  #content div.box div.messages{width:100%; margin:0;}
+	  .base{width:100%;}
+	  #content #right{margin-top:42px;}
+	  #opencellstatus{display:none;}
+	  .table{overflow-x: auto;width: 100%;display: block;}
+	  #content #left{display:none!important;}
+	  #secondNav{margin-top: -95px;}	
+  }
+  @media only screen and (min-width: 768px) and (orientation : portrait) {
+	  #opencellstatus{display:none;}
+	  #content div.box div.messages{width:100%; margin:0;}
+	  .navbar-nav > li{font-size:12px;}
+	  #content div.box div.title{margin:0;}
+	  .table{overflow-x: auto;width: 100%;display: block;}
+	  
+  }
+  
+ @media only screen and (width: 736px) and (orientation : landscape) {
+	  #content div.box div.title{margin: 50px 20px 0;}
+	  #content #right{float:left!important; margin:0;}
+	  #content div.box div.table{float: right;}
+	  #image_profile{display:none;}
+	  #about_info{display:none;}
+	  #h-menu-settings{display:none;}
+	  #content div.box table{margin-bottom:10px;}
+	  #content div.box div.title{margin:0;}
+	  #content div.box div.messages{width:100%; margin:0;}
+	  .base{width:100%;}
+	  #content #right{margin-top:42px;}
+	  #opencellstatus{display:none;}
+	  .table{overflow-x: auto;width: 100%;display: block;}
+	   #content #left{display:none!important;}
+	  
+  }
+  
+   @media only screen and (width: 768px) and (orientation : portrait) {
+
+	  #content div.box div.title{margin: 50px 20px 0;}
+	  #content #right{float:left!important; margin:0;}
+	  #content div.box div.table{float: right;}
+	  #image_profile{display:none;}
+	  #about_info{display:none;}
+	  #h-menu-settings{display:none;}
+	  #h-menu-events{display:none;}
+	  #content div.box table{margin-bottom:10px;}
+	  #content div.box div.title{margin:0;}
+	  #content div.box div.messages{width:100%; margin:0;}
+	  .base{width:100%;}
+	  #content #right{margin-top:42px;}
+	  #opencellstatus{display:none;}
+	  .navbar-nav > li{font-size:10px; padding:4px;}
+	  .navbar-inverse .navbar-brand{font-size:25px;}
+	  #content #right{margin-top:100px;}
+	  #image_profile{margin-top:40px;}
+	  #g12login{width:470px;}
+	 
+	  .inner_pages{margin-top:10px!important;}
+	  
+	  
+	  
+  }
+  
+
+ 
+  @media only screen and (width: 1024px) and (orientation : landscape) {
+	 .navbar-inverse .navbar-brand{font-size:30px!important;}
+	  #content #right{margin-top:30px;}
+	  #image_profile{margin-top:40px;}
+	 
+	  .inner_pages{margin-top:10px!important;}
+  } 
+ 
+  
+

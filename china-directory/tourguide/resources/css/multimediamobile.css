@@ -1,0 +1,9 @@
+ @media only screen and (min-width: 240px) and (max-width: 720px) {
+	.navbar-inverse .navbar-brand{font-size:20px;}
+	 .img-circle{width:80%;}
+	 iframe {width:100%;}
+	 #g12logo{width:100%;}
+
+  
+ 
+ }

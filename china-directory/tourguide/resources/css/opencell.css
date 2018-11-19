@@ -1,0 +1,62 @@
+#vip_ul {float:right; margin-top:10px; margin-bottom:45px;}
+#vip_ul li{display:inline-block; width:200px;padding:10px; background: green; text-align:center; color:#fff;}
+#vip_ul li.vip_li_1{background: #7cbb2e; cursor:pointer;}
+#vip_ul li.vip_li_2{background: #0a9381; cursor:pointer;}
+#vip_ul li.vip_li_3{background: #eea620; cursor:pointer;}
+#vip_ul li.vip_li_4{background: #16a1c8; cursor:pointer;}
+	#list1 {
+	  background: #7cbb2e;
+	  font-family: inherit;
+	  position: relative;
+	  color: #333;
+	  /*border-radius: 10px;*/
+	  overflow:auto;
+	  height:500px;
+	  margin-top: 0px;
+	  width:100%;
+	  clear:both;
+
+	}
+	
+	#list2 {
+	  background: #0a9381;
+	  font-family: inherit;
+	  position: relative;
+	  color: #333;
+	  /*border-radius: 10px;*/
+	  overflow:auto;
+	  height:500px;
+	  margin-top: 0px;
+	  width:100%;
+	  clear:both;
+
+	}
+	
+	#list3 {
+	  background: #eea620;
+	  font-family: inherit;
+	  position: relative;
+	  color: #333;
+	  /*border-radius: 10px;*/
+	  overflow:auto;
+	  height:500px;
+	  margin-top: 0px;
+	  width:100%;
+	  clear:both;
+	}
+	
+	#list4 {
+	  background: #16a1c8;
+	  font-family: inherit;
+	  position: relative;
+	  color: #333;
+	  /*border-radius: 10px;*/
+	  overflow:auto;
+	  height:500px;
+	  margin-top: 0px;
+	  width:100%;
+	  clear:both;
+	}
+	#total{color:#fff;}
+	
+	table td{color:#fff; font-size:12px; font-family: tahoma;}

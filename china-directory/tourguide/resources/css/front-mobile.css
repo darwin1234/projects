@@ -1,0 +1,56 @@
+ @media only screen and (min-width: 240px) and (max-width: 720px) {
+.navbar-inverse .navbar-brand{font-size:20px;}
+ .img-circle{width:80%;}
+ iframe {width:100%;}
+ #g12logo{width:100%;}
+
+  
+ 
+ }
+ 
+@media only screen and (min-width: 240px) and (max-width: 319px) {
+
+.navbar-inverse .navbar-brand{font-size:12px;}	  
+}
+ @media only screen and (width : 320px) and (orientation : portrait) {
+
+	#slider1_container{margin-top:40px!important;} 
+	 
+ }
+
+
+ @media only screen and (width : 375px) and (orientation : portrait) {
+	 
+	#slider1_container{margin-top:40px!important;} 
+	 
+ }
+ @media only screen and (width : 414px) and (orientation : portrait) {
+	#slider1_container{margin-top:40px!important;} 
+	#usherForm{width: 93%;}
+	 
+ }
+
+ @media only screen and (width : 240px) and (orientation : portrait) {
+	#slider1_container{margin-top:40px!important;} 
+	 
+ }
+ @media only screen and (width : 320px) and (orientation : portrait) {
+	#slider1_container{margin-top:40px!important;} 
+	 
+ }
+
+ @media only screen and (width : 360px) and (orientation : portrait) {
+	#slider1_container{margin-top:40px!important;} 
+ }
+ 
+  @media only screen and (width : 768px) and (orientation : portrait) {
+	#slider1_container{margin-top:40px!important;} 
+
+	 
+ }
+ 
+ 
+ 
+ 
+ 
+ 
