@@ -36,7 +36,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<!-- stylesheets -->
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>resources/css/reset.css" />
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>resources/css/style.css" media="screen" />
-		<link id="color" rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>resources/css/colors/blue.css" />
 		<link rel="stylesheet" href="<?php echo base_url(); ?>resources/css/stylefront.css">
 		<link rel="stylesheet" href="<?php echo base_url(); ?>resources/css/bootstrapfront.css">
 		<link rel="stylesheet" href="<?php echo base_url(); ?>resources/css/font-awesome.minfront.css">
@@ -64,8 +63,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	
 		<script src="<?php echo base_url(); ?>/resources/scripts/anim.js"></script>
 		<script src="<?php echo base_url(); ?>resources/scripts/admin.js"></script>
-	
-				
+		<style>
+		.left{width:300px; float:left;}
+		</style>		
 	</head>
 	
 <body>

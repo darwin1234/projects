@@ -2,7 +2,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-7 footer-copyright">
-                    © Cavite Community Church <!--<a href="http://themeshouter.com/">themeshouter</a>.-->
+           
                 </div>
                 <div class="col-sm-5 footer-social">
                     <div class="pull-right hidden-xs hidden-sm">
@@ -17,20 +17,7 @@
         </div>
     </footer>
 
-    <!-- /.container -->
-
-    <!-- jQuery -->
-    <script src="<?php echo base_url();?>resources/frontpage/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<?php echo base_url();?>resources/frontpage/js/bootstrap.min.js"></script>
-
-    <!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-    </script>
+  
 
 </body>
 

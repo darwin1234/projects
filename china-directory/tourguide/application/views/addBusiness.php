@@ -31,61 +31,42 @@
 				<!-- table -->
 				<div class="box">
 					<!-- box / title -->
-					<div class="title"><h3>Add Business</h3></div>
+					<div class="title"><h3>Edit Business</h3></div>
 						
 						<div class="row" style="float:left; width:900px; margin-left:10px;">
-							<form action="<?php echo base_url();?>/Actions/createQuery" method="post">
+							<form action="#">
 							  <div class="form-group">
-								<label for="title">Business Name:</label>
-								<input type="text" class="form-control" id="title" name="business_name" value=""> 
+								<label for="title">Business Title:</label>
+								<input type="text" class="form-control" id="title" name="title" value=""> 
 								
 							  </div>
 							  <div class="form-group">
-								<label for="email">Business Owner:</label>
-								<input type="text" class="form-control" id="business_owner" name="business_owner">
+								<label for="email">Email:</label>
+								<input type="email" class="form-control" id="email" value="<?php echo @$EmailAddress; ?>">
 							  </div>
 							   <div class="form-group">
-								<input type="hidden" class="form-control" id="business_latitude" name="business_latitude">
-							  </div>
-							  <div class="form-group">
-								<input type="hidden" class="form-control" id="business_longitude" name="business_longitude">
+								<label for="contactno">Contact No:</label>
+								<input type="tel" class="form-control" id="contactno" value="<?php echo @$contactno;?>">
 							  </div>
 							  
 							  <div class="form-group">
-								<label for="business_category">Business Category:</label>
-								<select class="form-control" name="business_category" id="category">
-								<option value="Dentist">Dentistry</option>
-								<option value="Beauty Salon">Beauty Salon</option>
-								<option value="Dentist">Hiking</option>
-								</select>
+								<label for="contactno">Choose Category:</label>
+								<textarea class="form-control" id="category">
+								</textarea>
 							  </div>
-							  
 							  <div class="form-group">
-								<label for="address">Business Address</label>
-							  <input type="text" class="form-control" id="business_address" name="business_address">
+								 <input type="file" name="file" value="">
 							  </div>
 								
-							   <div class="form-group">
-								<label for="status">Business Status</label>
-							  <input type="text" class="form-control" id="business_status" name="business_status">
-							  </div>
-								
-							  <div class="form-group">
-								<label for="publish_date">Publish Date</label>
-							  <input type="text" class="form-control" id="publish_date" name="publish_date">
-							  </div>
-								
-							  	
 							  <div class="form-group">
 								<div id="mapdd" style="position: relative; height:300px; width: 100%"></div>
 							  </div>
 							
-								<!--<div class="form-group">
+								<div class="form-group">
 								<label for="contactno">Description:</label>
 								<textarea class="form-control" id="Description"></textarea>
 							  </div>
-								-->
-								
+							
 							 <div class="form-group">
 							  <div style="width:100%; height:40px;"></div>
 							  <button type="submit" class="btn btn-primary" style="width:100%;">Submit</button>

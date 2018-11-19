@@ -505,8 +505,6 @@ class Welcome extends CI_Controller {
 	}
 	
 	
-	
-	
 	public function form_referto(){
 			$accountID = $this->input->post('accountID');
 			$referto   = $this->input->post('referto');
@@ -1150,9 +1148,6 @@ class Welcome extends CI_Controller {
 		//echo $iddd . "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 	}
 	
-<<<<<<< HEAD
-	}
-=======
 	public function businesslist(){
 		$userData  							= $this->session->userdata('logged_in');
 	
@@ -1215,7 +1210,5 @@ class Welcome extends CI_Controller {
 		}
 	}
 	
->>>>>>> a0155ddb73d633e5039d049013d0dd0818618ff4
 	
-	
-
+}

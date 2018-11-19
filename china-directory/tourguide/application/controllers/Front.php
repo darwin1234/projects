@@ -2,11 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Front extends CI_Controller{
+	function index(){
 	
+		$this->load->view('frontpage');
+		
+	}
 	public function history(){
-		$this->load->view('headers/frontheader');
-		$this->load->view('history');
-		$this->load->view('footers/frontfooter');
+		
 		
 		
 		
