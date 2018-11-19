@@ -1,92 +1,29 @@
-<?php
-if(!empty(@$active_account)){
-		foreach(@$active_account as $activeAccountFields) { 
-		@$activeIDD				= $activeAccountFields->id_no;
-		@$photo 				= $activeAccountFields->profile_pic;
-		
-		}
-	}
-?>
-										
-<div id="content">
-			<!-- end content / left -->
-				<!-- end content / left -->
-			<div id="left">
-				<div id="menu">
-					<div id="image_profile">
-						<a data-toggle="modal" data-target="#changeprofile" style="position:relative; display:block;">
-					   
-					   <span style="background-image: url('<?php echo base_url(); ?>Welcome/images/loading2.gif'); background-position: center center; height: 50px; background-repeat: no-repeat; font-size: 100px;">
-							<img id="user-image-profile" onload="this.style.opacity = 1" src="<?php echo base_url(); ?>Welcome/userimage2/<?php echo $activeIDD; ?>" style="opacity: 1; width:100%; border: 5px solid #00376E; margin:0; padding:0; ">
-					   </span>
-					  
-						 
-						<p id="camera" ><i class="fa fa-camera" aria-hidden="true" style="font-size:20px; color:#ccc;"></i><span id="uploadImage" style="color:transparent; font-size:12px; float:right;">Update Profile Picture</span></p>
-				
-					   
-					   </a>
-					   
-					   <div id="changeprofile" class="modal fade" role="dialog" style="z-index:11111;">
-						  <div class="modal-dialog">
 
-							<!-- Modal content-->
-							<div class="modal-content">
-							  <div class="modal-header" style="height:50px; overflow:hidden;background:#F6F7F9;">
-										<button type="button" class="close" style="margin:15px;" data-dismiss="modal">&times;</button>
-										<h4 class="modal-title" style="margin-left:10px!important; text-align:left; color:#4B4F56!important; font-size:15px; padding:5px;"><strong>Edit Picture</strong></h4>
-							  </div>
-							  <div class="modal-body">
-								<p>  <form id="imagePicChange" class="imagePicChange"  enctype="multipart/form-data">
-										<div class="imageBox">
-											<div class="thumbBox"></div>
-											<div class="spinner" style="display: none">Loading...</div>
-										</div>
-										<div class="action">
-											<input type="file" id="file" style="float:left; width: 250px">
-											<input type="submit" id="btnCrop" value="Crop and Save" style="float: right; background: #4267B2; border: 0; color: #fff; padding: 3px; font-weight: 700;">
-											<input type="button" id="btnZoomIn" value="+" style="float: right;">
-											<input type="button" id="btnZoomOut" value="-" style="float: right;">
-										</div>
-										
-										<div class="cropped" style="">
-
-										</div>
-									
-										
-										
-									</form>
-								</p>
-							  </div>
-							 <div style="height:30px;"></div>
-							</div>
-
-						  </div>
-						</div>
+	<div id="content">
+	
+	<div id="left">
+					<div id="menu">
+						<div id="image_profile">
+							<span>	
+								<img id="user-image-profile" onload="this.style.opacity = 1" src="<?php echo base_url(); ?>Welcome/userimage2/<?php echo $userID; ?>" style="border-radius:40px; height:40px; width:40px; margin-top:20px; padding:0;">
+							</span>
+							<span>
+								<strong>Hello, <?php echo @$first_name; ?></strong>
+							</span>
+						</div>		
+					
+							<h6 id="h-menu-events"><a href="<?php echo base_url(); ?>Welcome">Dashboard</a></h6>
+								<ul id="menu-events" class="closed">
+									<li class="last"><a href="<?php echo base_url(); ?>Welcome/newEvent">Users</a></li>
+								</ul>
+								<h6 id="h-menu-settings"><a href="#settings"><span>Pages</span></a></h6>
+								<h6 id="h-menu-settings"><a href="<?php echo base_url(); ?>Welcome/businesslist"><span>Business Lists</span></a></h6>
 						
-						
-					   
-					</div>		
 					
+					</div>
+								
+		</div>
 					
-					<h6 id="h-menu-settings"><a href="#settings"><span>Settings</span></a></h6>
-					<ul id="menu-settings" class="closed">
-						<li><a href="javascript:void()"  data-toggle="modal" data-target="#editAccount" >Edit Info</a></li>
-						<li style="display: none"><a href="javascript:void()" data-toggle="modal" data-target="#editusername">Change Username</a></li>
-						<li class="last" style="display: none"><a href="javascript:void()" data-toggle="modal" data-target="#editpassword">Change Password</a></li>
-					</ul>
-
-					
-				</div>   
-				
-				
-			
-				
-			
-
-				
-			
-			</div>
-			
 			
 			<!-- end content / left -->
 			<!-- content / right -->

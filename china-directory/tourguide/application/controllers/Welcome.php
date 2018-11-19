@@ -22,7 +22,8 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$userData  							= $this->session->userdata('logged_in');
+	
+			$userData  							= $this->session->userdata('logged_in');
 	
 		$disciplesResult 					= $this->desciples->records();	// disciples records
 		
@@ -57,13 +58,7 @@ class Welcome extends CI_Controller {
 		$data['jsonChartData'] 		= $chartRecordData;
 		$data['counthisopencell'] 	= $chartRecordData;
 	
-		//$data['getrole']			= $this->users->getrole($userData['id'],);
-		
-		
-		
-		//for my custom scripts and styles
-		//$data['baseURL'] = $this->baseURL;
-		
+	
 		$data['progress'] = $this->users->getcounts();
 		$data['memberscount'] = $this->users->getmembercounts();
 		
@@ -81,7 +76,6 @@ class Welcome extends CI_Controller {
 			$this->load->view('footers/adminfooter',$data);
 			
 		}
-	
 	
 	}
 	
@@ -177,18 +171,11 @@ class Welcome extends CI_Controller {
 			//}
 		}
 		$userData  	= $this->session->userdata('logged_in');
-		//$data['getRole'] 	= $this->users->getrole($userData['id'],$userID); //--basis for role, self
+		
 		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor( $userData['id'] ),$userData['id']); //--basis for role, highest, pastor
 		
-		if(empty($userData)){
-			 
-			 
-			redirect(base_url());
-			
-		}else{
-			//if(count($result) == 0){redirect('Welcome', 'refresh');}else{$this->load->view('welcome_message',$data);}
-			
-		}
+		if(empty($userData)){redirect(base_url());}		
+		
 		
 	
 
@@ -1163,7 +1150,72 @@ class Welcome extends CI_Controller {
 		//echo $iddd . "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 	}
 	
+<<<<<<< HEAD
 	}
+=======
+	public function businesslist(){
+		$userData  							= $this->session->userdata('logged_in');
+	
+		$disciplesResult 					= $this->desciples->records();	// disciples records
+		
+		
+		
+		$username							= $userData['username'];
+		$activeAcount						= $this->desciples->useraccount($userData['id']); // user profile table
+
+		$data['user_name']					= $username;
+		$data['list_of_records'] 			= $disciplesResult;
+	
+		$data['active_account']				= $activeAcount;
+		$data['userID'] 					= $userData['id'];
+
+		$data['userRole'] 					= @$userData['Role'];
+		$data['total'] 						= 0;
+		$data['LeaderName'] 	  			= $userData['MentorID'];
+		//$data['addBtn']						= '<button type="button" class="pull-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Disciple</button>';
+		$data['settings']					= 'display';
+		$displayEvent 						= $this->events->displayEventArray();
+		$data['username'] 					= $userData['username'];		
+		$data['getRecordsDisplay']			= $this->desciples->getRecordsDisplay(Null);
+		$displayEvent 						= $this->events->displayEventArray();
+		$data['displayEvent']				= $displayEvent;
+		
+		$data['usergender']					= $userData['gender'];
+		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
+		//chart 
+		
+		$chartRecordData= $this->desciples->chart();
+		
+		$data['jsonChartData'] 		= $chartRecordData;
+		$data['counthisopencell'] 	= $chartRecordData;
+	
+		//$data['getrole']			= $this->users->getrole($userData['id'],);
+		
+		
+		
+		//for my custom scripts and styles
+		//$data['baseURL'] = $this->baseURL;
+		
+		$data['progress'] = $this->users->getcounts();
+		$data['memberscount'] = $this->users->getmembercounts();
+		
+		$data["upcomingevents"] = $this->events2->upcomingevents($userData['id']);
+		$data["realUserID"] = $userData['id'];
+		
+		$data['countDisciples'] = 1;
+		if($userData == NULL){
+			
+			redirect(base_url());
+			
+		}else{
+			$this->load->view('headers/adminhead',$data);
+			$this->load->view('businesslists',$data);
+			$this->load->view('footers/adminfooter',$data);
+			
+		}
+	}
+	
+>>>>>>> a0155ddb73d633e5039d049013d0dd0818618ff4
 	
 	
 
