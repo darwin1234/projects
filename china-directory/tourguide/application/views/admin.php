@@ -35,10 +35,15 @@
 <div id="left">
 	<div id="menu">
 		<div id="image_profile">
-			<?php echo @$first_name; ?>
+			<span>	
+				<img id="user-image-profile" onload="this.style.opacity = 1" src="<?php echo base_url(); ?>Welcome/userimage2/<?php echo $userID; ?>" style="border-radius:40px; height:40px; width:40px; margin-top:20px; padding:0;">
+			</span>
+			<span>
+				<strong>Hello, <?php echo @$first_name; ?></strong>
+			</span>
 		</div>		
 		<?php if(isset($settings) && $setting ='display'){?>		
-			<h6 id="h-menu-events"><a href="<?php echo base_url(); ?>Welcome"><span class="glyphicon glyphicon-dashboard"></span>Dashboard</a></h6>
+			<h6 id="h-menu-events"><a href="<?php echo base_url(); ?>Welcome">Dashboard</a></h6>
 				<ul id="menu-events" class="closed">
 					<li class="last"><a href="<?php echo base_url(); ?>Welcome/newEvent">Users</a></li>
 				</ul>

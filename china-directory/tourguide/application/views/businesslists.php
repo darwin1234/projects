@@ -1,4 +1,4 @@
-	<script src="<?php echo base_url(); ?>/resources/scripts/imagecrop.js"></script>
+<script src="<?php echo base_url(); ?>/resources/scripts/imagecrop.js"></script>
 <?php
 	if(!empty(@$active_account)){
 		foreach(@$active_account as $activeAccountFields) { 
@@ -26,8 +26,7 @@
 		}
 	}
 	?> 
- <link rel="stylesheet" href="<?php echo base_url(); ?>resources/css/circle.css">
- <input type="hidden" id="user-gender" value="<?php echo $Gender; ?>">
+
 <script src="<?php echo base_url(); ?>Welcome/scripts/ajax.js"></script>
 <script src="<?php echo base_url(); ?>Welcome/scripts/search.js"></script>
 <?php
@@ -242,166 +241,29 @@
 			
 		<div id="content">
 		
-			<!-- end content / left -->
-			<div id="left">
-				<div id="menu">
-					<div id="image_profile">
-					   <a data-toggle="modal" data-target="#changeprofile" style="position:relative; display:block;">
-					   
-					  
-					   
-						 <p id="camera" ><i class="fa fa-camera" aria-hidden="true" style="font-size:20px; color:#ccc;"></i><span id="uploadImage" style="color:transparent; font-size:12px; float:right;">Update Profile Picture</span></p>
-						
-					   </a>
-					   	<span style="display:none;"><?php echo !empty($LeaderName) ?  $LeaderName : '' ?></span>
-					   <div id="changeprofile" class="modal fade" role="dialog" style="z-index:11111;">
-						  <div class="modal-dialog">
-
-							<!-- Modal content-->
-							<div class="modal-content">
-							  <div class="modal-header" style="height:50px; overflow:hidden;background:#F6F7F9;">
-										<button type="button" class="close" style="margin:15px;" data-dismiss="modal">&times;</button>
-										<h4 class="modal-title" style="margin-left:10px!important; text-align:left; color:#4B4F56!important; font-size:15px; padding:5px;"><strong>Edit Picture</strong></h4>
-							  </div>
-							  <div class="modal-body">
-								<p>  <form id="imagePicChange" class="imagePicChange"  enctype="multipart/form-data">
-										<div class="imageBox">
-											<div class="thumbBox"></div>
-											<div class="spinner" style="display: none">Loading...</div>
-										</div>
-										<div class="action">
-											<input type="file" id="file" style="float:left; width: 250px">
-											<input type="submit" id="btnCrop" value="Crop and Save" style="float: right; background: #4267B2; border: 0; color: #fff; padding: 3px; font-weight: 700;">
-											<input type="button" id="btnZoomIn" value="+" style="float: right;">
-											<input type="button" id="btnZoomOut" value="-" style="float: right;">
-										</div>
-										
-										<div class="cropped" style="">
-
-										</div>
-	
-									</form>
-								</p>
-							  </div>
-							 <div style="height:30px;"></div>
-							</div>
-
-						  </div>
-						</div>
-						
-						
-					<div id="changeprofileuser" class="modal fade" role="dialog" style="z-index:11111;">
-						  <div class="modal-dialog">
-
-							<!-- Modal content-->
-							<div class="modal-content">
-							  <div class="modal-header">
-								<h4 class="modal-title">Change Profile</h4>
-							  </div>
-							  <div class="modal-body">
-								<p>  <form id="imagePicChangeUser" class="imagePicChange"  enctype="multipart/form-data">
-										<div class="imageBox">
-											<div class="thumbBox"></div>
-											<div class="spinner" style="display: none">Loading...</div>
-										</div>
-										<div class="action">
-											<input type="file" id="file" style="float:left; width: 250px">
-											<input type="submit" id="btnCrop" value="Crop and Save" style="float: right">
-											<input type="button" id="btnZoomIn" value="+" style="float: right">
-											<input type="button" id="btnZoomOut" value="-" style="float: right">
-										</div>
-										
-										<div class="cropped" style="">
-
-										</div>
-									
-										
-										
-									</form>
-								</p>
-							  </div>
-							  <div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							  </div>
-							</div>
-
-						  </div>
-						</div>
-						
-						
-					   
-					</div>		
-				<?php if(isset($settings) && $setting ='display'){?>		
-					<h6 id="h-menu-events"><a href="<?php echo base_url(); ?>Welcome"><span>Dashboard</span></a></h6>
-					<ul id="menu-events" class="closed">
-						<li class="last"><a href="<?php echo base_url(); ?>Welcome/newEvent">Users</a></li>
-					</ul>
+		<div id="left">
+					<div id="menu">
+						<div id="image_profile">
+							<span>	
+								<img id="user-image-profile" onload="this.style.opacity = 1" src="<?php echo base_url(); ?>Welcome/userimage2/<?php echo $userID; ?>" style="border-radius:40px; height:40px; width:40px; margin-top:20px; padding:0;">
+							</span>
+							<span>
+								<strong>Hello, <?php echo @$first_name; ?></strong>
+							</span>
+						</div>		
+						<?php if(isset($settings) && $setting ='display'){?>		
+							<h6 id="h-menu-events"><a href="<?php echo base_url(); ?>Welcome">Dashboard</a></h6>
+								<ul id="menu-events" class="closed">
+									<li class="last"><a href="<?php echo base_url(); ?>Welcome/newEvent">Users</a></li>
+								</ul>
+								<h6 id="h-menu-settings"><a href="#settings"><span>Pages</span></a></h6>
+								<h6 id="h-menu-settings"><a href="<?php echo base_url(); ?>Welcome/businesslist"><span>Business Lists</span></a></h6>
+							<?php } ?>
 					
-					<h6 id="h-menu-settings"><a href="#settings"><span>Users</span></a></h6>
-					<ul id="menu-settings" class="closed">
-						<li><a href="javascript:void()"  data-toggle="modal" data-target="#editAccount" >Edit Info</a></li>
-						<li><a href="javascript:void()" data-toggle="modal" data-target="#editusername">Change Username</a></li>
-						<li class="last"><a href="javascript:void()" data-toggle="modal" data-target="#editpassword">Change Password</a></li>
-					</ul>
-					<h6 id="h-menu-links"><a href="#links"><span>Deactivated Accounts</span></a></h6>
-					<ul id="menu-links" class="closed deactivated_account">
-						
-					</ul> 
-					<h6 id="h-menu-settings"><a href="#settings"><span>Pages</span></a></h6>
-					<h6 id="h-menu-settings"><a href="<?php echo base_url(); ?>Welcome/businesslist"><span>Business Lists</span></a></h6>
-					<!--<h6 id="h-menu-products"><a href="#products" data-toggle="modal" data-target="#attendance_modal"><span>Attendance</span></a></h6>-->
-					<h6 id="h-menu-products"><a href="<?php echo base_url(); ?>Welcome/insights"><span>Insights</span></a></h6>
-					<?php if($Role =="Primary Leader"){ ?>
-					<h6 id="h-menu-products"><a href="<?php echo base_url(); ?>Welcome/vipform"><span>VIP Form</span></a></h6>
-					<?php } ?>
-					
-					<?php } ?>
-					
-					
-					
-				</div>
-				
-			
-				
-				 
-				<!-- Modal -->
-					<div id="attendance_modal" class="modal fade" role="dialog">
-					  <div class="modal-dialog">
-
-						<!-- Modal content-->
-						<div class="modal-content">
-						  <div class="modal-header">
-							
-							<h4 class="modal-title">Attendance</h4>
-						  </div>
-						  <div class="modal-body">
-							<table class="table table-striped">
-							<thead>
-							  <tr>
-								<th>Disciples</th>
-								<th style="text-align:right;">Services Attended</th>
-								
-							  </tr>
-							</thead>
-							<tbody id="attendance_list">
-							
-
-							</tbody>
-						  </table>
-						  </div>
-						  <div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						  </div>
-						</div>
-
-					  </div>
 					</div>
-				
-			
-
-				
-			
-			</div>
+								
+		</div>
+					
 			
 			
 			<!-- end content / left --> 
@@ -412,7 +274,7 @@
 				
 					<!-- box / title -->
 					<div class="title" style="width:100%;"><h3>Businesses</h3> 							
-					<a href="Welcome/addbusiness" style="float:right; margin-top:10px; margin-right:20px;">Add Business</a></div>
+					<a href="<?php echo base_url();?>Welcome/addbusiness" style="float:right; margin-top:10px; margin-right:20px;">Add Business</a></div>
 
 					<!-- end box / title -->
 					<div class="table">

@@ -58,13 +58,7 @@ class Welcome extends CI_Controller {
 		$data['jsonChartData'] 		= $chartRecordData;
 		$data['counthisopencell'] 	= $chartRecordData;
 	
-		//$data['getrole']			= $this->users->getrole($userData['id'],);
-		
-		
-		
-		//for my custom scripts and styles
-		//$data['baseURL'] = $this->baseURL;
-		
+	
 		$data['progress'] = $this->users->getcounts();
 		$data['memberscount'] = $this->users->getmembercounts();
 		
@@ -177,18 +171,11 @@ class Welcome extends CI_Controller {
 			//}
 		}
 		$userData  	= $this->session->userdata('logged_in');
-		//$data['getRole'] 	= $this->users->getrole($userData['id'],$userID); //--basis for role, self
+		
 		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor( $userData['id'] ),$userData['id']); //--basis for role, highest, pastor
 		
-		if(empty($userData)){
-			 
-			 
-			redirect(base_url());
-			
-		}else{
-			//if(count($result) == 0){redirect('Welcome', 'refresh');}else{$this->load->view('welcome_message',$data);}
-			
-		}
+		if(empty($userData)){redirect(base_url());}		
+		
 		
 	
 
