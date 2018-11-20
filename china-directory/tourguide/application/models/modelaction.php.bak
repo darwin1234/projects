@@ -1,0 +1,8 @@
+<?php
+class modelaction extends CI_Model{
+	public function createQuery(){
+		$this->db->insert('business',TRUE);
+	}
+}
+
+?>

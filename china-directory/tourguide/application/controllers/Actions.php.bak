@@ -24,7 +24,9 @@ class Actions extends CI_Controller {
 			$this->modelaction->createQuery($insert);
 		}
 		else{
-			 redirect(base_url());		
+				
+					redirect(base_url());
+				
 			}
 	}
 
