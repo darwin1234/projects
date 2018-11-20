@@ -32,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<head>
 		<title>Dashboard</title>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-		
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 		<!-- stylesheets -->
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>resources/css/reset.css" />
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>resources/css/style.css" media="screen" />
@@ -65,6 +65,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<script src="<?php echo base_url(); ?>resources/scripts/admin.js"></script>
 		<style>
 		.left{width:300px; float:left;}
+		#image_profile{width:90%; margin:20px auto;}
+		#image_profile img {margin-right:10px;}
+		.dsfont{font-size:25px; margin-right:10px;}
+		.myaccount{margin-top:15px; width:180px;}
+		.myaccount strong{font-size:12px;}
+		.myacc {margin-top: -2px; display: block; float: left;}
+		.myacc2{font-size:10px; margin-left:5px;}
+		.addbusinessbtn{margin-top:-25px; display:block; margin-left: 28px;}
+		
 		</style>		
 	</head>
 	
@@ -83,9 +92,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </button>
                 <a class="navbar-brand" href="<?php echo base_url();?>Welcome">TourGuide</a>
             </div>
-            <div class="navbar-collapse collapse pull-right">
-				<strong><?php echo @$first_name; ?></strong>
-            </div>
+            <div class="myaccount navbar-collapse collapse pull-right">
+				<strong><i class="myacc dsfont fas fa-user-circle"></i><?php echo @$first_name; ?></strong>
+				<i class="myacc2 fas fa-arrow-down"></i>
+			</div>
 			
 
            
