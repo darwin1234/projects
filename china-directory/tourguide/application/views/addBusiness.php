@@ -61,9 +61,7 @@
 								</select>
 							  </div>
 							  
-							  <div class="form-group">
-								<input type="calendar" name="publish_date">
-							  </div>
+							  
 							  <div class="form-group">
 								 <input type="file" name="business_image" accept="images/*">
 							  </div>
@@ -72,33 +70,36 @@
 								<input id="autocomplete" class="form-control" placeholder="Enter your address" onfocus="geolocate()" type="text"  autocomplete="off">
 							</div>
 							<div class="control-group"> 
-								<div class="control-label"><label>Street Number: </label></div> 
-								<input type='text' class="field" id="street_number" name="jform[street_number]" style="float:left; margin-left:15px; width:31%;" value="">
-								<labelAddress:</label><input type='text' class="field" id="route" name="jform[route]" style="float:left; width:30%;" value="">
+								<div class="control-label"><label>Street Number: </label> </div>
+								<input type='text' class="form-control" id="street_number" name="street_number" value="">
 							</div> 
 							<div class="control-group">
+								<div class="control-label"><label>Address:</label></div>
+								<input type='text'class="form-control" id="route" name="route"  value="">
+							</div>
+							<div class="control-group">
 								<div class="control-label"><label>City: </label></div>
-								<input class="field" id="locality" name="jform[locality]" style="float:left; margin-left:15px; width:70%;" value="">
+								<input class="form-control" id="locality" name="locality" class="form-control" value="">
 							</div>
 							<div class="control-group">
 								<div class="control-label"><label>State: </label></div>
-								<input class="field"  id="administrative_area_level_1" name="jform[administrative_area_level_1]" style="float:left; margin-left:15px; width:70%;" value="">
+								<input  id="administrative_area_level_1" name="administrative_area_level_1" class="form-control" value="">
 							</div>
 							<div class="control-group">
 								<div class="control-label"><label>Zip code: </label></div>
-								<input class="field" id="postal_code" name="jform[postal_code]" style="float:left; margin-left:15px; width:70%;" value="">
+								<input id="postal_code" name="postal_code" class="form-control" value="">
 							</div>
 							<div class="control-group">
 								<div class="control-label"><label>Country: </label></div>
-								<input class="field"  id="country" name="jform[country]" style="float:left;  margin-left:15px; width:70%;" value="">	
+								<input class="form-control" id="country" name="jform[country]" value="">	
 							</div>
 							<div class="control-group" style="display:block;">
-								<div class="control-label"><label>Latitude: </label></div>
-								<input aria-invalid="false"  type="text" class="field" id="dslat" name="jform[dslat]" style="margin-left:15px;" value="">
+								
+								<input aria-invalid="false"  type="hidden" class="field" id="dslat" name="jform[dslat]" style="margin-left:15px;" value="">
 							</div>
 							<div class="control-group" style="display:block;">
-								<div class="control-label"><label>Longhitude: </label></div>
-								<input aria-invalid="false" type="text" class="field" id="dslong" name="jform[dslong]" style="margin-left:15px;" value="">
+							
+								<input aria-invalid="false" type="hidden" class="field" id="dslong" name="jform[dslong]" style="margin-left:15px;" value="">
 							</div>
 								
 							  <div class="form-group">
