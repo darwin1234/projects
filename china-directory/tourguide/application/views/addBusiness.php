@@ -67,7 +67,7 @@
 							  <div class="form-group">
 								 <input type="file" name="business_image" accept="images/*">
 							  </div>
-							  	<div class="control-group">
+							  	<div class="control-group"> 
 								<div class="control-label"><label>Search: </label></div>
 								<input id="autocomplete" class="form-control" placeholder="Enter your address" onfocus="geolocate()" type="text"  autocomplete="off">
 							</div>
