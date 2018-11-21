@@ -7,6 +7,7 @@ class Welcome extends CI_Controller {
 	public function __construct(){
 		
 		   parent::__construct();
+		   $this->load->model('media','',TRUE);
 		   $this->load->model('BusinessList','',TRUE);
 		   $this->load->model('chart', '', TRUE);
 		   $this->load->model('events', '', TRUE);
@@ -1235,7 +1236,7 @@ class Welcome extends CI_Controller {
 	public function Media(){
 		$userData  							= $this->session->userdata('logged_in');
 	
-		$disciplesResult 					= $this->BusinessList->records();	// disciples records
+		$media 								= $this->media->records($userData['id']);	// disciples records
 		
 		
 		
@@ -1243,7 +1244,7 @@ class Welcome extends CI_Controller {
 		$activeAcount						= $this->BusinessList->useraccount($userData['id']); // user profile table
 
 		$data['user_name']					= $username;
-		$data['list_of_records'] 			= $disciplesResult;
+		$data['listofmedia'] 				= $media;
 	
 		$data['active_account']				= $activeAcount;
 		$data['userID'] 					= $userData['id'];

@@ -61,22 +61,15 @@
 			<a href="<?php echo base_url();?>Welcome/addbusiness" style="float: right; margin-top: 10px; margin-right: 20px; background: #365899; color: #fff; padding: 2px; width: 120px; text-decoration:none;"><i class="dsfont fas fa-plus-circle"></i><span class="addbusinessbtn">Add Image</span></a></div>
 	
 			<div class="table">	
-				<div class="image">
-				</div>
-				<div class="image">
-				</div>
-				<div class="image">
-				</div>
-				<div class="image">
-				</div>
-				<div class="image">
-				</div>
-				<div class="image">
-				</div>
-				<div class="image">
-				</div>
-				<div class="image">
-				</div>
+				
+				<?php foreach($listofmedia as $mediaItem){ ?>
+					<div class="image" style="background:url('<?php echo $mediaItem->image_path; ?>');">
+						
+					</div>
+				
+				<?php } ?>
+				
+				
 			</div>
 	</div>
 </div>		
