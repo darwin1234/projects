@@ -7,7 +7,7 @@ class Welcome extends CI_Controller {
 	public function __construct(){
 		
 		   parent::__construct();
-		   $this->load->model('desciples','',TRUE);
+		   $this->load->model('BusinessList','',TRUE);
 		   $this->load->model('chart', '', TRUE);
 		   $this->load->model('events', '', TRUE);
 		   $this->load->model('events2', '', TRUE);
@@ -25,12 +25,12 @@ class Welcome extends CI_Controller {
 	
 			$userData  							= $this->session->userdata('logged_in');
 	
-		$disciplesResult 					= $this->desciples->records();	// disciples records
+		$disciplesResult 					= $this->BusinessList->records();	// disciples records
 		
 		
 		
 		$username							= $userData['username'];
-		$activeAcount						= $this->desciples->useraccount($userData['id']); // user profile table
+		$activeAcount						= $this->BusinessList->useraccount($userData['id']); // user profile table
 
 		$data['user_name']					= $username;
 		$data['list_of_records'] 			= $disciplesResult;
@@ -45,7 +45,7 @@ class Welcome extends CI_Controller {
 		$data['settings']					= 'display';
 		$displayEvent 						= $this->events->displayEventArray();
 		$data['username'] 					= $userData['username'];		
-		$data['getRecordsDisplay']			= $this->desciples->getRecordsDisplay(Null);
+		$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
 		$displayEvent 						= $this->events->displayEventArray();
 		$data['displayEvent']				= $displayEvent;
 		
@@ -53,7 +53,7 @@ class Welcome extends CI_Controller {
 		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
 		//chart 
 		
-		$chartRecordData= $this->desciples->chart();
+		$chartRecordData= $this->BusinessList->chart();
 		
 		$data['jsonChartData'] 		= $chartRecordData;
 		$data['counthisopencell'] 	= $chartRecordData;
@@ -99,15 +99,15 @@ class Welcome extends CI_Controller {
 
 		$data['userID'] 						= $userID; 
 		//$data2['userID'] 						= $userData['id'];
-		$result 								= $this->desciples->records();	
-		$activeAcount							= $this->desciples->useraccount($userID);
+		$result 								= $this->BusinessList->records();	
+		$activeAcount							= $this->BusinessList->useraccount($userID);
 		
 		$data['userRole'] 						= @$userData['Role'];
 		$data['active_account']					= $activeAcount;
 		$data['list_of_records'] 				= $result;
 		$data['total'] 							= 0;
 		$displayEvent							= $this->events->displayEventArray();
-		$data['getRecordsDisplay']				= $this->desciples->getRecordsDisplay(NULL);
+		$data['getRecordsDisplay']				= $this->BusinessList->getRecordsDisplay(NULL);
 		$data['displayEvent']					= $displayEvent;
 		
 		$data['reactions'] = $this->events->countInterested();
@@ -148,47 +148,69 @@ class Welcome extends CI_Controller {
 	
 	public function addbusiness(){
 		
-		$data = array();
-		$userData  								= $this->session->userdata('logged_in');
+	$userData  							= $this->session->userdata('logged_in');
 	
+		$disciplesResult 					= $this->BusinessList->records();	// disciples records
+		
+		
+		
+		$username							= $userData['username'];
+		$activeAcount						= $this->BusinessList->useraccount($userData['id']); // user profile table
 
-		$data['userID'] 						= $userData['id']; 
-		$result 								= $this->desciples->records();	
-		$activeAcount							= $this->desciples->useraccount($userData['id']);
-		
-		$data['userRole'] 						= @$userData['Role'];
-		$data['active_account']					= $activeAcount;
-		$data['list_of_records'] 				= $result;
-		$data['total'] 							= 0;
-		$displayEvent							= $this->events->displayEventArray();
-		$data['getRecordsDisplay']				= $this->desciples->getRecordsDisplay(NULL);
-		$data['displayEvent']					= $displayEvent;
-		
-		$data['reactions'] = $this->events->countInterested();
-		foreach($activeAcount as $row){
-			//if($row->MentorUsername == $username){
-			$data['LeaderName'] =  $row->first_name . ' ' . $row->maiden_name . ' ' .  $row->last_name ;
-			//}
-		}
-		$userData  	= $this->session->userdata('logged_in');
-		
-		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor( $userData['id'] ),$userData['id']); //--basis for role, highest, pastor
-		
-		if(empty($userData)){redirect(base_url());}		
-		
-		
+		$data['user_name']					= $username;
+		$data['list_of_records'] 			= $disciplesResult;
 	
+		$data['active_account']				= $activeAcount;
+		$data['userID'] 					= $userData['id'];
 
-	
+		$data['userRole'] 					= @$userData['Role'];
+		$data['total'] 						= 0;
+		$data['LeaderName'] 	  			= $userData['MentorID'];
+		//$data['addBtn']						= '<button type="button" class="pull-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Disciple</button>';
+		$data['settings']					= 'display';
+		$displayEvent 						= $this->events->displayEventArray();
+		$data['username'] 					= $userData['username'];		
+		$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
+		$displayEvent 						= $this->events->displayEventArray();
+		$data['displayEvent']				= $displayEvent;
 		
-		$this->load->view('headers/adminhead',$data);
-		$this->load->view('addBusiness',$data);
-		$this->load->view('footers/adminfooter',$data);	
+		$data['usergender']					= $userData['gender'];
+		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
+		//chart 
+		
+		$chartRecordData= $this->BusinessList->chart();
+		
+		$data['jsonChartData'] 		= $chartRecordData;
+		$data['counthisopencell'] 	= $chartRecordData;
+	
+		//$data['getrole']			= $this->users->getrole($userData['id'],);
+		
+		
+		
+		//for my custom scripts and styles
+		//$data['baseURL'] = $this->baseURL;
+		
+		$data['progress'] = $this->users->getcounts();
+		$data['memberscount'] = $this->users->getmembercounts();
+		
+		$data["upcomingevents"] = $this->events2->upcomingevents($userData['id']);
+		$data["realUserID"] = $userData['id'];
+		
+		$data['countDisciples'] = 1;
+		if($userData == NULL){
 			
+			redirect(base_url());
+			
+		}else{
+			$this->load->view('headers/adminhead',$data);
+			$this->load->view('addBusiness',$data);
+			$this->load->view('footers/adminfooter',$data);
+			
+		}
 	
+	}
 	
 
-	}	
 	
 	
 	public function personalInformation(){
@@ -1151,12 +1173,12 @@ class Welcome extends CI_Controller {
 	public function businesslist(){
 		$userData  							= $this->session->userdata('logged_in');
 	
-		$disciplesResult 					= $this->desciples->records();	// disciples records
+		$disciplesResult 					= $this->BusinessList->records();	// disciples records
 		
 		
 		
 		$username							= $userData['username'];
-		$activeAcount						= $this->desciples->useraccount($userData['id']); // user profile table
+		$activeAcount						= $this->BusinessList->useraccount($userData['id']); // user profile table
 
 		$data['user_name']					= $username;
 		$data['list_of_records'] 			= $disciplesResult;
@@ -1171,7 +1193,7 @@ class Welcome extends CI_Controller {
 		$data['settings']					= 'display';
 		$displayEvent 						= $this->events->displayEventArray();
 		$data['username'] 					= $userData['username'];		
-		$data['getRecordsDisplay']			= $this->desciples->getRecordsDisplay(Null);
+		$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
 		$displayEvent 						= $this->events->displayEventArray();
 		$data['displayEvent']				= $displayEvent;
 		
@@ -1179,7 +1201,7 @@ class Welcome extends CI_Controller {
 		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
 		//chart 
 		
-		$chartRecordData= $this->desciples->chart();
+		$chartRecordData= $this->BusinessList->chart();
 		
 		$data['jsonChartData'] 		= $chartRecordData;
 		$data['counthisopencell'] 	= $chartRecordData;
@@ -1210,5 +1232,66 @@ class Welcome extends CI_Controller {
 		}
 	}
 	
+	public function Media(){
+		$userData  							= $this->session->userdata('logged_in');
+	
+		$disciplesResult 					= $this->BusinessList->records();	// disciples records
+		
+		
+		
+		$username							= $userData['username'];
+		$activeAcount						= $this->BusinessList->useraccount($userData['id']); // user profile table
+
+		$data['user_name']					= $username;
+		$data['list_of_records'] 			= $disciplesResult;
+	
+		$data['active_account']				= $activeAcount;
+		$data['userID'] 					= $userData['id'];
+
+		$data['userRole'] 					= @$userData['Role'];
+		$data['total'] 						= 0;
+		$data['LeaderName'] 	  			= $userData['MentorID'];
+		//$data['addBtn']						= '<button type="button" class="pull-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Disciple</button>';
+		$data['settings']					= 'display';
+		$displayEvent 						= $this->events->displayEventArray();
+		$data['username'] 					= $userData['username'];		
+		$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
+		$displayEvent 						= $this->events->displayEventArray();
+		$data['displayEvent']				= $displayEvent;
+		
+		$data['usergender']					= $userData['gender'];
+		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
+		//chart 
+		
+		$chartRecordData= $this->BusinessList->chart();
+		
+		$data['jsonChartData'] 		= $chartRecordData;
+		$data['counthisopencell'] 	= $chartRecordData;
+	
+		//$data['getrole']			= $this->users->getrole($userData['id'],);
+		
+		
+		
+		//for my custom scripts and styles
+		//$data['baseURL'] = $this->baseURL;
+		
+		$data['progress'] = $this->users->getcounts();
+		$data['memberscount'] = $this->users->getmembercounts();
+		
+		$data["upcomingevents"] = $this->events2->upcomingevents($userData['id']);
+		$data["realUserID"] = $userData['id'];
+		
+		$data['countDisciples'] = 1;
+		if($userData == NULL){
+			
+			redirect(base_url());
+			
+		}else{
+			$this->load->view('headers/adminhead',$data);
+			$this->load->view('media',$data);
+			$this->load->view('footers/adminfooter',$data);
+			
+		}
+	}
 	
 }

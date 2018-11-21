@@ -57,7 +57,27 @@
 </div>
 <div id="right"> 
 	<div id="box-tabs" class="box">
-					
+		<div class="title" style="width:97%; margin:auto;"><h3>Media</h3> 
+			<a href="<?php echo base_url();?>Welcome/addbusiness" style="float: right; margin-top: 10px; margin-right: 20px; background: #365899; color: #fff; padding: 2px; width: 120px; text-decoration:none;"><i class="dsfont fas fa-plus-circle"></i><span class="addbusinessbtn">Add Image</span></a></div>
+	
+			<div class="table">	
+				<div class="image">
+				</div>
+				<div class="image">
+				</div>
+				<div class="image">
+				</div>
+				<div class="image">
+				</div>
+				<div class="image">
+				</div>
+				<div class="image">
+				</div>
+				<div class="image">
+				</div>
+				<div class="image">
+				</div>
+			</div>
 	</div>
 </div>		
 

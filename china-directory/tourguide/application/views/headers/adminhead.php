@@ -73,6 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		.myacc {margin-top: -2px; display: block; float: left;}
 		.myacc2{font-size:10px; margin-left:5px;}
 		.addbusinessbtn{margin-top:-25px; display:block; margin-left: 28px;}
+		.image{float:left; width:23.3%; background:green; height:200px; margin:5px; }
 		
 		</style>		
 	</head>
