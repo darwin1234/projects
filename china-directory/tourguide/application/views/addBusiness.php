@@ -91,15 +91,15 @@
 							</div>
 							<div class="control-group">
 								<div class="control-label"><label>Country: </label></div>
-								<input class="form-control" id="country" name="jform[country]" value="">	
+								<input class="form-control" id="country" name="country" value="">	
 							</div>
 							<div class="control-group" style="display:block;">
 								
-								<input aria-invalid="false"  type="hidden" class="field" id="dslat" name="jform[dslat]" style="margin-left:15px;" value="">
+								<input aria-invalid="false"  type="hidden" class="field" id="dslat" name="dslat" style="margin-left:15px;" value="">
 							</div>
 							<div class="control-group" style="display:block;">
 							
-								<input aria-invalid="false" type="hidden" class="field" id="dslong" name="jform[dslong]" style="margin-left:15px;" value="">
+								<input aria-invalid="false" type="hidden" class="field" id="dslong" name="dslong" style="margin-left:15px;" value="">
 							</div>
 								
 							  <div class="form-group">

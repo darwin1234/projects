@@ -20,6 +20,14 @@ class Actions extends CI_Controller {
 			'business_status'		=> $this->input->post('business_status'),
 			'business_image'		=> $this->input->post('business_image'),
 			'publish_date'			=> $this->input->post('publish_date')
+			'street_number
+			'route'
+			'locality'
+			'administrative_area_level_1'
+			'postal_code'
+			'country'
+			'dslat'
+			'dslong'
 			);
 			$this->modelaction->createQuery($insert);
 		}
