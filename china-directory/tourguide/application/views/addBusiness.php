@@ -63,7 +63,7 @@
 							  
 							  
 							  <div class="form-group">
-								 <input type="file" name="business_image" accept="images/*">
+								<a href="#">Select Photo</a>
 							  </div>
 							  	<div class="control-group"> 
 								<div class="control-label"><label>Search: </label></div>
