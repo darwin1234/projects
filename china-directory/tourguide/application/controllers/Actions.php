@@ -7,27 +7,26 @@ class Actions extends CI_Controller {
 		parent::__construct();
 		$this->load->model('modelaction', '',TRUE);
 	}
-	
 	public function Create(){
 		if(!empty($_POST)){
 		$insert = array(
-			'business_name'			=> $this->input->post('business_name'),
-			'business_owner'		=> $this->input->post('business_owner'),
-			'business_latitude'		=> $this->input->post('business_latitude'),
-			'business_longitude'	=> $this->input->post('business_longitude'),
-			'business_address'		=> $this->input->post('business_address'),
-			'business_category'		=> $this->input->post('business_category'),
-			'business_status'		=> $this->input->post('business_status'),
-			'business_image'		=> $this->input->post('business_image'),
-			'publish_date'			=> $this->input->post('publish_date')
-			'street_number
-			'route'
-			'locality'
-			'administrative_area_level_1'
-			'postal_code'
-			'country'
-			'dslat'
-			'dslong'
+			'business_name'					=> $this->input->post('business_name'),
+			'business_owner'				=> $this->input->post('business_owner'),
+			'business_latitude'				=> $this->input->post('business_latitude'),
+			'business_longitude'			=> $this->input->post('business_longitude'),
+			'business_address'				=> $this->input->post('business_address'),
+			'business_category'				=> $this->input->post('business_category'),
+			'business_status'				=> $this->input->post('business_status'),
+			'business_image'				=> $this->input->post('business_image') ,
+			'publish_date'					=> $this->input->post('publish_date'),
+			'street_number'					=> $this->input->post('street_number'),
+			'route'							=> $this->input->post('route'),
+			'locality'						=> $this->input->post('locality'),
+			'administrative_area_level_1'   => $this->input->post('administrative_area_level_1'),
+			'postal_code'					=> $this->input->post('postal_code'),
+			'country'						=> $this->input->post('country'),
+			'dslat'							=> $this->input->post('dslat'),
+			'dslong'						=> $this->input->post('dslong')
 			);
 			$this->modelaction->createQuery($insert);
 		}
@@ -35,6 +34,4 @@ class Actions extends CI_Controller {
 			 redirect(base_url());		
 			}
 	}
-
-
 }
