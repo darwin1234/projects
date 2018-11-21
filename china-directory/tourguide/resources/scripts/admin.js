@@ -274,9 +274,6 @@ $(function(){
 								
 							},
 							listofrecords: function(){
-								//$("#right .table").html('<img src="'+ base_url + 'avatars/imageloading.gif" style="margin: auto; width: auto; display:block;">');
-								
-								
 								$("#listofrecords").html('<tr><td colspan="4" ><img src="'+ base_url + 'avatars/imageloading.gif" style="margin: auto; width: auto; display:block;"></td></tr>');
 								$("#listofrecords").load(base_url + "ajax/discipleslist");
 							},
@@ -1046,8 +1043,7 @@ $(function(){
 				CCCSystem.EditAccountInformation();
 				CCCSystem.EditAccountInformationFromDisciple();
 			
-				//CCCSystem.attendance_list();
-				//CCCSystem.tickattendance();
+		
 				 
 				
 

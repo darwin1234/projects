@@ -7,7 +7,7 @@ class Ajax extends CI_Controller {
 		public function __construct(){
 		
 		   parent::__construct();
-		   $this->load->model('desciples','',TRUE);
+		   $this->load->model('BusinessList','',TRUE);
 		   $this->load->model('user','', TRUE);
 		}
 		
@@ -25,9 +25,9 @@ class Ajax extends CI_Controller {
 		public function discipleslist(){
 			$userData  							= $this->session->userdata('logged_in');
 			
-			$disciplesResult 					= $this->desciples->records();	// disciples records
+			$disciplesResult 					= $this->BusinessList->records();	// disciples records
 			$username							= $userData['username'];
-			$activeAcount						= $this->desciples->useraccount($username); // user profile table
+			$activeAcount						= $this->BusinessList->useraccount($username); // user profile table
 	
 			$data['user_name']					= $username;
 			$data['list_of_records'] 			= $disciplesResult;

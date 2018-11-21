@@ -1,12 +1,8 @@
 <?php
 
-class Desciples extends CI_Model{
+class BusinessList extends CI_Model{
 	
 	public function records(){
-		/*$this->db->select('*');
-		$this->db->from('records');
-		$query = $this->db->get();*/
-		
 		$query = $this->db->query("SELECT * FROM records ORDER BY first_name asc");
 		return $query->result();	
 	}

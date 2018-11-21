@@ -241,7 +241,7 @@
 			
 		<div id="content">
 		
-	<div id="left">
+<div id="left">
 	<div id="menu">
 		<div id="image_profile">
 			<span>	
@@ -256,6 +256,7 @@
 				<ul id="menu-events" class="closed">
 					<li class="last"><a href="<?php echo base_url(); ?>Welcome/newEvent">Users</a></li>
 				</ul>
+				<h6 id="h-menu-settings"><a href="<?php echo base_url(); ?>Welcome/media"><i class="dsfont fas fa-folder-plus"></i>Media</a></h6>
 				<h6 id="h-menu-settings"><a href="#settings"><i class="dsfont fas fa-folder-plus"></i>Pages</a></h6>
 				<h6 id="h-menu-settings"><a href="<?php echo base_url(); ?>Welcome/businesslist"><i class="dsfont fas fa-list-alt"></i>Business Lists</a></h6>
 			<?php } ?>
@@ -273,7 +274,7 @@
 				<div class="box">
 				
 					<!-- box / title -->
-					<div class="title" style="width:100%;"><h3>Businesses</h3> 							
+					<div class="title" style="width:97%; margin:auto;"><h3>Businesses</h3> 							
 					<a href="<?php echo base_url();?>Welcome/addbusiness" style="float: right; margin-top: 10px; margin-right: 20px; background: #365899; color: #fff; padding: 2px; width: 120px; text-decoration:none;"><i class="dsfont fas fa-plus-circle"></i><span class="addbusinessbtn">Add Business</span></a></div>
 
 					<!-- end box / title -->
