@@ -1,31 +1,49 @@
-<html>
-<head>
-<style>
-body{margin:0; padding:0;}
-#mapdiv{width:100%; height:100%;}
-</style>
-</head>
+<!DOCTYPE html>
+<html> 
+<head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <title>Google Maps Multiple Markers</title> 
+  <script src="http://maps.google.com/maps/api/js?sensor=false" 
+          type="text/javascript"></script>
+  <style>
+	body{padding:0; margin:0;}
+  </style>
+</head> 
 <body>
-<div id="mapdiv"></div>
-<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
-  <script>
-    map = new OpenLayers.Map("mapdiv");
-    map.addLayer(new OpenLayers.Layer.OSM());
+  <?php //echo var_dump($businesslist);?>
+  <div id="map" style="width: 100%; height: 600px"></div>
+	
+  <script type="text/javascript">
+  
+    var locations = [
+      <?php  $count = 0; 
+	  foreach($businesslist as $businessItems){?>['<?php echo $businessItems->business_name; ?>',  <?php echo $businessItems->dslong; ?>,  <?php echo $businessItems->dslat; ?>, <?php echo $count++;?>],<?php } ?>
+	  
+	];
 
-    var lonLat = new OpenLayers.LonLat( -0.1279688 ,51.5077286 )
-          .transform(
-            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-            map.getProjectionObject() // to Spherical Mercator Projection
-          );
-           
-    var zoom=16; 
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: new google.maps.LatLng(-33.92, 151.25),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
 
-    var markers = new OpenLayers.Layer.Markers( "Markers" );
-    map.addLayer(markers);
-    
-    markers.addMarker(new OpenLayers.Marker(lonLat));
-    
-    map.setCenter (lonLat, zoom);
-</script>
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>
 </body>
-</html>	
+</html>

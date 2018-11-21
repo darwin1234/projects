@@ -3,7 +3,7 @@
 class BusinessList extends CI_Model{
 	
 	public function records(){
-		$query = $this->db->query("SELECT * FROM records ORDER BY first_name asc");
+		$query = $this->db->query("SELECT * FROM businesses ORDER BY business_id asc");
 		return $query->result();	
 	}
 	

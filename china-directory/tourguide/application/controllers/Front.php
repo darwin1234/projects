@@ -2,9 +2,16 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Front extends CI_Controller{
-	function index(){
 	
-		$this->load->view('frontpage');
+	function __construct(){
+		 parent::__construct();
+		 $this->load->model('BusinessList','',TRUE);
+		
+	}
+	function index(){
+		$data = array();
+		$data['businesslist']		= 	$this->BusinessList->records();
+		$this->load->view('frontpage',$data);
 		
 	}
 	public function history(){

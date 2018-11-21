@@ -286,9 +286,9 @@
 						<table>
 							<thead>
 								<tr>
-									<th>Title</th>
-									<th style="text-align:center;">Slugs</th>
-									<th style="text-align:center;">Description</th>
+									<th>Business Name</th>
+									<th style="text-align:center;">Address</th>
+									<th style="text-align:center;">Category</th>
 									<th style="text-align:center;">Action</th>
 									
 							</tr>
