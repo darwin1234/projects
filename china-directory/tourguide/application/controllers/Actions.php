@@ -30,10 +30,28 @@ class Actions extends CI_Controller {
 			'dslong'						=> $this->input->post('dslong')
 			);
 			$this->modelaction->createQuery($insert);
-			header('Location: http://tourguide.local/welcome/businesslist');
+			redirect(base_url() . '/welcome/businesslist');
 		}
 		else{
 			 redirect(base_url());		
 			}
 	}
+	public function Delete($business_id){
+		$this->modelaction->deleteQuery($business_id);
+		 
+		 redirect(base_url() . 'welcome/businesslist');
+	}
+	public function Update($business_id){
+		
+	}
+	
+	public function Deactivate($business_id){
+		$data = array(
+		'business_status' 	=> '0'
+		);
+		$this->modelaction->deactivateQuery($business_id);
+		redirect(base_url() . 'welcome/businesslist');
+	}
+	
+	
 }

@@ -94,54 +94,6 @@ class Welcome extends CI_Controller {
 	
 	public function edit($userID){
 		
-		$data2 = array();
-		$userData  								= $this->session->userdata('logged_in');
-	
-
-		$data['userID'] 						= $userID; 
-		//$data2['userID'] 						= $userData['id'];
-		$result 								= $this->BusinessList->records();	
-		$activeAcount							= $this->BusinessList->useraccount($userID);
-		
-		$data['userRole'] 						= @$userData['Role'];
-		$data['active_account']					= $activeAcount;
-		$data['list_of_records'] 				= $result;
-		$data['total'] 							= 0;
-		$displayEvent							= $this->events->displayEventArray();
-		$data['getRecordsDisplay']				= $this->BusinessList->getRecordsDisplay(NULL);
-		$data['displayEvent']					= $displayEvent;
-		
-		$data['reactions'] = $this->events->countInterested();
-		foreach($activeAcount as $row){
-			//if($row->MentorUsername == $username){
-			$data['LeaderName'] =  $row->first_name . ' ' . $row->maiden_name . ' ' .  $row->last_name ;
-			//}
-		}
-		$userData  	= $this->session->userdata('logged_in');
-		//$data['getRole'] 	= $this->users->getrole($userData['id'],$userID); //--basis for role, self
-		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor( $userData['id'] ),$userID); //--basis for role, highest, pastor
-		
-		if(empty($userData)){
-			 
-			 
-			redirect(base_url());
-			
-		}else{
-			//if(count($result) == 0){redirect('Welcome', 'refresh');}else{$this->load->view('welcome_message',$data);}
-			
-		}
-		
-		$data['Gender']	= $this->users->info($userID)->Gender;
-		$data['progress'] = $this->users->getcounts();
-		
-		$data["upcomingevents"] = $this->events2->upcomingevents($userData['id']);
-		$data["realUserID"] = $userData['id'];
-		
-		$this->load->view('headers/adminhead',$data);
-		$this->load->view('edit',$data);
-		$this->load->view('footers/adminfooter',$data);	
-	
-		
 	
 		
 		

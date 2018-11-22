@@ -133,7 +133,7 @@
 					<th class="address1">
 						<center>
 						<a href="<?php echo base_url(). 'actions/delete/' . $records->business_id; ?>"> Delete </a>	|					
-						<a href="<?php echo base_url(). 'welcome/edit/' . $records->business_id; ?>"> Edit </a> |				
+						<a href="<?php echo base_url(). 'edit/' . $records->business_id; ?>"> Edit </a> |				
 						<a href="<?php echo base_url(). 'actions/deactivate/' . $records->business_id; ?>"> Deactivate </a>				
 						</center>
 					</th>

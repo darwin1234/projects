@@ -7,9 +7,11 @@ class Welcome extends CI_Controller {
 	public function __construct(){
 		
 		   parent::__construct();
-		   $this->load->model('desciples','',TRUE);
+		   $this->load->model('media','',TRUE);
+		   $this->load->model('BusinessList','',TRUE);
 		   $this->load->model('chart', '', TRUE);
 		   $this->load->model('events', '', TRUE);
+		   $this->load->model('events2', '', TRUE);
 		   $this->load->model('Ushersinput','', TRUE);
 		   $this->load->model('user','', TRUE);
 		   $this->load->helper('date');
@@ -21,14 +23,15 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$userData  							= $this->session->userdata('logged_in');
 	
-		$disciplesResult 					= $this->desciples->records();	// disciples records
+			$userData  							= $this->session->userdata('logged_in');
+	
+		$disciplesResult 					= $this->BusinessList->records();	// disciples records
 		
 		
 		
 		$username							= $userData['username'];
-		$activeAcount						= $this->desciples->useraccount($userData['id']); // user profile table
+		$activeAcount						= $this->BusinessList->useraccount($userData['id']); // user profile table
 
 		$data['user_name']					= $username;
 		$data['list_of_records'] 			= $disciplesResult;
@@ -43,7 +46,7 @@ class Welcome extends CI_Controller {
 		$data['settings']					= 'display';
 		$displayEvent 						= $this->events->displayEventArray();
 		$data['username'] 					= $userData['username'];		
-		$data['getRecordsDisplay']			= $this->desciples->getRecordsDisplay(Null);
+		$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
 		$displayEvent 						= $this->events->displayEventArray();
 		$data['displayEvent']				= $displayEvent;
 		
@@ -51,20 +54,17 @@ class Welcome extends CI_Controller {
 		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
 		//chart 
 		
-		$chartRecordData= $this->desciples->chart();
+		$chartRecordData= $this->BusinessList->chart();
 		
 		$data['jsonChartData'] 		= $chartRecordData;
 		$data['counthisopencell'] 	= $chartRecordData;
 	
-		//$data['getrole']			= $this->users->getrole($userData['id'],);
-		
-		
-		
-		//for my custom scripts and styles
-		//$data['baseURL'] = $this->baseURL;
-		
+	
 		$data['progress'] = $this->users->getcounts();
+		$data['memberscount'] = $this->users->getmembercounts();
 		
+		$data["upcomingevents"] = $this->events2->upcomingevents($userData['id']);
+		$data["realUserID"] = $userData['id'];
 		
 		$data['countDisciples'] = 1;
 		if($userData == NULL){
@@ -72,12 +72,11 @@ class Welcome extends CI_Controller {
 			redirect(base_url());
 			
 		}else{
-			$this->load->view('headers/g12Networkheader',$data);
+			$this->load->view('headers/adminhead',$data);
 			$this->load->view('admin',$data);
-			$this->load->view('footers/g12Networkfooter',$data);
+			$this->load->view('footers/adminfooter',$data);
 			
 		}
-	
 	
 	}
 	
@@ -93,7 +92,7 @@ class Welcome extends CI_Controller {
 		
 	}
 	
-	public function disciples($userID){
+	public function edit($userID){
 		
 		$data2 = array();
 		$userData  								= $this->session->userdata('logged_in');
@@ -101,15 +100,15 @@ class Welcome extends CI_Controller {
 
 		$data['userID'] 						= $userID; 
 		//$data2['userID'] 						= $userData['id'];
-		$result 								= $this->desciples->records();	
-		$activeAcount							= $this->desciples->useraccount($userID);
+		$result 								= $this->BusinessList->records();	
+		$activeAcount							= $this->BusinessList->useraccount($userID);
 		
 		$data['userRole'] 						= @$userData['Role'];
 		$data['active_account']					= $activeAcount;
 		$data['list_of_records'] 				= $result;
 		$data['total'] 							= 0;
 		$displayEvent							= $this->events->displayEventArray();
-		$data['getRecordsDisplay']				= $this->desciples->getRecordsDisplay(NULL);
+		$data['getRecordsDisplay']				= $this->BusinessList->getRecordsDisplay(NULL);
 		$data['displayEvent']					= $displayEvent;
 		
 		$data['reactions'] = $this->events->countInterested();
@@ -135,9 +134,12 @@ class Welcome extends CI_Controller {
 		$data['Gender']	= $this->users->info($userID)->Gender;
 		$data['progress'] = $this->users->getcounts();
 		
-		$this->load->view('headers/g12Networkheader',$data);
-		$this->load->view('deciplesprofile',$data);
-		$this->load->view('footers/g12Networkfooter',$data);	
+		$data["upcomingevents"] = $this->events2->upcomingevents($userData['id']);
+		$data["realUserID"] = $userData['id'];
+		
+		$this->load->view('headers/adminhead',$data);
+		$this->load->view('edit',$data);
+		$this->load->view('footers/adminfooter',$data);	
 	
 		
 	
@@ -145,30 +147,71 @@ class Welcome extends CI_Controller {
 		
 	}
 	
-	public function AddRecords(){
-			
-			$accountID				= $this->input->post('GetID');
-			$username				= $this->input->post('discipleUsername');
-			$password				= md5($this->input->post('disciplePassword'));
-			$retypepassword			= md5($this->input->post('retypedisciplePassword'));
-			$userRole				= $this->input->post('userRole');
-			
-			
-			if(!empty($_POST)){
-					
-					
-					$this->desciples->insertRecords($username,$password,$retypepassword,$accountID,$userRole);
-				
-				
-			}else{
-				
-					redirect(base_url());
-				
-			}	
-	
-	
+	public function addbusiness(){
 		
-	}	
+	$userData  							= $this->session->userdata('logged_in');
+	
+		$disciplesResult 					= $this->BusinessList->records();	// disciples records
+		
+		
+		
+		$username							= $userData['username'];
+		$activeAcount						= $this->BusinessList->useraccount($userData['id']); // user profile table
+
+		$data['user_name']					= $username;
+		$data['list_of_records'] 			= $disciplesResult;
+	
+		$data['active_account']				= $activeAcount;
+		$data['userID'] 					= $userData['id'];
+
+		$data['userRole'] 					= @$userData['Role'];
+		$data['total'] 						= 0;
+		$data['LeaderName'] 	  			= $userData['MentorID'];
+		//$data['addBtn']						= '<button type="button" class="pull-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Disciple</button>';
+		$data['settings']					= 'display';
+		$displayEvent 						= $this->events->displayEventArray();
+		$data['username'] 					= $userData['username'];		
+		$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
+		$displayEvent 						= $this->events->displayEventArray();
+		$data['displayEvent']				= $displayEvent;
+		
+		$data['usergender']					= $userData['gender'];
+		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
+		//chart 
+		
+		$chartRecordData= $this->BusinessList->chart();
+		
+		$data['jsonChartData'] 		= $chartRecordData;
+		$data['counthisopencell'] 	= $chartRecordData;
+	
+		//$data['getrole']			= $this->users->getrole($userData['id'],);
+		
+		
+		
+		//for my custom scripts and styles
+		//$data['baseURL'] = $this->baseURL;
+		
+		$data['progress'] = $this->users->getcounts();
+		$data['memberscount'] = $this->users->getmembercounts();
+		
+		$data["upcomingevents"] = $this->events2->upcomingevents($userData['id']);
+		$data["realUserID"] = $userData['id'];
+		
+		$data['countDisciples'] = 1;
+		if($userData == NULL){
+			
+			redirect(base_url());
+			
+		}else{
+			$this->load->view('headers/adminhead',$data);
+			$this->load->view('addBusiness',$data);
+			$this->load->view('footers/adminfooter',$data);
+			
+		}
+	
+	}
+	
+
 	
 	
 	public function personalInformation(){
@@ -274,7 +317,8 @@ class Welcome extends CI_Controller {
 	
 		$userData  	= $this->session->userdata('logged_in');
 		$this->desciples->updatepersonal($userData['id']);
-		
+
+		$this->events2->reAddBirthdayEvent($userData['id'], $this->input->post('first_name') . ($this->input->post('maiden_name') != "" ? " " . $this->input->post('maiden_name') : "") . " " . $this->input->post('last_name'), $this->input->post('birthday_month'), $this->input->post('birthday_day'));
 	} 
 	
 	public function logout(){
@@ -580,7 +624,12 @@ class Welcome extends CI_Controller {
     public function active_action(){
 		$userID 			= $this->input->post('userID');
 		$activestatuschance	= $this->input->post('activestatuschance');
-		$this->desciples->active_action($userID,$activestatuschance);
+		
+		if($this->users->getMyPrimaryCount($userID) == 0) {
+			$this->desciples->active_action($userID,$activestatuschance);
+		} else {
+			echo "Deactivate Account Failed. Please transfer all his/her disciples first.";
+		}
 	}	
 	
 	
@@ -854,6 +903,7 @@ class Welcome extends CI_Controller {
 		
 		$this->desciples->EditAccountInformation($delegatesID,$first_name,$maiden_name,$last_name,$EmailAddress,$CellNumber,$ProfesionalSkills,$Address);
 		
+		$this->events2->reAddBirthdayEvent($delegatesID, $this->input->post('first_name') . ($this->input->post('maiden_name') != "" ? " " . $this->input->post('maiden_name') : "") . " " . $this->input->post('last_name'), $this->input->post('birthday_month'), $this->input->post('birthday_day'));
 	}
 
 	
@@ -1027,6 +1077,222 @@ class Welcome extends CI_Controller {
 		}
 		
 		echo "var info = { $p }; ";
+	}
+	
+	function deleteaccount() {
+		$this->users->delete($this->input->post('id'));
+	}
+	
+	
+	
+	
+	
+	
+	//FOR EVENTS (NEW) ======================================================
+	
+	public function eventspage() {
+		$userData 			= $this->session->userdata('logged_in');
+		$data['userID']						= $userData['id'];
+		
+		$this->events2->reCreateBirthdayEvents();
+		
+		switch(key($_GET)) {
+			case "" :
+				$dt = $this->events2->dateToday;
+				$data['eventsCalendar'] = $this->events2->eventCalendar($userData['id'], $dt[0], $dt[2]);
+				break;
+				
+			case "last" :
+				$dt = $this->events2->lastMonth;
+				$data['eventsCalendar'] = $this->events2->eventCalendar($userData['id'], $dt[0], $dt[1]);
+				break;
+			
+			case "next1" :
+				$dt = $this->events2->nextMonths[0];
+				$data['eventsCalendar'] = $this->events2->eventCalendar($userData['id'], $dt[0], $dt[1]);
+				break;
+			
+			case "next2" :
+				$dt = $this->events2->nextMonths[1];
+				$data['eventsCalendar'] = $this->events2->eventCalendar($userData['id'], $dt[0], $dt[1]);
+				break;
+			
+			case "next3" :
+				$dt = $this->events2->nextMonths[2];
+				$data['eventsCalendar'] = $this->events2->eventCalendar($userData['id'], $dt[0], $dt[1]);
+				break;
+		}
+		
+		$this->load->view('headers/g12Networkheader',$data);
+		$this->load->view("events2", $data);
+		$this->load->view('footers/g12Networkfooter',$data);
+	}
+	
+	public function getevent($id = 0) {
+		echo $this->events2->getEvent($id);
+	}
+	
+	public function getevents() {
+		$this->events2->getEvents($this->input->post('id_no'), $this->input->post('date'));
+	}
+	
+	public function saveevent() {
+		if($this->input->post('do') == "NEW") {
+			echo $this->events2->addEvent($this->input->post('id_no'), $this->input->post('date'), $this->input->post('title'), $this->input->post('venue'), $this->input->post('time'), $this->input->post('days'), $this->input->post('visibility'));
+		} else if($this->input->post('do') == "UPDATE") {
+			echo $this->events2->editEvent($this->input->post('event'), $this->input->post('title'), $this->input->post('venue'), $this->input->post('time'), $this->input->post('visibility'));
+		}
+	}
+	
+	public function removeevent() {
+		echo $this->events2->deleteEvent($this->input->post('id'));
+	}
+
+	public function upcomingevents($id) {
+		$this->events2->upcomingevents($id);
+	}
+	
+	public function eventpart() {
+		echo $this->events2->eventpart($this->input->post('id_no'), $this->input->post('event'), $this->input->post('status'));
+	}
+	
+	public function viplistcsv($from, $to) {
+		if(empty($from) || empty($to)) { $this->users->viplistdownloadCSV('2016-01-01', '2116-01-01'); }
+		else{ $this->users->viplistdownloadCSV($from, $to); }
+	}
+	
+	public function viplistexcel($from, $to) {
+		if(empty($from) || empty($to)) { $this->users->viplistdownloadEXCEL('2016-01-01', '2116-01-01'); }
+		else{ $this->users->viplistdownloadEXCEL($from, $to); }
+	}
+	
+	public function yessss($iddd){
+		$this->user->moveVIP($iddd);
+		//echo $iddd . "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+	}
+	
+	public function businesslist(){
+		$userData  							= $this->session->userdata('logged_in');
+	
+		$disciplesResult 					= $this->BusinessList->records();	// disciples records
+		
+		
+		
+		$username							= $userData['username'];
+		$activeAcount						= $this->BusinessList->useraccount($userData['id']); // user profile table
+
+		$data['user_name']					= $username;
+		$data['list_of_records'] 			= $disciplesResult;
+	
+		$data['active_account']				= $activeAcount;
+		$data['userID'] 					= $userData['id'];
+
+		$data['userRole'] 					= @$userData['Role'];
+		$data['total'] 						= 0;
+		$data['LeaderName'] 	  			= $userData['MentorID'];
+		//$data['addBtn']						= '<button type="button" class="pull-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Disciple</button>';
+		$data['settings']					= 'display';
+		$displayEvent 						= $this->events->displayEventArray();
+		$data['username'] 					= $userData['username'];		
+		$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
+		$displayEvent 						= $this->events->displayEventArray();
+		$data['displayEvent']				= $displayEvent;
+		
+		$data['usergender']					= $userData['gender'];
+		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
+		//chart 
+		
+		$chartRecordData= $this->BusinessList->chart();
+		
+		$data['jsonChartData'] 		= $chartRecordData;
+		$data['counthisopencell'] 	= $chartRecordData;
+	
+		//$data['getrole']			= $this->users->getrole($userData['id'],);
+		
+		
+		
+		//for my custom scripts and styles
+		//$data['baseURL'] = $this->baseURL;
+		
+		$data['progress'] = $this->users->getcounts();
+		$data['memberscount'] = $this->users->getmembercounts();
+		
+		$data["upcomingevents"] = $this->events2->upcomingevents($userData['id']);
+		$data["realUserID"] = $userData['id'];
+		
+		$data['countDisciples'] = 1;
+		if($userData == NULL){
+			
+			redirect(base_url());
+			
+		}else{
+			$this->load->view('headers/adminhead',$data);
+			$this->load->view('businesslists',$data);
+			$this->load->view('footers/adminfooter',$data);
+			
+		}
+	}
+	
+	public function Media(){
+		$userData  							= $this->session->userdata('logged_in');
+	
+		$media 								= $this->media->records($userData['id']);	// disciples records
+		
+		
+		
+		$username							= $userData['username'];
+		$activeAcount						= $this->BusinessList->useraccount($userData['id']); // user profile table
+
+		$data['user_name']					= $username;
+		$data['listofmedia'] 				= $media;
+	
+		$data['active_account']				= $activeAcount;
+		$data['userID'] 					= $userData['id'];
+
+		$data['userRole'] 					= @$userData['Role'];
+		$data['total'] 						= 0;
+		$data['LeaderName'] 	  			= $userData['MentorID'];
+		//$data['addBtn']						= '<button type="button" class="pull-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Disciple</button>';
+		$data['settings']					= 'display';
+		$displayEvent 						= $this->events->displayEventArray();
+		$data['username'] 					= $userData['username'];		
+		$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
+		$displayEvent 						= $this->events->displayEventArray();
+		$data['displayEvent']				= $displayEvent;
+		
+		$data['usergender']					= $userData['gender'];
+		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
+		//chart 
+		
+		$chartRecordData= $this->BusinessList->chart();
+		
+		$data['jsonChartData'] 		= $chartRecordData;
+		$data['counthisopencell'] 	= $chartRecordData;
+	
+		//$data['getrole']			= $this->users->getrole($userData['id'],);
+		
+		
+		
+		//for my custom scripts and styles
+		//$data['baseURL'] = $this->baseURL;
+		
+		$data['progress'] = $this->users->getcounts();
+		$data['memberscount'] = $this->users->getmembercounts();
+		
+		$data["upcomingevents"] = $this->events2->upcomingevents($userData['id']);
+		$data["realUserID"] = $userData['id'];
+		
+		$data['countDisciples'] = 1;
+		if($userData == NULL){
+			
+			redirect(base_url());
+			
+		}else{
+			$this->load->view('headers/adminhead',$data);
+			$this->load->view('media',$data);
+			$this->load->view('footers/adminfooter',$data);
+			
+		}
 	}
 	
 }

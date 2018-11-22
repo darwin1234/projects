@@ -53,5 +53,5 @@ $route['default_controller'] = 'Front';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['item-list'] = 'actions/display';
-$route['item-list/(:any)']['delete'] = "actions/delete/$1";
+$route['item-list/(:any)']['delete'] = "ItemController/delete/$1";
 
