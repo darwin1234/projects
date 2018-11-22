@@ -1,29 +1,46 @@
 /*
-SQLyog Community v13.0.0 (64 bit)
-MySQL - 10.1.21-MariaDB 
+SQLyog Trial v13.0.1 (64 bit)
+MySQL - 10.1.24-MariaDB 
 *********************************************************************
 */
 /*!40101 SET NAMES utf8 */;
 
 create table `businesses` (
 	`business_id` int (11),
-	`business_name` varchar (6885),
+	`business_name` varchar (20655),
 	`business_owner` text ,
 	`business_latitude` double ,
 	`business_longitude` double ,
-	`business_address` varchar (2700),
-	`business_category` varchar (1350),
-	`business_status` varchar (270),
+	`business_address` varchar (8100),
+	`business_category` varchar (4050),
+	`business_status` varchar (810),
 	`business_image` text ,
 	`user_id` int (9),
 	`publish_date` date ,
-	`street_number` varchar (180),
-	`route` varchar (180),
-	`locality` varchar (198),
-	`administrative_area_level_1` varchar (2295),
-	`postal_code` varchar (765),
-	`country` varchar (198),
-	`dslat` varchar (180),
-	`dslong` varchar (180)
+	`street_number` varchar (540),
+	`route` varchar (540),
+	`locality` varchar (594),
+	`administrative_area_level_1` varchar (6885),
+	`postal_code` varchar (2295),
+	`country` varchar (594),
+	`dslat` varchar (540),
+	`dslong` varchar (540)
 ); 
-insert into `businesses` (`business_id`, `business_name`, `business_owner`, `business_latitude`, `business_longitude`, `business_address`, `business_category`, `business_status`, `business_image`, `user_id`, `publish_date`, `street_number`, `route`, `locality`, `administrative_area_level_1`, `postal_code`, `country`, `dslat`, `dslong`) values(NULL,'Resort 1','Business Owner 1','0','0','Guangdong, China','Dentistry','0',NULL,NULL,NULL,'','','','Guangdong','','China','23.3790333','113.76328280000007');
+insert into `businesses` (`business_id`, `business_name`, `business_owner`, `business_latitude`, `business_longitude`, `business_address`, `business_category`, `business_status`, `business_image`, `user_id`, `publish_date`, `street_number`, `route`, `locality`, `administrative_area_level_1`, `postal_code`, `country`, `dslat`, `dslong`) values('1','Happy Smile Dentist Clinic','Business Owner 1','0','0','Beijing 798 Art Zone, Chaoyang, Beijing, China','Dentistry','0','http://media.local/2018/11/263/images/seven-stars-resort-spa.jpg',NULL,NULL,'','','','Beijing Shi','100096','China','39.913818','116.363625');
+insert into `businesses` (`business_id`, `business_name`, `business_owner`, `business_latitude`, `business_longitude`, `business_address`, `business_category`, `business_status`, `business_image`, `user_id`, `publish_date`, `street_number`, `route`, `locality`, `administrative_area_level_1`, `postal_code`, `country`, `dslat`, `dslong`) values('3','China food','Tlabang','0','0','Beijing 798 Art Zone, Chaoyang, Beijing, China','Flower Shop',NULL,'http://media.local/2018/11/263/images/floral.jpg',NULL,NULL,'','','','Beijing Shi','100096','China','39.982464','116.49695059999999');
+insert into `businesses` (`business_id`, `business_name`, `business_owner`, `business_latitude`, `business_longitude`, `business_address`, `business_category`, `business_status`, `business_image`, `user_id`, `publish_date`, `street_number`, `route`, `locality`, `administrative_area_level_1`, `postal_code`, `country`, `dslat`, `dslong`) values('4','Marlon Dentist Clinic','asdasdasdasdasdasd','0','0','','Dentistry',NULL,'http://media.local/2018/11/263/images/dentistclinic.gif',NULL,NULL,'','','Beijing','Beijing','','China','39.90419989999999','116.40739630000007');
+insert into `businesses` (`business_id`, `business_name`, `business_owner`, `business_latitude`, `business_longitude`, `business_address`, `business_category`, `business_status`, `business_image`, `user_id`, `publish_date`, `street_number`, `route`, `locality`, `administrative_area_level_1`, `postal_code`, `country`, `dslat`, `dslong`) values('5','Shanxi Beauty Salon','Garry Moore','0','0','','Beauty Salon',NULL,'http://media.local/2018/11/263/images/neatsalon.jpg',NULL,NULL,'','','','Shanxi','','China','37.2425649','111.85685860000001');
+insert into `businesses` (`business_id`, `business_name`, `business_owner`, `business_latitude`, `business_longitude`, `business_address`, `business_category`, `business_status`, `business_image`, `user_id`, `publish_date`, `street_number`, `route`, `locality`, `administrative_area_level_1`, `postal_code`, `country`, `dslat`, `dslong`) values('6','Doctor Nam Clinic','Nam Pen','0','0','','Dentistry',NULL,'http://media.local/2018/11/263/images/download.jpg',NULL,NULL,'','','Guangzhou','Guangdong','','China','23.12911','113.26438499999995');
+insert into `businesses` (`business_id`, `business_name`, `business_owner`, `business_latitude`, `business_longitude`, `business_address`, `business_category`, `business_status`, `business_image`, `user_id`, `publish_date`, `street_number`, `route`, `locality`, `administrative_area_level_1`, `postal_code`, `country`, `dslat`, `dslong`) values('7','Sanders Floral','Major Sanders','0','0','','Flower Shop',NULL,'http://media.local/2018/11/263/images/floralshop.jpg',NULL,NULL,'','','','Shanghai','','China','31.2646','121.505132');
+insert into `businesses` (`business_id`, `business_name`, `business_owner`, `business_latitude`, `business_longitude`, `business_address`, `business_category`, `business_status`, `business_image`, `user_id`, `publish_date`, `street_number`, `route`, `locality`, `administrative_area_level_1`, `postal_code`, `country`, `dslat`, `dslong`) values('9','XF Flower Shop','Xander Ford','0','0','','Flower Shop',NULL,'http://media.local/2018/11/263/images/flowershopagain.jpg',NULL,NULL,'','','','Beijing Shi','','China','39.8937675','116.32499000000007');
+insert into `businesses` (`business_id`, `business_name`, `business_owner`, `business_latitude`, `business_longitude`, `business_address`, `business_category`, `business_status`, `business_image`, `user_id`, `publish_date`, `street_number`, `route`, `locality`, `administrative_area_level_1`, `postal_code`, `country`, `dslat`, `dslong`) values('10','Labang Salon','Felix Labang','0','0','','Beauty Salon',NULL,'http://media.local/2018/11/263/images/prestigesalon.jpg',NULL,NULL,'','','Foshan','Guangdong','','China','23.021478','113.12143500000002');
+insert into `businesses` (`business_id`, `business_name`, `business_owner`, `business_latitude`, `business_longitude`, `business_address`, `business_category`, `business_status`, `business_image`, `user_id`, `publish_date`, `street_number`, `route`, `locality`, `administrative_area_level_1`, `postal_code`, `country`, `dslat`, `dslong`) values('11','Pretty Salon','Betty Lafea','0','0','','Beauty Salon',NULL,'http://media.local/2018/11/263/images/beautysalonagain.jpg',NULL,NULL,'','','Qingdao','Shandong','','China','36.06710799999999','120.382609');
+insert into `businesses` (`business_id`, `business_name`, `business_owner`, `business_latitude`, `business_longitude`, `business_address`, `business_category`, `business_status`, `business_image`, `user_id`, `publish_date`, `street_number`, `route`, `locality`, `administrative_area_level_1`, `postal_code`, `country`, `dslat`, `dslong`) values('12','Vito Dental Clinic','Doctor Vito','0','0','','Dentistry',NULL,'http://media.local/2018/11/263/images/dentistclinic.jpg',NULL,NULL,'','','Shenzhen','Guangdong','','China','22.543096','114.05786499999999');
+insert into `businesses` (`business_id`, `business_name`, `business_owner`, `business_latitude`, `business_longitude`, `business_address`, `business_category`, `business_status`, `business_image`, `user_id`, `publish_date`, `street_number`, `route`, `locality`, `administrative_area_level_1`, `postal_code`, `country`, `dslat`, `dslong`) values('13','Tia Flower Shop','Shen Tia','0','0','','Flower Shop',NULL,'http://media.local/2018/11/263/images/paradise.jpg',NULL,NULL,'','','Jiangmen','','','China','22.450622','112.73408599999993');
+insert into `businesses` (`business_id`, `business_name`, `business_owner`, `business_latitude`, `business_longitude`, `business_address`, `business_category`, `business_status`, `business_image`, `user_id`, `publish_date`, `street_number`, `route`, `locality`, `administrative_area_level_1`, `postal_code`, `country`, `dslat`, `dslong`) values('14','Feng Dentist Clinic','Feng Chan','0','0','','Dentistry',NULL,'http://media.local/2018/11/263/images/dentistry.jpg',NULL,NULL,'','','','Jiangxi','','China','27.0874564','114.90422080000008');
+insert into `businesses` (`business_id`, `business_name`, `business_owner`, `business_latitude`, `business_longitude`, `business_address`, `business_category`, `business_status`, `business_image`, `user_id`, `publish_date`, `street_number`, `route`, `locality`, `administrative_area_level_1`, `postal_code`, `country`, `dslat`, `dslong`) values('15','Obito Flower Shop','Doctor Felix Obito','0','0','','Flower Shop',NULL,'http://media.local/2018/11/263/images/images(2).jpg',NULL,NULL,'','','Hangzhou','Zhejiang','','China','30.183806','120.26425300000005');
+insert into `businesses` (`business_id`, `business_name`, `business_owner`, `business_latitude`, `business_longitude`, `business_address`, `business_category`, `business_status`, `business_image`, `user_id`, `publish_date`, `street_number`, `route`, `locality`, `administrative_area_level_1`, `postal_code`, `country`, `dslat`, `dslong`) values('16','Chulangkorn Beauty Salon','Tiu Mei','0','0','','Beauty Salon',NULL,'http://media.local/2018/11/263/images/chinabeautysalon.jpg',NULL,NULL,'','','Chengdu','Sichuan','','China','30.57281499999999','104.06680099999994');
+insert into `businesses` (`business_id`, `business_name`, `business_owner`, `business_latitude`, `business_longitude`, `business_address`, `business_category`, `business_status`, `business_image`, `user_id`, `publish_date`, `street_number`, `route`, `locality`, `administrative_area_level_1`, `postal_code`, `country`, `dslat`, `dslong`) values('17','Kai Flower Shop','Ken Kai','0','0','','Flower Shop',NULL,'http://media.local/2018/11/263/images/slider-4_2000x.jpg',NULL,NULL,'','','Hangzhou','Zhejiang','','China','30.244108','120.16505800000004');
+insert into `businesses` (`business_id`, `business_name`, `business_owner`, `business_latitude`, `business_longitude`, `business_address`, `business_category`, `business_status`, `business_image`, `user_id`, `publish_date`, `street_number`, `route`, `locality`, `administrative_area_level_1`, `postal_code`, `country`, `dslat`, `dslong`) values('18','Tiu Tak Salon','Tak Tiu','0','0','','Beauty Salon',NULL,'http://media.local/2018/11/263/images/download(1).jpg',NULL,NULL,'','','','Zhejiang','','China','29.1416432','119.78892480000002');
+insert into `businesses` (`business_id`, `business_name`, `business_owner`, `business_latitude`, `business_longitude`, `business_address`, `business_category`, `business_status`, `business_image`, `user_id`, `publish_date`, `street_number`, `route`, `locality`, `administrative_area_level_1`, `postal_code`, `country`, `dslat`, `dslong`) values('19','Kung Lao Flower Shop','Kung Lao','0','0','','Flower Shop',NULL,'http://media.local/2018/11/263/images/images(3).jpg',NULL,NULL,'','Zuan Shi Da Dao','Xiangyang Shi','Hubei Sheng','','China','32.1030534','112.21938750000004');
+insert into `businesses` (`business_id`, `business_name`, `business_owner`, `business_latitude`, `business_longitude`, `business_address`, `business_category`, `business_status`, `business_image`, `user_id`, `publish_date`, `street_number`, `route`, `locality`, `administrative_area_level_1`, `postal_code`, `country`, `dslat`, `dslong`) values('20','Fei Hong Flower Shop','Wong Fei Hong','0','0','','Flower Shop',NULL,'http://media.local/2018/11/263/images/images(4).jpg',NULL,NULL,'','','','Kaohsiung City','812','Taiwan','22.5553185','120.36084549999998');
