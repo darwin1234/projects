@@ -122,7 +122,7 @@
 					</th>
 					<th class="address">
 						
-					<?php echo strtoupper($records->business_address); ?>
+					<?php echo strtoupper($records->administrative_area_level_1).' '.$records->postal_code; ?>
 				
 					</th>
 					<th class="address">

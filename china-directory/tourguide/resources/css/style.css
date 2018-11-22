@@ -2025,6 +2025,8 @@ div.form div.fields div.buttons div.highlight .ui-state-hover
 	background: #eeeeee;
 	border-right: 1px solid #cdcdcd;
 	border-bottom: 1px solid #cdcdcd;
+	font-size:12px!important;
+	font-weight:400!important;
 }
 
 #content div.box table th.last

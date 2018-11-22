@@ -48,7 +48,7 @@
 							  </div>
 								<input type="hidden" class="form-control" id="business_latide" name="business_latitude"> 
 								<input type="hidden" class="form-control" id="business_longitude" name="business_longitude"> 
-							  <div class="form-group">
+							  <div class="form-group" style="display:none;">
 								<label for="business_address">Business Address:</label>
 								<input type="text" class="form-control" id="business_address" name="business_address">
 							  </div>

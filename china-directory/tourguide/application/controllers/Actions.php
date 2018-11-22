@@ -6,6 +6,7 @@ class Actions extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('modelaction', '',TRUE);
+		$this->load->view('addbusiness', '',TRUE);
 	}
 	public function Create(){
 		if(!empty($_POST)){
@@ -29,6 +30,7 @@ class Actions extends CI_Controller {
 			'dslong'						=> $this->input->post('dslong')
 			);
 			$this->modelaction->createQuery($insert);
+			header('Location: http://tourguide.local/welcome/businesslist');
 		}
 		else{
 			 redirect(base_url());		
