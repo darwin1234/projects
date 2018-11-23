@@ -7,9 +7,7 @@ class BusinessList extends CI_Model{
 		$query = $this->db->query("SELECT * FROM businesses ORDER BY business_id asc");
 			
 		}
-		else{
-		$query = $this->db->query("SELECT * FROM businesses WHERE business_id = " . $id);	
-		}
+		else{}
 		return $query->result();
 	}
 	

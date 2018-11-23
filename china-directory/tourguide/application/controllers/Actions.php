@@ -41,8 +41,11 @@ class Actions extends CI_Controller {
 		 
 		 redirect(base_url() . 'welcome/businesslist');
 	}
-	public function Update($business_id){
+	public function edit($id){	
+        
 		
+		$this->modelaction->updateQuery($id);
+		redirect (base_url() . 'welcome/edit/'.$id);
 	}
 	
 	public function Deactivate($business_id){
@@ -54,4 +57,9 @@ class Actions extends CI_Controller {
 	}
 	
 	
-}
+	
+	
+}   
+    
+    
+    

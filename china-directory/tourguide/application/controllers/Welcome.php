@@ -92,8 +92,67 @@ class Welcome extends CI_Controller {
 		
 	}
 	
-	public function edit($userID){
+	public function edit($id){
 		
+		$userData  							= $this->session->userdata('logged_in');
+	
+		$singleItem 					= $this->BusinessList->records($id);	// disciples records
+		
+		
+		
+		$username							= $userData['username'];
+		$activeAcount						= $this->BusinessList->useraccount($userData['id']); // user profile table
+
+		$data['user_name']					= $username;
+		$data['list_of_records'] 			= $singleItem;
+	
+		$data['active_account']				= $activeAcount;
+		$data['userID'] 					= $userData['id'];
+
+		$data['userRole'] 					= @$userData['Role'];
+		$data['total'] 						= 0;
+		$data['LeaderName'] 	  			= $userData['MentorID'];
+		//$data['addBtn']						= '<button type="button" class="pull-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Disciple</button>';
+		$data['settings']					= 'display';
+		$displayEvent 						= $this->events->displayEventArray();
+		$data['username'] 					= $userData['username'];		
+		$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
+		$displayEvent 						= $this->events->displayEventArray();
+		$data['displayEvent']				= $displayEvent;
+		
+		$data['usergender']					= $userData['gender'];
+		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
+		//chart 
+		
+		$chartRecordData= $this->BusinessList->chart();
+		
+		$data['jsonChartData'] 		= $chartRecordData;
+		$data['counthisopencell'] 	= $chartRecordData;
+	
+		//$data['getrole']			= $this->users->getrole($userData['id'],);
+		
+		
+		
+		//for my custom scripts and styles
+		//$data['baseURL'] = $this->baseURL;
+		
+		$data['progress'] = $this->users->getcounts();
+		$data['memberscount'] = $this->users->getmembercounts();
+		
+		$data["upcomingevents"] = $this->events2->upcomingevents($userData['id']);
+		$data["realUserID"] = $userData['id'];
+		
+		$data['countDisciples'] = 1;
+		if($userData == NULL){
+			
+			redirect(base_url());
+			
+		}else{
+			$this->load->view('headers/adminhead',$data);
+			$this->load->view('edit',$data);
+			$this->load->view('footers/adminfooter',$data);
+			
+		}
 	
 		
 		
