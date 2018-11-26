@@ -56,10 +56,58 @@ class Actions extends CI_Controller {
 		redirect(base_url() . 'welcome/businesslist');
 	}
 	
+	function fetch(){
+	  $output = '';
+	  $query = '';
+	  	if($this->input->post('query')){
+			$query = $this->input->post('query');
+		}
+	  $data = $this->modelaction->fetch_data($query);
+		  $output .= '
+			  <div class="table-responsive">
+				 <table class="table table-bordered table-striped">
+				  <tr>
+				   <th>Business Name</th>
+				   <th>Business Owner</th>
+				   <th>Category</th>
+				   <th>Street Address</th>
+				   <th>City/Municipality</th>
+				   <th>Zip Code</th>
+				   <th>Country</th>
+				  </tr>
+			  ';
+  if($data->num_rows() > 0)
+  {
+   foreach($data->result() as $row)
+   {
+    $output .= '
+      <tr>
+       <td>'.$row->business_name.'</td>
+       <td>'.$row->business_owner.'</td>
+       <td>'.$row->business_category.'</td>
+       <td>'.$row->route.'</td>
+       <td>'.$row->locality.'</td>
+       <td>'.$row->administrative_area_level_1.'</td>
+       <td>'.$row->postal_code.'</td>
+       <td>'.$row->country.'</td>
+      </tr>
+    ';
+   }
+  }
+  else
+  {
+   $output .= '<tr>
+       <td colspan="5">No Data Found</td>
+      </tr>';
+  }
+  $output .= '</table>';
+  echo $output;
+ }
+ 
+}
 	
 	
-	
-}   
+  
     
     
     
