@@ -10,8 +10,7 @@ class Welcome extends CI_Controller {
 		   $this->load->model('media','',TRUE);
 		   $this->load->model('BusinessList','',TRUE);
 		   $this->load->model('chart', '', TRUE);
-		   $this->load->model('events', '', TRUE);
-		   $this->load->model('events2', '', TRUE);
+
 		   $this->load->model('Ushersinput','', TRUE);
 		   $this->load->model('user','', TRUE);
 		   $this->load->helper('date');
@@ -24,9 +23,9 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 	
-			$userData  							= $this->session->userdata('logged_in');
+		$userData  							= $this->session->userdata('logged_in');
 	
-		$disciplesResult 					= $this->BusinessList->records();	// disciples records
+		$disciplesResult 					= $this->BusinessList->records();	
 		
 		
 		
@@ -44,11 +43,9 @@ class Welcome extends CI_Controller {
 		$data['LeaderName'] 	  			= $userData['MentorID'];
 		//$data['addBtn']						= '<button type="button" class="pull-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Disciple</button>';
 		$data['settings']					= 'display';
-		$displayEvent 						= $this->events->displayEventArray();
+		
 		$data['username'] 					= $userData['username'];		
 		$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
-		$displayEvent 						= $this->events->displayEventArray();
-		$data['displayEvent']				= $displayEvent;
 		
 		$data['usergender']					= $userData['gender'];
 		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
@@ -63,7 +60,7 @@ class Welcome extends CI_Controller {
 		$data['progress'] = $this->users->getcounts();
 		$data['memberscount'] = $this->users->getmembercounts();
 		
-		$data["upcomingevents"] = $this->events2->upcomingevents($userData['id']);
+
 		$data["realUserID"] = $userData['id'];
 		
 		$data['countDisciples'] = 1;
@@ -114,11 +111,10 @@ class Welcome extends CI_Controller {
 		$data['LeaderName'] 	  			= $userData['MentorID'];
 		//$data['addBtn']						= '<button type="button" class="pull-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Disciple</button>';
 		$data['settings']					= 'display';
-		$displayEvent 						= $this->events->displayEventArray();
+	
 		$data['username'] 					= $userData['username'];		
 		$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
-		$displayEvent 						= $this->events->displayEventArray();
-		$data['displayEvent']				= $displayEvent;
+	
 		
 		$data['usergender']					= $userData['gender'];
 		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
@@ -139,7 +135,7 @@ class Welcome extends CI_Controller {
 		$data['progress'] = $this->users->getcounts();
 		$data['memberscount'] = $this->users->getmembercounts();
 		
-		$data["upcomingevents"] = $this->events2->upcomingevents($userData['id']);
+	
 		$data["realUserID"] = $userData['id'];
 		
 		$data['countDisciples'] = 1;
@@ -205,7 +201,7 @@ class Welcome extends CI_Controller {
 		$data['progress'] = $this->users->getcounts();
 		$data['memberscount'] = $this->users->getmembercounts();
 		
-		$data["upcomingevents"] = $this->events2->upcomingevents($userData['id']);
+
 		$data["realUserID"] = $userData['id'];
 		
 		$data['countDisciples'] = 1;
@@ -329,7 +325,6 @@ class Welcome extends CI_Controller {
 		$userData  	= $this->session->userdata('logged_in');
 		$this->desciples->updatepersonal($userData['id']);
 
-		$this->events2->reAddBirthdayEvent($userData['id'], $this->input->post('first_name') . ($this->input->post('maiden_name') != "" ? " " . $this->input->post('maiden_name') : "") . " " . $this->input->post('last_name'), $this->input->post('birthday_month'), $this->input->post('birthday_day'));
 	} 
 	
 	public function logout(){
@@ -914,8 +909,7 @@ class Welcome extends CI_Controller {
 		
 		$this->desciples->EditAccountInformation($delegatesID,$first_name,$maiden_name,$last_name,$EmailAddress,$CellNumber,$ProfesionalSkills,$Address);
 		
-		$this->events2->reAddBirthdayEvent($delegatesID, $this->input->post('first_name') . ($this->input->post('maiden_name') != "" ? " " . $this->input->post('maiden_name') : "") . " " . $this->input->post('last_name'), $this->input->post('birthday_month'), $this->input->post('birthday_day'));
-	}
+}
 
 	
 	
@@ -1099,74 +1093,9 @@ class Welcome extends CI_Controller {
 	
 	
 	
-	//FOR EVENTS (NEW) ======================================================
-	
-	public function eventspage() {
-		$userData 			= $this->session->userdata('logged_in');
-		$data['userID']						= $userData['id'];
-		
-		$this->events2->reCreateBirthdayEvents();
-		
-		switch(key($_GET)) {
-			case "" :
-				$dt = $this->events2->dateToday;
-				$data['eventsCalendar'] = $this->events2->eventCalendar($userData['id'], $dt[0], $dt[2]);
-				break;
-				
-			case "last" :
-				$dt = $this->events2->lastMonth;
-				$data['eventsCalendar'] = $this->events2->eventCalendar($userData['id'], $dt[0], $dt[1]);
-				break;
-			
-			case "next1" :
-				$dt = $this->events2->nextMonths[0];
-				$data['eventsCalendar'] = $this->events2->eventCalendar($userData['id'], $dt[0], $dt[1]);
-				break;
-			
-			case "next2" :
-				$dt = $this->events2->nextMonths[1];
-				$data['eventsCalendar'] = $this->events2->eventCalendar($userData['id'], $dt[0], $dt[1]);
-				break;
-			
-			case "next3" :
-				$dt = $this->events2->nextMonths[2];
-				$data['eventsCalendar'] = $this->events2->eventCalendar($userData['id'], $dt[0], $dt[1]);
-				break;
-		}
-		
-		$this->load->view('headers/g12Networkheader',$data);
-		$this->load->view("events2", $data);
-		$this->load->view('footers/g12Networkfooter',$data);
-	}
-	
-	public function getevent($id = 0) {
-		echo $this->events2->getEvent($id);
-	}
-	
-	public function getevents() {
-		$this->events2->getEvents($this->input->post('id_no'), $this->input->post('date'));
-	}
-	
-	public function saveevent() {
-		if($this->input->post('do') == "NEW") {
-			echo $this->events2->addEvent($this->input->post('id_no'), $this->input->post('date'), $this->input->post('title'), $this->input->post('venue'), $this->input->post('time'), $this->input->post('days'), $this->input->post('visibility'));
-		} else if($this->input->post('do') == "UPDATE") {
-			echo $this->events2->editEvent($this->input->post('event'), $this->input->post('title'), $this->input->post('venue'), $this->input->post('time'), $this->input->post('visibility'));
-		}
-	}
-	
-	public function removeevent() {
-		echo $this->events2->deleteEvent($this->input->post('id'));
-	}
 
-	public function upcomingevents($id) {
-		$this->events2->upcomingevents($id);
-	}
 	
-	public function eventpart() {
-		echo $this->events2->eventpart($this->input->post('id_no'), $this->input->post('event'), $this->input->post('status'));
-	}
-	
+
 	public function viplistcsv($from, $to) {
 		if(empty($from) || empty($to)) { $this->users->viplistdownloadCSV('2016-01-01', '2116-01-01'); }
 		else{ $this->users->viplistdownloadCSV($from, $to); }
@@ -1203,11 +1132,10 @@ class Welcome extends CI_Controller {
 		$data['LeaderName'] 	  			= $userData['MentorID'];
 		//$data['addBtn']						= '<button type="button" class="pull-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Disciple</button>';
 		$data['settings']					= 'display';
-		$displayEvent 						= $this->events->displayEventArray();
+	
 		$data['username'] 					= $userData['username'];		
 		$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
-		$displayEvent 						= $this->events->displayEventArray();
-		$data['displayEvent']				= $displayEvent;
+	
 		
 		$data['usergender']					= $userData['gender'];
 		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
@@ -1228,7 +1156,7 @@ class Welcome extends CI_Controller {
 		$data['progress'] = $this->users->getcounts();
 		$data['memberscount'] = $this->users->getmembercounts();
 		
-		$data["upcomingevents"] = $this->events2->upcomingevents($userData['id']);
+	
 		$data["realUserID"] = $userData['id'];
 		
 		$data['countDisciples'] = 1;
@@ -1290,7 +1218,7 @@ class Welcome extends CI_Controller {
 		$data['progress'] = $this->users->getcounts();
 		$data['memberscount'] = $this->users->getmembercounts();
 		
-		$data["upcomingevents"] = $this->events2->upcomingevents($userData['id']);
+	
 		$data["realUserID"] = $userData['id'];
 		
 		$data['countDisciples'] = 1;

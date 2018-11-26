@@ -37,6 +37,7 @@
 						
 						<div class="row" style="float:left; width:900px; margin-left:10px;">
 							<form action="<?php echo base_url();?>Actions/Create" method="POST">
+							  <input type="hidden" name="imagefile" id="imagefile" value="">
 							  <div class="form-group">
 								<label for="business_name">Business Name:</label>
 								<input type="text" class="form-control" id="business_name" name="business_name">
@@ -63,7 +64,11 @@
 							  
 							  
 							  <div class="form-group">
-								<a href="#">Select Photo</a>
+								<button type="button" id="loadmedia" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+								  Select Image
+								</button>
+								<div id="imgcontainer">
+								</div>
 							  </div>
 							  	<div class="control-group"> 
 								<div class="control-label"><label>Search: </label></div>
@@ -105,13 +110,7 @@
 							  <div class="form-group">
 								<div id="mapdd" style="position: relative; height:300px; width: 100%"></div>
 							  </div>
-							
-								<!-- for future use
-								<div class="form-group">
-								<label for="contactno">Description:</label>
-								<textarea class="form-control" id="Description"></textarea>
-								</div>
-								-->
+
 							 <div class="form-group">
 							  <div style="width:100%; height:40px;"></div>
 							  <button type="submit" class="btn btn-primary" style="width:100%;">Submit</button>
@@ -123,7 +122,26 @@
 						
 			
 				
-				
+					<!-- Modal -->
+					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog modal-lg" role="document">
+						<div class="modal-content">
+						  <div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							  <span aria-hidden="true">&times;</span>
+							</button>
+						  </div>
+						  <div class="modal-body">
+							<div id="imagelists">
+							</div>
+						  </div>
+						  <div class="modal-footer">
+							<button type="button" id="addimage" class="addimage">Add Image</button>
+						  </div>
+						</div>
+					  </div>
+					</div>	
 
 				
 				<script type="text/javascript">

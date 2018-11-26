@@ -49,6 +49,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>resources/css/mobile.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>resources/css/imagecrop.css">
 		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+		<script>
+			var baseURL = "<?php echo base_url();?>";
+		</script>
 		<script src="<?php echo base_url(); ?>resources/bootstrap/jquery.min.js"></script>
 		<script src="<?php echo base_url(); ?>resources/bootstrap/bootstrap.min.js"></script>
 		<script src="<?php echo base_url(); ?>resources/scripts/jquery-1.6.4.min.js" type="text/javascript"></script>
@@ -56,13 +59,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<script src="<?php echo base_url(); ?>resources/scripts/jquery.ui.selectmenu.js" type="text/javascript"></script>
 		<script src="<?php echo base_url(); ?>resources/scripts/jquery.flot.min.js" type="text/javascript"></script>
 		<script src="<?php echo base_url(); ?>resources/scripts/tiny_mce/tiny_mce.js" type="text/javascript"></script>
-		<script src="<?php echo base_url(); ?>resources/scripts/tiny_mce/jquery.tinymce.js" type="text/$avascript"></script>
+		<script src="<?php echo base_url(); ?>resources/scripts/tiny_mce/jquery.tinymce.js" type="text/javascript"></script>
 		<script src="<?php echo base_url(); ?>resources/scripts/smooth.js" type="text/javascript"></script>
 	    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 		<script src="<?php echo base_url(); ?>resources/scripts/canvasjs.min.js"></script>
 	
 		<script src="<?php echo base_url(); ?>/resources/scripts/anim.js"></script>
 		<script src="<?php echo base_url(); ?>resources/scripts/admin.js"></script>
+		
 		<style>
 		.left{width:300px; float:left;}
 		#image_profile{width:90%; margin:20px auto;}

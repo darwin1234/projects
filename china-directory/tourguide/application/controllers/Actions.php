@@ -27,7 +27,8 @@ class Actions extends CI_Controller {
 			'postal_code'					=> $this->input->post('postal_code'),
 			'country'						=> $this->input->post('country'),
 			'dslat'							=> $this->input->post('dslat'),
-			'dslong'						=> $this->input->post('dslong')
+			'dslong'						=> $this->input->post('dslong'),
+			'business_image'				=> $this->input->post('imagefile')
 			);
 			$this->modelaction->createQuery($insert);
 			redirect(base_url() . '/welcome/businesslist');
