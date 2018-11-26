@@ -39,4 +39,22 @@ class modelaction extends CI_Model{
 		$this->db->where('business_id', $id);
 		$this->db->update('businesses', $update);
 	}
+	 function fetch_data($query){
+	  $this->db->select("*");
+	  $this->db->from("businesses");
+  if($query != ''){
+   $this->db->like('business_name', $query);
+   $this->db->or_like('business_owner', $query);
+   $this->db->or_like('business_address', $query);
+   $this->db->or_like('business_category', $query);
+   $this->db->or_like('route', $query);
+   $this->db->or_like('locality', $query);
+   $this->db->or_like('administrative_area_level_1', $query);
+   $this->db->or_like('postal_code', $query);
+   $this->db->or_like('country', $query);
+  }
+  $this->db->order_by('business_id', 'DESC');
+  return $this->db->get();
+ }
 }
+

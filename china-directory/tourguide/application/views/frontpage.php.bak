@@ -7,51 +7,19 @@
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
   </head>
   <body>
-  
+  <div id="mapdiv">
+	
+  </div>
   <div class="container">
-   <h2 align="center">Where do you want to go?</h2><br />
+   <h2 align="center">Live Data Search in Codeigniter using Ajax JQuery</h2><br />
    <div class="form-group">
     <div class="input-group">
      <span class="input-group-addon">Search</span>
-     <input type="text" name="search_text" id="search_text" placeholder="Example: Hiking, Laundry, Dentistry" class="form-control" />
+     <input type="text" name="search_text" id="search_text" placeholder="Search by Customer Details" class="form-control" />
     </div>
    </div>
-   <div id="result"></div>
    </div>
-    <div style="clear:both"></div>
-   <script>
-$(document).ready(function(){
-
- load_data();
-
- function load_data(query)
- {
-  $.ajax({
-   url:"<?php echo base_url(); ?>actions/fetch",
-   method:"POST",
-   data:{query:query},
-   success:function(data){
-    $('#result').html(data);
-   }
-  })
- }
-
- $('#search_text').keyup(function(){
-  var search = $(this).val();
-  if(search != '')
-  {
-   load_data(search);
-  }
-  else
-  {
-   load_data();
-  }
- });
-});
-</script>
-<div id="mapdiv">
-	
-  </div>
+   
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.11/lib/OpenLayers.js"></script> 
   <script>
     map = new OpenLayers.Map("mapdiv");
