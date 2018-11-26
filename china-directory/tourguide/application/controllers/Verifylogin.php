@@ -19,12 +19,12 @@ class Verifylogin extends CI_Controller {
    if($this->form_validation->run() == FALSE)
    {
      //Field validation failed.  User redirected to login page
-     $this->load->view('g12login');
+     $this->load->view('login');
    }
    else
    {
      //Go to private area
-     redirect('Welcome', 'refresh');
+     redirect('administrator', 'refresh');
    }
 
  }

@@ -49,10 +49,10 @@ $(document).ready(function(){
  });
 });
 </script>
-<div id="mapdiv">
+  <div id="mapdiv">
 	
   </div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.11/lib/OpenLayers.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.11/lib/OpenLayers.js"></script> 
   <script>
     map = new OpenLayers.Map("mapdiv");
     map.addLayer(new OpenLayers.Layer.OSM());

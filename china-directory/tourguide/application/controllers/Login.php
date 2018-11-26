@@ -15,59 +15,16 @@ class Login extends CI_Controller {
  
 	public function index()
  	{
-   		$this->load->helper(array('form'));
-   		$this->load->view('Login');
-
- 	}
-
- 	public function otherlogin()
- 	{
-   		$this->load->view('otherlogin');
-   		
- 	}
-	
-	public function g12Login(){
 		$data = $this->session->userdata('logged_in');
 		if(!empty($data)){
 			redirect('Welcome');
 		}else{
-			
 			$this->load->helper(array('form'));
-			$this->load->view('g12login');
+			$this->load->view('Login');
 		}
-		
-		
-	}
-	
-	public function ushersLogin(){
-		
-		$this->load->helper(array('form'));
-   		$this->load->view('usherslogin');
-		
-		
-	}
-	
-	public function multimediaLogin(){
-		$this->load->helper(array('form'));
-   		$this->load->view('multimedialogin');
-		
-	}
-		
-		
-	public function peplogin(){
-		
-		$this->load->view('peplogin');
-	
-		
-	}	
-	
-	public function sollogin(){
-		
-	 
-		$this->load->view('sollogin');
-		
-		
-	}
+ 	}
+
+ 
 
 	public function retrievepassword(){
 		

@@ -1,24 +1,46 @@
-
+<?php
+	$item = (array)$list_of_records;
+	$dslong = "";
+	$dslat  = "";
+	$personalAcc			= (array)$active_account[0];
+	$first_name 			= $personalAcc['first_name'];
+	$activeIDD				= $personalAcc['id_no'];
+	$photo 					= $personalAcc['profile_pic'];
+	$LeaderName 			= $personalAcc['first_name'] . ' ' . $personalAcc['maiden_name'] . ' ' . $personalAcc['last_name'];
+	$maiden_name			= $personalAcc['maiden_name'];
+	$last_name				= $personalAcc['last_name'];
+	$EmailAddress			= $personalAcc['email'];
+	$contactno 				= $personalAcc['contact'];
+	$CivilStatus			= $personalAcc['civil_status'];
+	$Work					= $personalAcc['work'];
+	$Address				= $personalAcc['address'];
+	
+	$Role					= $personalAcc['role'];
+	$Gender					= $personalAcc['Gender'];
+	$birthmonth				= $personalAcc['birthmonth'];
+	$birthdate				= $personalAcc['birthdate'];
+	$birthyear				= $personalAcc['birthyear'];
+?> 
 	<div id="content">
 	
 <div id="left">
 	<div id="menu">
 		<div id="image_profile">
 			<span>	
-				<img id="user-image-profile" onload="this.style.opacity = 1" src="<?php echo base_url(); ?>Welcome/userimage2/<?php echo $userID; ?>" style="border-radius:40px; height:40px; width:40px; margin-top:0px; padding:0;">
+				<img id="user-image-profile" onload="this.style.opacity = 1" src="<?php echo base_url(); ?>administrator/userimage2/<?php echo $userID; ?>" style="border-radius:40px; height:40px; width:40px; margin-top:0px; padding:0;">
 			</span>
 			<span style="font-size:12px;">
 				<strong>Hello, <?php echo @$first_name; ?></strong>
 			</span>
 		</div>		
 		<?php if(isset($settings) && $setting ='display'){?>		
-			<h6 id="h-menu-events"><a href="<?php echo base_url(); ?>Welcome"><i class="dsfont fa fa-home" aria-hidden="true"></i>Dashboard</a></h6>
+			<h6 id="h-menu-events"><a href="<?php echo base_url(); ?>administrator"><i class="dsfont fa fa-home" aria-hidden="true"></i>Dashboard</a></h6>
 				<ul id="menu-events" class="closed">
-					<li class="last"><a href="<?php echo base_url(); ?>Welcome/newEvent">Users</a></li>
+					<li class="last"><a href="<?php echo base_url(); ?>administrator/newEvent">Users</a></li>
 				</ul>
-				<h6 id="h-menu-settings"><a href="<?php echo base_url(); ?>Welcome/media"><i class="dsfont fas fa-folder-plus"></i>Media</a></h6>
+				<h6 id="h-menu-settings"><a href="<?php echo base_url(); ?>administrator/media"><i class="dsfont fas fa-folder-plus"></i>Media</a></h6>
 				<h6 id="h-menu-settings"><a href="#settings"><i class="dsfont fas fa-folder-plus"></i>Pages</a></h6>
-				<h6 id="h-menu-settings"><a href="<?php echo base_url(); ?>Welcome/businesslist"><i class="dsfont fas fa-list-alt"></i>Business Lists</a></h6>
+				<h6 id="h-menu-settings"><a href="<?php echo base_url(); ?>administrator/businesslist"><i class="dsfont fas fa-list-alt"></i>Business Lists</a></h6>
 			<?php } ?>
 	
 	</div>
@@ -107,9 +129,7 @@
 								<input aria-invalid="false" type="hidden" class="field" id="dslong" name="dslong" style="margin-left:15px;" value="">
 							</div>
 								
-							  <div class="form-group">
-								<div id="mapdd" style="position: relative; height:300px; width: 100%"></div>
-							  </div>
+							
 
 							 <div class="form-group">
 							  <div style="width:100%; height:40px;"></div>
@@ -144,14 +164,7 @@
 					</div>	
 
 				
-				<script type="text/javascript">
-					function initMap(){
-						var myLatLng={lat:15.16976850000001,lng:121}
-						var map	  =	new google.maps.Map(document.getElementById('mapdd'),{zoom:10,center:myLatLng});
-						var marker = new google.maps.Marker({position:myLatLng,map:map,title:'Hello World!'});
-					}
-					
-				</script>
+	
 				
 <script>
   var placeSearch, autocomplete;

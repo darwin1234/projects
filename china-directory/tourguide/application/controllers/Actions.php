@@ -31,7 +31,7 @@ class Actions extends CI_Controller {
 			'business_image'				=> $this->input->post('imagefile')
 			);
 			$this->modelaction->createQuery($insert);
-			redirect(base_url() . '/welcome/businesslist');
+			redirect(base_url() . '/administrator/businesslist');
 		}
 		else{
 			 redirect(base_url());		
