@@ -17,7 +17,7 @@ class Login extends CI_Controller {
  	{
 		$data = $this->session->userdata('logged_in');
 		if(!empty($data)){
-			redirect('Welcome');
+			redirect('administrator');
 		}else{
 			$this->load->helper(array('form'));
 			$this->load->view('Login');
