@@ -176,11 +176,10 @@ class Welcome extends CI_Controller {
 		$data['LeaderName'] 	  			= $userData['MentorID'];
 		//$data['addBtn']						= '<button type="button" class="pull-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Disciple</button>';
 		$data['settings']					= 'display';
-		$displayEvent 						= $this->events->displayEventArray();
+	
 		$data['username'] 					= $userData['username'];		
 		$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
-		$displayEvent 						= $this->events->displayEventArray();
-		$data['displayEvent']				= $displayEvent;
+		
 		
 		$data['usergender']					= $userData['gender'];
 		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);

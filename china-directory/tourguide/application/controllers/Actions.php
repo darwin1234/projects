@@ -17,7 +17,7 @@ class Actions extends CI_Controller {
 			'business_longitude'			=> $this->input->post('business_longitude'),
 			'business_address'				=> $this->input->post('business_address'),
 			'business_category'				=> $this->input->post('business_category'),
-			'business_status'				=> $this->input->post('business_status'),
+			'business_status'				=> 1,
 			'business_image'				=> $this->input->post('business_image') ,
 			'publish_date'					=> $this->input->post('publish_date'),
 			'street_number'					=> $this->input->post('street_number'),
