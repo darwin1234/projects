@@ -78,7 +78,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		.myacc2{font-size:10px; margin-left:5px;}
 		.addbusinessbtn{margin-top:-25px; display:block; margin-left: 28px;}
 		.image{float:left; width:23.3%; background:green; height:200px; margin:5px; }
-		
+		.myaccount{position:relative; width:150px;}
+		.myaccountdropdown{width:200px; height:200px; background:#fff; position:absolute; top:24px; display:none;}
 		</style>		
 	</head>
 	
@@ -100,6 +101,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="myaccount navbar-collapse collapse pull-right">
 				<strong><i class="myacc dsfont fas fa-user-circle"></i><?php echo @$first_name; ?></strong>
 				<i class="myacc2 fas fa-arrow-down"></i>
+				<div class="myaccountdropdown">
+				</div>
 			</div>
 			
 
