@@ -51,8 +51,8 @@
 			<div class="title"><h3>My Account</h3></div>
 				<div class="row" style="float:left; width:900px; margin-left:10px;">
 							<ul class="basicinfo">
-								<li><a href="#">Basic Info</a></li>
-								<li><a href="#">Change Password</a></li>
+								<li><a href="<?php echo base_url();?>account">Basic Info</a></li>
+								<li><a href="<?php echo base_url();?>account/changepassword">Change Password</a></li>
 								<li><a href="#">Change Avatar</a></li>
 							</ul>
 							<form action="<?php echo base_url();?>account/updateaccount" method="POST">
