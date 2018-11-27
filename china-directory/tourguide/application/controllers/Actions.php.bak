@@ -105,7 +105,7 @@ class Actions extends CI_Controller {
   echo $output;
  }*/
  
- public function searchQuery(){
+ public function search(){
 	 $output = '';
 	  $query = '';
 	  	if($this->input->post('query')){
@@ -113,7 +113,7 @@ class Actions extends CI_Controller {
 		}
 	  $data = $this->modelaction->fetchCategory($query);
 		  $output .= '
-			  <div class="table-responsive">
+			  <div class="table-responsive" style="background:white;>
 				 <table class="table table-bordered table-striped">
 				  <tr>
 				   <th>Categories</th>

@@ -10,21 +10,17 @@
 		</style>
 	</head>
   <body>
-  
+
    <div id="search">
-		<input type="text" name="search_text" id="search_text" placeholder="Example: Hiking, Laundry, Dentistry" placeholder="Where to go" />
+		<input type="text" name="search_text" id="search_text" placeholder="Where do you like to go?" style="text-align:center;" />
 		<div id="result"></div>
    </div>
     <div style="clear:both"></div>
    <script>
-		$(document).ready(function(){
-
-		 load_data();
-
 		 function load_data(query)
 		 {
 		  $.ajax({
-		   url:"<?php echo base_url(); ?>actions/fetch",
+		   url:"<?php echo base_url(); ?>actions/search",
 		   method:"POST",
 		   data:{query:query},
 		   success:function(data){
@@ -32,24 +28,24 @@
 		   }
 		  })
 		 }
-
-		 $('#search_text').keyup(function(){
+		 $('#search_text').keyup(function(event){
 		  var search = $(this).val();
 		  if(search != '')
 		  {
 		   load_data(search);
+		  }      
+		  else{
+			  $("#result").toggle();
 		  }
-		  else
-		  {
-		   load_data();
-		  }
-		 });
-		});
+		 	});   			
 	</script>
   <div id="mapdiv">
 	
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.11/lib/OpenLayers.js"></script> 
+  <script>
+  
+  </script>
   <script>
     map = new OpenLayers.Map("mapdiv");
     map.addLayer(new OpenLayers.Layer.OSM());
