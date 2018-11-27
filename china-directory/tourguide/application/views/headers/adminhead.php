@@ -79,7 +79,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		.addbusinessbtn{margin-top:-25px; display:block; margin-left: 28px;}
 		.image{float:left; width:23.3%; background:green; height:200px; margin:5px; }
 		.myaccount{position:relative; width:150px;}
-		.myaccountdropdown{width:200px; height:200px; background:#fff; position:absolute; top:24px; display:none;}
+		.myaccountdropdown{width:140px; background:#fff; position:absolute; top:24px; display:block;}
+		.myaccountdropdown ul{text-align:left;}
+		.myaccountdropdown li a{padding:5px; display:block; text-decoration:none;}
 		</style>		
 	</head>
 	
@@ -98,10 +100,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </button>
                 <a class="navbar-brand" href="<?php echo base_url();?>Welcome">TourGuide</a>
             </div>
-            <div class="myaccount navbar-collapse collapse pull-right">
+            <div id="myaccount" class="myaccount navbar-collapse collapse pull-right">
 				<strong><i class="myacc dsfont fas fa-user-circle"></i><?php echo @$first_name; ?></strong>
 				<i class="myacc2 fas fa-arrow-down"></i>
 				<div class="myaccountdropdown">
+					<ul>
+						<li><a href="#">My Account</a></li>
+						<li><a href="<?php echo base_url();?>administrator/logout">Logout</a></li>
+					</ul>
 				</div>
 			</div>
 			
