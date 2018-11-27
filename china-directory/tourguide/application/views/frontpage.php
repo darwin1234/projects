@@ -20,14 +20,12 @@
    </div>
     <div style="clear:both"></div>
    <script>
-$(document).ready(function(){
 
- load_data();
 
  function load_data(query)
  {
   $.ajax({
-   url:"<?php echo base_url(); ?>actions/fetch",
+   url:"<?php echo base_url(); ?>actions/search",
    method:"POST",
    data:{query:query},
    success:function(data){
@@ -41,13 +39,10 @@ $(document).ready(function(){
   if(search != '')
   {
    load_data(search);
-  }
-  else
-  {
-   load_data();
-  }
+  } 
+	
  });
-});
+
 </script>
   <div id="mapdiv">
 	
@@ -74,7 +69,7 @@ $(document).ready(function(){
   
    var feature = new OpenLayers.Feature.Vector(
             new OpenLayers.Geometry.Point(<?php echo $businessItems->dslong;?> ,<?php echo $businessItems->dslat;?> ).transform(epsg4326, projectTo),
-            {description:'<img src="<?php echo $businessItems->business_image;?>" style="width:250px;"><p><?php echo $businessItems->business_name;?>, (<?php echo $businessItems->business_category;?>)</p><a href="#">View</a>'} ,
+            {description:'<img src="<?php echo $businessItems->business_image;?>" style="width:250px;"><p><?php echo $businessItems->business_name;?>, (<?php echo $businessItems->business_category;?>)</p><?php echo $businessItems->administrative_area_level_1 .', '. $businessItems->country; ?><p></p><a href="#">View</a>'} ,
             {externalGraphic: 'http://media.local/marker.png', graphicHeight: 55, graphicWidth: 51, graphicXOffset:-12, graphicYOffset:-25  }
         );    
     vectorLayer.addFeatures(feature);

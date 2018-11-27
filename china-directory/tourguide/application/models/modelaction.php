@@ -39,7 +39,7 @@ class modelaction extends CI_Model{
 		$this->db->where('business_id', $id);
 		$this->db->update('businesses', $update);
 	}
-	 function fetch_data($query){
+	/*public function fetch_data($query){
 	  $this->db->select("*");
 	  $this->db->from("businesses");
   if($query != ''){
@@ -55,6 +55,14 @@ class modelaction extends CI_Model{
   }
   $this->db->order_by('business_id', 'DESC');
   return $this->db->get();
+ }*/
+ public function fetchCategory($query){
+	 $this->db->select("*");
+	 $this->db->from("category");
+		if($query != ''){
+			$this->db->like('business_category', $query);
  }
+	 $this->db->order_by('category_id','DESC');
+	 return $this->db->get();
 }
-
+}

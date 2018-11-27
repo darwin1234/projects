@@ -105,7 +105,7 @@ class Actions extends CI_Controller {
   echo $output;
  }*/
  
- public function search(){
+ public function searchQuery(){
 	 $output = '';
 	  $query = '';
 	  	if($this->input->post('query')){
