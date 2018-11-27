@@ -82,6 +82,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		.myaccountdropdown{width:140px; background:#fff; position:absolute; top:24px; display:none;}
 		.myaccountdropdown ul{text-align:left;}
 		.myaccountdropdown li a{padding:5px; display:block; text-decoration:none;}
+		.showmenu{display:block;}
+		.basicinfo li{display:inline-block;}
+		.basicinfo li a{text-decoration:none; color:#000; padding:10px; background:#F4F4F4;}
+		
 		</style>		
 	</head>
 	
@@ -105,7 +109,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<i class="myacc2 fas fa-arrow-down"></i>
 				<div id="myaccountdropdown" class="myaccountdropdown">
 					<ul>
-						<li><a href="#">My Account</a></li>
+						<li><a href="<?php echo base_url();?>account">My Account</a></li>
 						<li><a href="<?php echo base_url();?>administrator/logout">Logout</a></li>
 					</ul>
 				</div>

@@ -17,123 +17,8 @@ Class User extends CI_Model
 	   }
 	 }
  
-	function usherlogin($username, $password)
-	{
-	   $this->db->select('id_no, username, password,MentorName');
-	   $this->db->from('usher_account');
-	   $this->db->where('username', $username);
-	   $this->db->where('password', MD5($password));
-	   $this->db->limit(1);
-	 
-	   $query = $this->db->get();
-	 
-	   if($query->num_rows() == 1)
-	   {
-		 return $query->result();
-	   }
-	   else
-	   {
-		 return false;
-	   }
-	}
-	
-	
-	public function changedpassword($userID,$newPassword){
-		
-		$this->db->where('id_no', $userID);
-					$this->db->update('records', array(
-								   'password' => md5($newPassword)
-							)
-		); 
-		return "Password Saved";
-	}
-	
-	function pep_account($username, $password){
-		
-		$this->db->select('id_no, username, password,MentorName');
-		$this->db->from('pep_account');
-		$this->db->where('username', $username);
-		$this->db->where('password', MD5($password));
-		$this->db->limit(1);
-	 
-	   $query = $this->db->get();
-	 
-	   if($query->num_rows() == 1)
-	   {
-		 return $query->result();
-	   }
-	   else
-	   {
-		 return false;
-	   }
-		
-	}
-	function sol_account($username, $password){
-		
-			
-		$this->db->select('id_no, username, password,MentorName');
-		$this->db->from('sol_account');
-		$this->db->where('username', $username);
-		$this->db->where('password', MD5($password));
-		$this->db->limit(1);
-	 
-	   $query = $this->db->get();
-	 
-	   if($query->num_rows() == 1)
-	   {
-		 return $query->result();
-	   }
-	   else
-	   {
-		 return false;
-	   }
-		
-	}
-	
-	function multimedalogin($username, $password)
-	{
-	   $this->db->select('id_no, username, password');
-	   $this->db->from('multimedia_account');
-	   $this->db->where('username', $username);
-	   $this->db->where('password', MD5($password));
-	   $this->db->limit(1);
-	 
-	   $query = $this->db->get();
-	 
-	   if($query->num_rows() == 1)
-	   {
-		 return $query->result();
-	   }
-	   else
-	   {
-		 return false;
-	   }
-	}
-	
-	
-	public function peplogin($username, $password){
-	
 
-		$this->db->select('id_no, username, password');
-	    $this->db->from('pep_account');
-		$this->db->where('username', $username);
-		$this->db->where('password', MD5($password));
-		$this->db->limit(1);
-	 
-	   $query = $this->db->get();
-	 
-	   if($query->num_rows() == 1)
-	   {
-		 return $query->result();
-	   }
-	   else
-	   {
-		 return false;
-	   }
-		
-		
-	}
-	
+
 	function changePassword($userID,$pass,$npass,$rpass){
 	
 			
@@ -161,59 +46,9 @@ Class User extends CI_Model
 		
 	}
 	
-	public function changeusername($userID,$old_username,$newusername,$re_newusername){
-		
-			
-			if($newusername!=$re_newusername){
-				return "Password not Match";
-			}else{
-				$this->db->select('*');
-				$this->db->from('records');
-				$this->db->where(('username="'. $old_username . '" AND id_no="'.$userID.'"'));
-			
-				$query = $this->db->get();
-				if($query->num_rows()==1){
-					$this->db->where('id_no', $userID);
-					$this->db->update('records', 
-						array(
-								   'username' => $newusername
-							)
-					); 
-					return "Changed Saved";
-				}else{
-					return "FAILED";
-				}
-			}
-
-		
-	}
 	
-	public function changeMultimediaPassword($old_password,$newpassword,$confirmpassword,$userID ){
-		
-		
-		if($newpassword!=$confirmpassword){
-				return "Password not Match";
-			}else{
-				$this->db->select('*');
-				$this->db->from('multimedia_account');
-				$this->db->where(('username="'. $old_password . '" AND id_no="'.$userID.'"'));
-			
-				$query = $this->db->get();
-				if($query->num_rows()==1){
-					$this->db->where('id_no', $userID);
-					$this->db->update('multimedia_account', 
-						array(
-								   'username' => $newpassword
-							)
-					); 
-					return "Changed Saved";
-				}else{
-					return "FAILED";
-				}
-			}
-		
-		
-	}
+	
+	
 	
 	
 	public function retrieveRecord($email,$base_url,$keycode){
@@ -249,6 +84,7 @@ Class User extends CI_Model
 			
 		}
 	}
+	
 	public function retrivePassword($email){
 		
 		 $query = $this->db->query('SELECT id_no, username, Email FROM records WHERE EMAIL  = "' .$email. '"');
@@ -295,147 +131,28 @@ Class User extends CI_Model
 				}
 	}
 	
-	public function changePasswordMultimedia($userID,$oldPassword,$newPassword,$confirmPassword){
+	public function updatebasicinfo(){
 		
-			if($newPassword!=$confirmPassword){
-				return "Password not Match";
-			}else{
-				$this->db->select('*');
-				$this->db->from('multimedia_account');
-				$this->db->where(array('password="'. $oldPassword . '" AND id_no="'.$userID.'"'));
-			
-				$query = $this->db->get();
-				
-				echo $query->num_rows();
-				if($query->num_rows()==1){
-					$this->db->where('id_no', $userID);
-					$this->db->update('multimedia_account', 
-						array(
-								   'password' => md5($newPassword)
-							)
-					); 
-					return "Changed Saved";
-				}else{
-					return "Old Password not match";
-				}
-			}
-		
+		$data = $this->session->userdata('logged_in');
+			if(!empty($data)){
+				$userData  							= $this->session->userdata('logged_in');
+				$update = array(
+					'first_name'					=> $this->input->post('firstname'),
+					'last_name'						=> $this->input->post('lastname'),
+					'address'						=> $this->input->post('address'),
+					'contact			'			=> $this->input->post('contact'),
+					'email			'				=> $this->input->post('email'),
+					'contact'						=> $this->input->post('contactno')
+				);
+				$this->db->where('id_no', $userData['id']);
+				$this->db->update('records', $update);
+				redirect('account');
+			}	
+			else{
+				redirect('login');
+			}	
 	}
-	
-	public function change_password_ushers($userID,$OldPassword,$newPassword,$confirmPassword){
-		
-			if($newPassword!=$confirmPassword){
-				return "Password not Match";
-			}else{
-				$this->db->select('*');
-				$this->db->from('usher_account');
-				$this->db->where(array('password="'. $OldPassword . '" AND id_no="'.$userID.'"'));
-			
-				$query = $this->db->get();
-				
-				
-				if($query->num_rows()==1){
-					$this->db->where('id_no', $userID);
-					$this->db->update('usher_account', 
-						array(
-								   'password' => md5($newPassword)
-							)
-					); 
-					return "Changed Saved";
-				}else{
-					return "Old Password not match";
-				}
-			}
-		
-		
-	}
-	
-	public function change_password_pep($userID,$OldPassword,$newPassword,$confirmPassword){
-		
-		
-		if($newPassword!=$confirmPassword){
-				return "Password not Match";
-			}else{
-				$this->db->select('*');
-				$this->db->from('pep_account');
-				$this->db->where(array('password="'. $OldPassword . '" AND id_no="'.$userID.'"'));
-			
-				$query = $this->db->get();
-				
-				
-				if($query->num_rows()==1){
-					$this->db->where('id_no', $userID);
-					$this->db->update('pep_account', 
-						array(
-								   'password' => md5($newPassword)
-							)
-					); 
-					return "Changed Saved";
-				}else{
-					return "Old Password not match";
-				}
-			}
-	}
-	
-	public function change_password_Sol($userID,$OldPassword,$newPassword,$confirmPassword){
-		
-		if($newPassword!=$confirmPassword){
-				return "Password not Match";
-			}else{
-				$this->db->select('*');
-				$this->db->from('sol_account');
-				$this->db->where(array('password="'. $OldPassword . '" AND id_no="'.$userID.'"'));
-			
-				$query = $this->db->get();
-				
-				
-				if($query->num_rows()==1){
-					$this->db->where('id_no', $userID);
-					$this->db->update('sol_account', 
-						array(
-								   'password' => md5($newPassword)
-							)
-					); 
-					return "Changed Saved";
-				}else{
-					return "Old Password not match";
-				}
-			}
-	}
-	
-	
-	public function moveVIP($ID){
-	
-	
-		//error_reporting(-1);
-		//$result = $this->db->query('update records set ranking =  CASE WHEN ranking = 1 THEN ranking = 2 ELSE ranking = 2 THEN ranking = 3 ELSE ranking = 3 THEN ranking = 4 END, where id_no ="'.$ID.'"');
-		
-		
-		 //$this->db->query('update records set ranking = CASE WHEN ranking = 1 THEN 2 WHEN ranking = 2 THEN 3 WHEN raking 3 THEN 4 END where id_no =705');
-		
-		
-		$query = $this->db->query("SELECT id_no, ranking FROM `records` where id_no='". $ID ."'");
-		foreach ($query->result() as $row){
-			if($row->ranking == 1){$ranking = 2;}
-			if($row->ranking == 2){$ranking = 3;}
-			if($row->ranking == 3){$ranking = 4;}
-			if($row->ranking == 4){$ranking = 4;}
-		
-			
-			 
-			$this->db->where('id_no', $ID);
-			$this->db->update('records', 
-						array(
-								   'ranking' => $ranking,
-								   'date_visited' => date("j/n/Y")
-							)
-			);
-			
-			echo "success";
-		}
-		
-	
-	}
+
 
 
 
