@@ -22,58 +22,63 @@ class Administrator extends CI_Controller {
 
 	public function index()
 	{
-	
-		$userData  							= $this->session->userdata('logged_in');
-	
-		$disciplesResult 					= $this->BusinessList->records();	
+		$data = $this->session->userdata('logged_in');
+		if(!empty($data)){
+			$userData  							= $this->session->userdata('logged_in');
 		
-		
-		
-		$username							= $userData['username'];
-		$activeAcount						= $this->BusinessList->useraccount($userData['id']); // user profile table
-
-		$data['user_name']					= $username;
-		$data['list_of_records'] 			= $disciplesResult;
-	
-		$data['active_account']				= $activeAcount;
-		$data['userID'] 					= $userData['id'];
-
-		$data['userRole'] 					= @$userData['Role'];
-		$data['total'] 						= 0;
-		$data['LeaderName'] 	  			= $userData['MentorID'];
-		//$data['addBtn']						= '<button type="button" class="pull-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Disciple</button>';
-		$data['settings']					= 'display';
-		
-		$data['username'] 					= $userData['username'];		
-		$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
-		
-		$data['usergender']					= $userData['gender'];
-		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
-		//chart 
-		
-		$chartRecordData= $this->BusinessList->chart();
-		
-		$data['jsonChartData'] 		= $chartRecordData;
-		$data['counthisopencell'] 	= $chartRecordData;
-	
-	
-		$data['progress'] = $this->users->getcounts();
-		$data['memberscount'] = $this->users->getmembercounts();
-		
-
-		$data["realUserID"] = $userData['id'];
-		
-		$data['countDisciples'] = 1;
-		if($userData == NULL){
+			$disciplesResult 					= $this->BusinessList->records();	
 			
-			redirect(base_url());
 			
+			
+			$username							= $userData['username'];
+			$activeAcount						= $this->BusinessList->useraccount($userData['id']); // user profile table
+
+			$data['user_name']					= $username;
+			$data['list_of_records'] 			= $disciplesResult;
+		
+			$data['active_account']				= $activeAcount;
+			$data['userID'] 					= $userData['id'];
+
+			$data['userRole'] 					= @$userData['Role'];
+			$data['total'] 						= 0;
+			$data['LeaderName'] 	  			= $userData['MentorID'];
+			//$data['addBtn']						= '<button type="button" class="pull-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Disciple</button>';
+			$data['settings']					= 'display';
+			
+			$data['username'] 					= $userData['username'];		
+			$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
+			
+			$data['usergender']					= $userData['gender'];
+			$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
+			//chart 
+			
+			$chartRecordData= $this->BusinessList->chart();
+			
+			$data['jsonChartData'] 		= $chartRecordData;
+			$data['counthisopencell'] 	= $chartRecordData;
+		
+		
+			$data['progress'] = $this->users->getcounts();
+			$data['memberscount'] = $this->users->getmembercounts();
+			
+
+			$data["realUserID"] = $userData['id'];
+			
+			$data['countDisciples'] = 1;
+			if($userData == NULL){
+				
+				redirect(base_url());
+				
+			}else{
+				$this->load->view('headers/adminhead',$data);
+				$this->load->view('admin',$data);
+				$this->load->view('footers/adminfooter',$data);
+				
+			}
 		}else{
-			$this->load->view('headers/adminhead',$data);
-			$this->load->view('admin',$data);
-			$this->load->view('footers/adminfooter',$data);
+			redirect('login');
 			
-		}
+		}	
 	
 	}
 	
@@ -90,131 +95,130 @@ class Administrator extends CI_Controller {
 	}
 	
 	public function edit($id){
-		
-		$userData  							= $this->session->userdata('logged_in');
-	
-		$singleItem 					= $this->BusinessList->records($id);	// disciples records
-		
-		
-		
-		$username							= $userData['username'];
-		$activeAcount						= $this->BusinessList->useraccount($userData['id']); // user profile table
+		$data = $this->session->userdata('logged_in');
+		if(!empty($data)){
+				$userData  							= $this->session->userdata('logged_in');
+				$singleItem 					= $this->BusinessList->records($id);	// disciples records
+				$username							= $userData['username'];
+				$activeAcount						= $this->BusinessList->useraccount($userData['id']); // user profile table
 
-		$data['user_name']					= $username;
-		$data['list_of_records'] 			= $singleItem;
-	
-		$data['active_account']				= $activeAcount;
-		$data['userID'] 					= $userData['id'];
+				$data['user_name']					= $username;
+				$data['list_of_records'] 			= $singleItem;
+			
+				$data['active_account']				= $activeAcount;
+				$data['userID'] 					= $userData['id'];
 
-		$data['userRole'] 					= @$userData['Role'];
-		$data['total'] 						= 0;
-		$data['LeaderName'] 	  			= $userData['MentorID'];
-		//$data['addBtn']						= '<button type="button" class="pull-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Disciple</button>';
-		$data['settings']					= 'display';
-	
-		$data['username'] 					= $userData['username'];		
-		$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
-	
-		
-		$data['usergender']					= $userData['gender'];
-		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
-		//chart 
-		
-		$chartRecordData= $this->BusinessList->chart();
-		
-		$data['jsonChartData'] 		= $chartRecordData;
-		$data['counthisopencell'] 	= $chartRecordData;
-	
-		//$data['getrole']			= $this->users->getrole($userData['id'],);
-		
-		
-		
-		//for my custom scripts and styles
-		//$data['baseURL'] = $this->baseURL;
-		
-		$data['progress'] = $this->users->getcounts();
-		$data['memberscount'] = $this->users->getmembercounts();
-		
-	
-		$data["realUserID"] = $userData['id'];
-		
-		$data['countDisciples'] = 1;
-		if($userData == NULL){
+				$data['userRole'] 					= @$userData['Role'];
+				$data['total'] 						= 0;
+				$data['LeaderName'] 	  			= $userData['MentorID'];
+				//$data['addBtn']						= '<button type="button" class="pull-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Disciple</button>';
+				$data['settings']					= 'display';
 			
-			redirect(base_url());
+				$data['username'] 					= $userData['username'];		
+				$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
 			
+				
+				$data['usergender']					= $userData['gender'];
+				$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
+				//chart 
+				
+				$chartRecordData= $this->BusinessList->chart();
+				
+				$data['jsonChartData'] 		= $chartRecordData;
+				$data['counthisopencell'] 	= $chartRecordData;
+			
+		
+				
+				$data['progress'] = $this->users->getcounts();
+				$data['memberscount'] = $this->users->getmembercounts();
+				
+			
+				$data["realUserID"] = $userData['id'];
+				
+				$data['countDisciples'] = 1;
+				if($userData == NULL){
+					
+					redirect(base_url());
+					
+				}else{
+					$this->load->view('headers/adminhead',$data);
+					$this->load->view('edit',$data);
+					$this->load->view('footers/adminfooter',$data);
+					
+				}
+	
 		}else{
-			$this->load->view('headers/adminhead',$data);
-			$this->load->view('edit',$data);
-			$this->load->view('footers/adminfooter',$data);
-			
-		}
-	
+			redirect('login');
+		}	
+		
+		
 		
 		
 	}
 	
 	public function addbusiness(){
+		$data = $this->session->userdata('logged_in');
+		if(!empty($data)){
 		
-	$userData  							= $this->session->userdata('logged_in');
-	
-		$disciplesResult 					= $this->BusinessList->records();	// disciples records
-		
-		
-		
-		$username							= $userData['username'];
-		$activeAcount						= $this->BusinessList->useraccount($userData['id']); // user profile table
-
-		$data['user_name']					= $username;
-		$data['list_of_records'] 			= $disciplesResult;
-	
-		$data['active_account']				= $activeAcount;
-		$data['userID'] 					= $userData['id'];
-
-		$data['userRole'] 					= @$userData['Role'];
-		$data['total'] 						= 0;
-		$data['LeaderName'] 	  			= $userData['MentorID'];
-		//$data['addBtn']						= '<button type="button" class="pull-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Disciple</button>';
-		$data['settings']					= 'display';
-	
-		$data['username'] 					= $userData['username'];		
-		$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
-		
-		
-		$data['usergender']					= $userData['gender'];
-		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
-		//chart 
-		
-		$chartRecordData= $this->BusinessList->chart();
-		
-		$data['jsonChartData'] 		= $chartRecordData;
-		$data['counthisopencell'] 	= $chartRecordData;
-	
-		//$data['getrole']			= $this->users->getrole($userData['id'],);
-		
-		
-		
-		//for my custom scripts and styles
-		//$data['baseURL'] = $this->baseURL;
-		
-		$data['progress'] = $this->users->getcounts();
-		$data['memberscount'] = $this->users->getmembercounts();
-		
-
-		$data["realUserID"] = $userData['id'];
-		
-		$data['countDisciples'] = 1;
-		if($userData == NULL){
+				$userData  							= $this->session->userdata('logged_in');
 			
-			redirect(base_url());
+				$disciplesResult 					= $this->BusinessList->records();	// disciples records
+				
+				
+				$username							= $userData['username'];
+				$activeAcount						= $this->BusinessList->useraccount($userData['id']); // user profile table
+
+				$data['user_name']					= $username;
+				$data['list_of_records'] 			= $disciplesResult;
 			
+				$data['active_account']				= $activeAcount;
+				$data['userID'] 					= $userData['id'];
+
+				$data['userRole'] 					= @$userData['Role'];
+				$data['total'] 						= 0;
+				$data['LeaderName'] 	  			= $userData['MentorID'];
+				$data['settings']					= 'display';
+			
+				$data['username'] 					= $userData['username'];		
+				$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
+				
+				
+				$data['usergender']					= $userData['gender'];
+				$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
+				//chart 
+				
+				$chartRecordData= $this->BusinessList->chart();
+				
+				$data['jsonChartData'] 		= $chartRecordData;
+				$data['counthisopencell'] 	= $chartRecordData;
+			
+				//$data['getrole']			= $this->users->getrole($userData['id'],);
+				
+				
+				
+				//for my custom scripts and styles
+				//$data['baseURL'] = $this->baseURL;
+				
+				$data['progress'] = $this->users->getcounts();
+				$data['memberscount'] = $this->users->getmembercounts();
+				
+
+				$data["realUserID"] = $userData['id'];
+				
+				$data['countDisciples'] = 1;
+				if($userData == NULL){
+					
+					redirect(base_url());
+					
+				}else{
+					$this->load->view('headers/adminhead',$data);
+					$this->load->view('addBusiness',$data);
+					$this->load->view('footers/adminfooter',$data);
+					
+				}
 		}else{
-			$this->load->view('headers/adminhead',$data);
-			$this->load->view('addBusiness',$data);
-			$this->load->view('footers/adminfooter',$data);
-			
+			redirect('login');
 		}
-	
 	}
 	
 
@@ -334,22 +338,9 @@ class Administrator extends CI_Controller {
 		
 	}
 	
-	/*
-	public function opencell(){
-		
-		$userData  					= $this->session->userdata('logged_in');
-		$data['userID'] 			= $userData['id'];		
-		$data['Role'] 				= $userData['Role'];
-		$data['Gender'] 			= $userData['gender'];			
-		$data['getRecordsDisplay']	= $this->desciples->getRecordsDisplay(NULL);
-		$this->load->view('headers/g12Networkheader',$data);
-		$this->load->view('opencell',$data);
-		$this->load->view('footers/g12Networkfooter',$data);
-		
-	}
-	*/
+
 	
-		public function opencell($userID = null){		
+	public function opencell($userID = null){		
 			$userData  					= $this->session->userdata('logged_in');
 
 			if(!empty($userID)){
@@ -367,7 +358,7 @@ class Administrator extends CI_Controller {
 			$this->load->view('opencell',$data);
 			$this->load->view('footers/g12Networkfooter',$data);
 			
-		}
+	}
 	
 	
 	public function pre_encounter(){
@@ -1111,62 +1102,68 @@ class Administrator extends CI_Controller {
 	}
 	
 	public function businesslist(){
-		$userData  							= $this->session->userdata('logged_in');
-	
-		$disciplesResult 					= $this->BusinessList->records();	// disciples records
+		$data = $this->session->userdata('logged_in');
+		if(!empty($data)){
+			$userData  							= $this->session->userdata('logged_in');
 		
-		
-		
-		$username							= $userData['username'];
-		$activeAcount						= $this->BusinessList->useraccount($userData['id']); // user profile table
-
-		$data['user_name']					= $username;
-		$data['list_of_records'] 			= $disciplesResult;
-	
-		$data['active_account']				= $activeAcount;
-		$data['userID'] 					= $userData['id'];
-
-		$data['userRole'] 					= @$userData['Role'];
-		$data['total'] 						= 0;
-		$data['LeaderName'] 	  			= $userData['MentorID'];
-		//$data['addBtn']						= '<button type="button" class="pull-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Disciple</button>';
-		$data['settings']					= 'display';
-	
-		$data['username'] 					= $userData['username'];		
-		$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
-	
-		
-		$data['usergender']					= $userData['gender'];
-		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
-		//chart 
-		
-		$chartRecordData= $this->BusinessList->chart();
-		
-		$data['jsonChartData'] 		= $chartRecordData;
-		$data['counthisopencell'] 	= $chartRecordData;
-	
-		//$data['getrole']			= $this->users->getrole($userData['id'],);
-		
-		
-		
-		//for my custom scripts and styles
-		//$data['baseURL'] = $this->baseURL;
-		
-		$data['progress'] = $this->users->getcounts();
-		$data['memberscount'] = $this->users->getmembercounts();
-		
-	
-		$data["realUserID"] = $userData['id'];
-		
-		$data['countDisciples'] = 1;
-		if($userData == NULL){
+			$disciplesResult 					= $this->BusinessList->records();	// disciples records
 			
-			redirect(base_url());
 			
+			
+			$username							= $userData['username'];
+			$activeAcount						= $this->BusinessList->useraccount($userData['id']); // user profile table
+
+			$data['user_name']					= $username;
+			$data['list_of_records'] 			= $disciplesResult;
+		
+			$data['active_account']				= $activeAcount;
+			$data['userID'] 					= $userData['id'];
+
+			$data['userRole'] 					= @$userData['Role'];
+			$data['total'] 						= 0;
+			$data['LeaderName'] 	  			= $userData['MentorID'];
+			//$data['addBtn']						= '<button type="button" class="pull-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Disciple</button>';
+			$data['settings']					= 'display';
+		
+			$data['username'] 					= $userData['username'];		
+			$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
+		
+			
+			$data['usergender']					= $userData['gender'];
+			$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
+			//chart 
+			
+			$chartRecordData= $this->BusinessList->chart();
+			
+			$data['jsonChartData'] 		= $chartRecordData;
+			$data['counthisopencell'] 	= $chartRecordData;
+		
+			//$data['getrole']			= $this->users->getrole($userData['id'],);
+			
+			
+			
+			//for my custom scripts and styles
+			//$data['baseURL'] = $this->baseURL;
+			
+			$data['progress'] = $this->users->getcounts();
+			$data['memberscount'] = $this->users->getmembercounts();
+			
+		
+			$data["realUserID"] = $userData['id'];
+			
+			$data['countDisciples'] = 1;
+			if($userData == NULL){
+				
+				redirect(base_url());
+				
+			}else{
+				$this->load->view('headers/adminhead',$data);
+				$this->load->view('businesslists',$data);
+				$this->load->view('footers/adminfooter',$data);
+				
+			}
 		}else{
-			$this->load->view('headers/adminhead',$data);
-			$this->load->view('businesslists',$data);
-			$this->load->view('footers/adminfooter',$data);
+			redirect('login');
 			
 		}
 	}
