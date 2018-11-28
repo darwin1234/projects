@@ -59,10 +59,13 @@ class modelaction extends CI_Model{
  public function fetchCategory($query){
 	 $this->db->select("*");
 	 $this->db->from("category");
-	if($query != ''){
-   $this->db->like('business_category', $query);
+		if($query != ''){
+			$this->db->like('business_category', $query);
  }
 	 $this->db->order_by('category_id','DESC');
 	 return $this->db->get();
+}
+ public function registerQuery($data){
+	$this->db->insert('records');
 }
 }

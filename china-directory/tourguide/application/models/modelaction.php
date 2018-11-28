@@ -65,4 +65,7 @@ class modelaction extends CI_Model{
 	 $this->db->order_by('category_id','DESC');
 	 return $this->db->get();
 }
+ public function registerQuery($data){
+	$this->db->insert('records',$data);
+}
 }

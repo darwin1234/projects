@@ -68,7 +68,10 @@
   </div>
  
 </form>
- <p><a href="<?php echo base_url(); ?>ForgotPassword" style="text-align:center; color:#000; display:block;">Forgot Password</a></p>
+ <p><a href="<?php echo base_url(); ?>ForgotPassword" style="text-align:center; color:#000; float:left;">Forgot Password</a>
+ <p><a href="<?php echo base_url(); ?>register" style="text-align:center; color:#000; margin-left:50px;">Register</a>
+ 
+ </p>
   
 <div class="copy-text"></div>
 		</div>
