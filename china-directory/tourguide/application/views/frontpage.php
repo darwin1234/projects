@@ -33,10 +33,11 @@
 		  if(search != '')
 		  {
 		   load_data(search);
-		  }      
+		  } 
 		  else{
-			  $("#result").toggle();
+			  $("#result").slideToggle();
 		  }
+			e.stopPropagation()
 		 	});   			
 	</script>
   <div id="mapdiv">

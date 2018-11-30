@@ -59,7 +59,6 @@
 						
 						<div class="row" style="float:left; width:900px; margin-left:10px;">
 							<form action="<?php echo base_url();?>Actions/Create" method="POST">
-							 <input type="hidden" name="id_no">
 							  <input type="hidden" name="imagefile" id="imagefile" value="">
 							  <div class="form-group">
 								<label for="business_name">Business Name:</label>

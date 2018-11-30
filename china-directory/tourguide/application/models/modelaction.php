@@ -2,11 +2,14 @@
 class modelaction extends CI_Model{
 	public function createQuery($data){
 		$this->db->insert('businesses',$data);
+
+		redirect(base_url().'administrator');
 	}
 
 	public function deleteQuery($id){		
 		$this->db->where('business_id', $id);
 		$this->db->delete('businesses');
+		redirect(base_url().'welcome');
 	}
 
 	public function deactivateQuery($id){
@@ -66,6 +69,18 @@ class modelaction extends CI_Model{
 	 return $this->db->get();
 }
  public function registerQuery($data){
+	 if(!empty($_POST)){
+		$insert = array(
+		'first_name'	=>	$this->input->post('first_name'),
+		'last_name'		=>	$this->input->post('last_name'),
+		'email'			=>	$this->input->post('email'),
+		'username'		=>	$this->input->post('username'),
+		'password'		=> md5($this->input->post('password'))
+		);
+			$this->modelaction->registerQuery($insert);
+		}
 	$this->db->insert('records',$data);
+
 }
+	
 }

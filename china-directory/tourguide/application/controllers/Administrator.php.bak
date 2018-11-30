@@ -26,7 +26,7 @@ class Administrator extends CI_Controller {
 		if(!empty($data)){
 			$userData  							= $this->session->userdata('logged_in');
 		
-			$disciplesResult 					= $this->BusinessList->records($userData['id']);	
+			$disciplesResult 					= $this->BusinessList->records();	
 			
 			
 			

@@ -19,6 +19,7 @@ class Actions extends CI_Controller {
 			'business_category'				=> $this->input->post('business_category'),
 			'business_status'				=> 1,
 			'business_image'				=> $this->input->post('business_image') ,
+			'id_no'							=> $this->input->post('id_no'),
 			'publish_date'					=> $this->input->post('publish_date'),
 			'street_number'					=> $this->input->post('street_number'),
 			'route'							=> $this->input->post('route'),
@@ -113,7 +114,7 @@ class Actions extends CI_Controller {
 		}
 	  $data = $this->modelaction->fetchCategory($query);
 		  $output .= '
-			  <div class="table-responsive" style="background:white;>
+			  <div class="table-responsive" style="background:white;">
 				 <table class="table table-bordered table-striped">
 				  <tr>
 				   <th>Categories</th>

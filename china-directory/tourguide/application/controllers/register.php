@@ -12,15 +12,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	$this->load->view('register');
 	}
 	public function signup(){
-		if(!empty($_POST)){
-		$insert = array(
-		'first_name'	=>	$this->input->post('first_name'),
-		'last_name'		=>	$this->input->post('last_name'),
-		'email'			=>	$this->input->post('email'),
-		'username'		=>	$this->input->post('username'),
-		'password'		=> md5($this->input->post('password'))
-		);
-		$this->modelaction->registerQuery($insert);
-	}
+   $this->form_validation->set_rules('username', 'Username', 'trim|required');
+   $this->form_validation->set_rules('password', 'Password', 'trim|required|callback_check_database');
+
+   if($this->form_validation->run() == FALSE)
+   {
+     //Field validation failed.  User redirected to login page
+     $this->load->view('register');
+   }
+   else
+   {
+     //Go to private area
+     $this->modelaction->registerQuery();
+   }
 	}
  }

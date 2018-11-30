@@ -4,11 +4,12 @@ class BusinessList extends CI_Model{
 	
 	public function records($id=NULL){
 		if($id==NULL){
-		$query = $this->db->query("SELECT * FROM businesses WHERE business_status=1 ORDER BY business_id asc");
+		$query = $this->db->query("SELECT * FROM businesses WHERE business_status=1 and user_id = 332 ORDER BY business_id asc");
 			
 		}
 		else{
-		$query = $this->db->query("SELECT * FROM businesses WHERE business_id = " . $id);	
+			$userData  							= $this->session->userdata('logged_in');
+		$query = $this->db->query("SELECT * FROM businesses WHERE user_id = 332");	
 		}
 		return $query->result();
 	}

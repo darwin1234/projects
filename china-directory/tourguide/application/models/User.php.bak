@@ -4,7 +4,7 @@ Class User extends CI_Model
 {
 	 function login($username, $password)
 	 {   
-	   $query = $this->db->query('SELECT id_no, username, password  FROM records WHERE BINARY username = "' .$username. '" and password= "'. md5($password).'"');
+	   $query = $this->db->query('SELECT id_no, username, password,role,Gender,mentor_id  FROM records WHERE BINARY username = "' .$username. '" and password= "'. md5($password).'"');
 
 		
 	   if($query->num_rows() == 1)
