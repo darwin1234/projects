@@ -7,9 +7,6 @@ var xhttp = new XMLHttpRequest();
 var MediaUrl = "";
 var HTML = "";
 var imgsrc ="";
-function radiobtn(url){
-	MediaUrl = url;
-}
 
 var Media = {
 	
@@ -22,7 +19,9 @@ var Media = {
 					HTML += "<div style='position:relative; float:left; width:240px; height:200px; background:url("+imgsrc+"); background-size:cover; margin:2px;'>";
 					HTML += "<h5 style='bottom:0; padding-top:20px; display:block; color:#fff; background:#000; padding:0; margin:0; position:absolute; bottom:0; width:100%; height:40px;'>";
 					HTML += files[i].image_name;
-					HTML += "<input type='radio' value='' name='file' onclick='radiobtn("+imgsrc+");'>";
+					HTML += "<input type='radio' value='' name='file' onclick='radiobtn(";
+					HTML += '"' + imgsrc + '"';
+					HTML +=")'>";
 					HTML += "</h5>";
 					HTML += "</div>";
 				}
@@ -52,14 +51,25 @@ loadmedia.addEventListener("click", function(e){
 	Media.load();	
 });
 addimagebtn.addEventListener("click", function(e){
+
 	Media.addimage();
 	Media.singlefile();
 
 });
 mainupload.addEventListener("submit", function(e){
-	alert(1);
+
 	//Media.mainupload();
 	e.preventDefault();
 });
+
+function addImage(){
+	imagefile.value = MediaUrl;
+	Media.singlefile();
+}
+function radiobtn(url){
+	MediaUrl = url;
+	//alert(url);
+}
+
 
 

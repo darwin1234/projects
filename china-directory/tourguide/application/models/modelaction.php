@@ -25,7 +25,7 @@ class modelaction extends CI_Model{
 			'business_address'				=> $this->input->post('business_address'),
 			'business_category'				=> $this->input->post('business_category'),
 			'business_status'				=> $this->input->post('business_status'),
-			'business_image'				=> $this->input->post('business_image') ,
+			'business_image'				=> $this->input->post('imagefile') ,
 			'publish_date'					=> $this->input->post('publish_date'),
 			'street_number'					=> $this->input->post('street_number'),
 			'route'							=> $this->input->post('route'),

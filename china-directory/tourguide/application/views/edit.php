@@ -32,7 +32,8 @@
 						
 						<div class="row" style="float:left; width:900px; margin-left:10px;">
 							<form action="<?php echo base_url();?>Actions/edit/<?php echo $ID ?>" method="POST">
-							
+							  <input type="hidden" name="imagefile" id="imagefile" value="">
+						
 							  <div class="form-group">
 								<label for="business_name">Business Name:</label>
 								<input type="text" class="form-control" id="business_name" name="business_name" value="<?php echo $business_name; ?>">
@@ -55,14 +56,15 @@
 							  
 							  
 							  <div class="form-group">
-							  
+								
 								<?php if(!empty($business_image)){ ?>
-										<img src="<?php echo $business_image;?>" style="width:350px; margin:0 auto; display:block; margin-top:20px">
+										<img id="imgcontainer" src="<?php echo $business_image;?>" style="width:350px; margin:0 auto; display:block; margin-top:20px">
+										<a href="#" style="text-align:center; display:block;" data-toggle="modal" data-target="#exampleModal">Select Photo</a>
 								<?php } else {?>
-								<a href="#">Select Photo</a>
+										<a href="#" style="text-align:center; display:block;"  data-toggle="modal" data-target="#exampleModal">Select Photo</a>
 								<?php } ?>
 							  </div>
-							  	<div class="control-group"> 
+							<div class="control-group"> 
 								<div class="control-label"><label>Search: </label></div>
 								<input id="autocomplete" class="form-control" placeholder="Enter your address" onfocus="geolocate()" type="text"  autocomplete="on" >
 							</div>
@@ -113,6 +115,28 @@
 							</form>
 				
 						</div>
+						
+							<!-- Modal -->
+					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog modal-lg" role="document">
+						<div class="modal-content">
+						  <div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							  <span aria-hidden="true">&times;</span>
+							</button>
+						  </div>
+						  <div class="modal-body">
+							<div id="files">
+							</div>
+						  </div>
+						  <div class="modal-footer">
+							<button type="button" id="addimage" class="addimage" onclick="addImage();">Add Image</button>
+						  </div>
+						</div>
+					  </div>
+					</div>	
+
 					
 			
 		<link href="<?php echo base_url();?>resources/map/leaflet.css" rel="stylesheet">	

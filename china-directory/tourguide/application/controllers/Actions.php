@@ -40,13 +40,13 @@ class Actions extends CI_Controller {
 	public function Delete($business_id){
 		$this->modelaction->deleteQuery($business_id);
 		 
-		 redirect(base_url() . 'welcome/businesslist');
+		 redirect(base_url() . 'administrator/businesslist');
 	}
 	public function edit($id){	
         
 		
 		$this->modelaction->updateQuery($id);
-		redirect (base_url() . 'welcome/edit/'.$id);
+		redirect (base_url() . 'administrator/edit/'.$id);
 	}
 	
 	public function Deactivate($business_id){
@@ -54,56 +54,10 @@ class Actions extends CI_Controller {
 		'business_status' 	=> '0'
 		);
 		$this->modelaction->deactivateQuery($business_id);
-		redirect(base_url() . 'welcome/businesslist');
+		redirect(base_url() . 'administrator/businesslist');
 	}
 	
-	/*public function fetch(){
-	  $output = '';
-	  $query = '';
-	  	if($this->input->post('query')){
-			$query = $this->input->post('query');
-		}
-	  $data = $this->modelaction->fetch_data($query);
-		  $output .= '
-			  <div class="table-responsive">
-				 <table class="table table-bordered table-striped">
-				  <tr>
-				   <th>Business Name</th>
-				   <th>Business Owner</th>
-				   <th>Category</th>
-				   <th>Street Address</th>
-				   <th>City/Municipality</th>
-				   <th>Zip Code</th>
-				   <th>Country</th>
-				  </tr>
-			  ';
-  if($data->num_rows() > 0)
-  {
-   foreach($data->result() as $row)
-   {
-    $output .= '
-      <tr>
-       <td>'.$row->business_name.'</td>
-       <td>'.$row->business_owner.'</td>
-       <td>'.$row->business_category.'</td>
-       <td>'.$row->route.'</td>
-       <td>'.$row->locality.'</td>
-       <td>'.$row->administrative_area_level_1.'</td>
-       <td>'.$row->postal_code.'</td>
-       <td>'.$row->country.'</td>
-      </tr>
-    ';
-   }
-  }
-  else
-  {
-   $output .= '<tr>
-       <td colspan="5">No Data Found</td>
-      </tr>';
-  }
-  $output .= '</table>';
-  echo $output;
- }*/
+	
  
  public function search(){
 	 $output = '';

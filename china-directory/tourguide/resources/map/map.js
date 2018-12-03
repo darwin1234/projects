@@ -34,6 +34,17 @@ window.onload = function(){
 
 
 Nearby.addEventListener("click", function(e){
+	 if (navigator.geolocation) {
+         navigator.geolocation.getCurrentPosition(showPosition);
+	  }else { 
+        //x.innerHTML = "Geolocation is not supported by this browser.";
+	 }
+	
+	
+	e.preventDefault();
+});
+
+function showPosition(position){
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			var data = JSON.parse(this.responseText);
@@ -46,36 +57,11 @@ Nearby.addEventListener("click", function(e){
 		}
 	};	
 	xhttp.open("POST", "http://tourguide.local/map", true);
-	xhttp.send();
-	e.preventDefault();
-});
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send("lat=" + position.coords.latitude + "&lng="+ position.coords.longitude);
+}
 	
-  /*xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-     document.getElementById("demo").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("GET", "ajax_info.txt", true);
-  xhttp.send();*/
-/*
-[
-	{
-		lat:
-		lng:
-		url:
-	},
-	{
-		lat:
-		lng:
-		url:
-	},
-	{
-		lat:
-		lng:
-		url:
-	}
-]
-*/
+	
 
 function marker(lat,lng,title,img) {
 	window.testMarker = L.marker([lat, lng], { icon: L.icon({

@@ -1098,10 +1098,7 @@ class Administrator extends CI_Controller {
 		else{ $this->users->viplistdownloadEXCEL($from, $to); }
 	}
 	
-	public function yessss($iddd){
-		$this->user->moveVIP($iddd);
-		//echo $iddd . "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
-	}
+
 	
 	public function businesslist(){
 		$data = $this->session->userdata('logged_in');
