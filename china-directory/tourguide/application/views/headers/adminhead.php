@@ -1,30 +1,27 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-	if(!empty(@$active_account)){
-		foreach(@$active_account as $activeAccountFields) { 
-			@$photo 				= $activeAccountFields->profile_pic;
-			@$imagePIC				= $activeAccountFields->image_pic;
-			@$LeaderName 			= $activeAccountFields->first_name . ' ' . $activeAccountFields->maiden_name . ' ' . $activeAccountFields->last_name;
-			@$first_name			= $activeAccountFields->first_name;
-			@$maiden_name			= $activeAccountFields->maiden_name;
-			@$last_name				= $activeAccountFields->last_name;
-			@$EmailAddress			= $activeAccountFields->email;
-			@$CellNumber			= $activeAccountFields->contact;
-			@$CivilStatus			= $activeAccountFields->civil_status;
-			@$Work					= $activeAccountFields->work;
-			@$Address				= $activeAccountFields->address;
-			@$Role					= $activeAccountFields->role;
-			@$Gender				= $activeAccountFields->Gender;
-			@$birthmonth			= $activeAccountFields->birthmonth;
-			@$birthdate				= $activeAccountFields->birthdate;
-			@$birthyear				= $activeAccountFields->birthyear;
-			@$wedding_month			= $activeAccountFields->wedding_month;
-			@$wedding_date			= $activeAccountFields->wedding_date;
-			@$wedding_year			= $activeAccountFields->wedding_year;
-			@$spouse_name			= $activeAccountFields->spouse_name;
-			
-		}
-	}
+	if(!empty($list_of_records)){$item = (array)$list_of_records;}
+	
+	$dslong = "";
+	$dslat  = "";
+	$personalAcc			= (array)$active_account[0];
+	$first_name 			= $personalAcc['first_name'];
+	$activeIDD				= $personalAcc['id_no'];
+	$photo 					= $personalAcc['profile_pic'];
+	$LeaderName 			= $personalAcc['first_name'] . ' ' . $personalAcc['maiden_name'] . ' ' . $personalAcc['last_name'];
+	$maiden_name			= $personalAcc['maiden_name'];
+	$last_name				= $personalAcc['last_name'];
+	$EmailAddress			= $personalAcc['email'];
+	$contactno 				= $personalAcc['contact'];
+	$CivilStatus			= $personalAcc['civil_status'];
+	$Work					= $personalAcc['work'];
+	$Address				= $personalAcc['address'];
+	
+	$Role					= $personalAcc['role'];
+	$Gender					= $personalAcc['Gender'];
+	$birthmonth				= $personalAcc['birthmonth'];
+	$birthdate				= $personalAcc['birthdate'];
+	$birthyear				= $personalAcc['birthyear'];
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -102,7 +99,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo base_url();?>Welcome">TourGuide</a>
+                <a class="navbar-brand" href="<?php echo base_url();?>administrator">TourGuide</a>
             </div>
             <div id="myaccount" class="myaccount navbar-collapse collapse pull-right">
 				<a href="#"><strong><i class="myacc dsfont fas fa-user-circle"></i><?php echo @$first_name; ?></strong>

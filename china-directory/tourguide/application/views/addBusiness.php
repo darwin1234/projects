@@ -1,56 +1,4 @@
-<?php
-	$item = (array)$list_of_records;
-	$dslong = "";
-	$dslat  = "";
-	$personalAcc			= (array)$active_account[0];
-	$first_name 			= $personalAcc['first_name'];
-	$activeIDD				= $personalAcc['id_no'];
-	$photo 					= $personalAcc['profile_pic'];
-	$LeaderName 			= $personalAcc['first_name'] . ' ' . $personalAcc['maiden_name'] . ' ' . $personalAcc['last_name'];
-	$maiden_name			= $personalAcc['maiden_name'];
-	$last_name				= $personalAcc['last_name'];
-	$EmailAddress			= $personalAcc['email'];
-	$contactno 				= $personalAcc['contact'];
-	$CivilStatus			= $personalAcc['civil_status'];
-	$Work					= $personalAcc['work'];
-	$Address				= $personalAcc['address'];
-	
-	$Role					= $personalAcc['role'];
-	$Gender					= $personalAcc['Gender'];
-	$birthmonth				= $personalAcc['birthmonth'];
-	$birthdate				= $personalAcc['birthdate'];
-	$birthyear				= $personalAcc['birthyear'];
-?> 
-	<div id="content">
-	
-<div id="left">
-	<div id="menu">
-		<div id="image_profile">
-			<span>	
-				<img id="user-image-profile" onload="this.style.opacity = 1" src="<?php echo base_url(); ?>administrator/userimage2/<?php echo $userID; ?>" style="border-radius:40px; height:40px; width:40px; margin-top:0px; padding:0;">
-			</span>
-			<span style="font-size:12px;">
-				<strong>Hello, <?php echo @$first_name; ?></strong>
-			</span>
-		</div>		
-		<?php if(isset($settings) && $setting ='display'){?>		
-			<h6 id="h-menu-events"><a href="<?php echo base_url(); ?>administrator"><i class="dsfont fa fa-home" aria-hidden="true"></i>Dashboard</a></h6>
-				<ul id="menu-events" class="closed">
-					<li class="last"><a href="<?php echo base_url(); ?>administrator/newEvent">Users</a></li>
-				</ul>
-				<h6 id="h-menu-settings"><a href="<?php echo base_url(); ?>administrator/media"><i class="dsfont fas fa-folder-plus"></i>Media</a></h6>
-				<h6 id="h-menu-settings"><a href="#settings"><i class="dsfont fas fa-folder-plus"></i>Pages</a></h6>
-				<h6 id="h-menu-settings"><a href="<?php echo base_url(); ?>administrator/businesslist"><i class="dsfont fas fa-list-alt"></i>Business Lists</a></h6>
-			<?php } ?>
-	
-	</div>
-				
-</div>
-		
-						
-			
-			<!-- end content / left -->
-			<!-- content / right -->
+
 			<div id="right">
 				<!-- table -->
 				<div class="box">
@@ -153,7 +101,7 @@
 							</button>
 						  </div>
 						  <div class="modal-body">
-							<div id="imagelists">
+							<div id="files">
 							</div>
 						  </div>
 						  <div class="modal-footer">
@@ -233,5 +181,4 @@
         }
       }
 </script>				
-					
-				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7Mw47t0olm54GFx6Vc0O1CgJDL8hRCmg&amp;libraries=places&amp;callback=initAutocomplete" async="" defer=""></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7Mw47t0olm54GFx6Vc0O1CgJDL8hRCmg&amp;libraries=places&amp;callback=initAutocomplete" async="" defer=""></script>

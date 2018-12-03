@@ -10,7 +10,6 @@ class Administrator extends CI_Controller {
 		   $this->load->model('media','',TRUE);
 		   $this->load->model('BusinessList','',TRUE);
 		   $this->load->model('chart', '', TRUE);
-
 		   $this->load->model('Ushersinput','', TRUE);
 		   $this->load->model('user','', TRUE);
 		   $this->load->helper('date');
@@ -71,6 +70,7 @@ class Administrator extends CI_Controller {
 				
 			}else{
 				$this->load->view('headers/adminhead',$data);
+				$this->load->view('sidebar');
 				$this->load->view('admin',$data);
 				$this->load->view('footers/adminfooter',$data);
 				
@@ -142,6 +142,7 @@ class Administrator extends CI_Controller {
 					
 				}else{
 					$this->load->view('headers/adminhead',$data);
+					$this->load->view('sidebar');
 					$this->load->view('edit',$data);
 					$this->load->view('footers/adminfooter',$data);
 					
@@ -212,6 +213,7 @@ class Administrator extends CI_Controller {
 					
 				}else{
 					$this->load->view('headers/adminhead',$data);
+					$this->load->view('sidebar');
 					$this->load->view('addBusiness',$data);
 					$this->load->view('footers/adminfooter',$data);
 					
@@ -1106,7 +1108,7 @@ class Administrator extends CI_Controller {
 		if(!empty($data)){
 			$userData  							= $this->session->userdata('logged_in');
 		
-			$disciplesResult 					= $this->BusinessList->records();	// disciples records
+			$disciplesResult 					= $this->BusinessList->records($userData['id']);	// disciples records
 			
 			
 			
@@ -1158,6 +1160,7 @@ class Administrator extends CI_Controller {
 				
 			}else{
 				$this->load->view('headers/adminhead',$data);
+				$this->load->view('sidebar');
 				$this->load->view('businesslists',$data);
 				$this->load->view('footers/adminfooter',$data);
 				
@@ -1167,7 +1170,67 @@ class Administrator extends CI_Controller {
 			
 		}
 	}
+	public function upload(){
+		$data = $this->session->userdata('logged_in');
+		if(!empty($data)){
+			$userData  							= $this->session->userdata('logged_in');
+		
+			$disciplesResult 					= $this->BusinessList->records();	
+			
+			
+			
+			$username							= $userData['username'];
+			$activeAcount						= $this->BusinessList->useraccount($userData['id']); // user profile table
+
+			$data['user_name']					= $username;
+			$data['list_of_records'] 			= $disciplesResult;
+		
+			$data['active_account']				= $activeAcount;
+			$data['userID'] 					= $userData['id'];
+
+			$data['userRole'] 					= @$userData['Role'];
+			$data['total'] 						= 0;
+			$data['LeaderName'] 	  			= $userData['MentorID'];
+			//$data['addBtn']						= '<button type="button" class="pull-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Disciple</button>';
+			$data['settings']					= 'display';
+			
+			$data['username'] 					= $userData['username'];		
+			$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
+			
+			$data['usergender']					= $userData['gender'];
+			$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
+			//chart 
+			
+			$chartRecordData= $this->BusinessList->chart();
+			
+			$data['jsonChartData'] 		= $chartRecordData;
+			$data['counthisopencell'] 	= $chartRecordData;
+		
+		
+			$data['progress'] = $this->users->getcounts();
+			$data['memberscount'] = $this->users->getmembercounts();
+			
+
+			$data["realUserID"] = $userData['id'];
+			
+			$data['countDisciples'] = 1;
+			if($userData == NULL){
+				
+				redirect(base_url());
+				
+			}else{
+				$this->load->view('headers/adminhead',$data);
+				$this->load->view('upload',$data);
+				$this->load->view('footers/adminfooter',$data);
+				
+			}
+		}else{
+			redirect('login');
+			
+		}	
 	
+		
+	}
 	public function Media(){
 		$userData  							= $this->session->userdata('logged_in');
 	
@@ -1222,9 +1285,79 @@ class Administrator extends CI_Controller {
 			
 		}else{
 			$this->load->view('headers/adminhead',$data);
+			$this->load->view('sidebar');
 			$this->load->view('media',$data);
 			$this->load->view('footers/adminfooter',$data);
 			
+		}
+	}
+	
+	public function package(){
+		$userData  							= $this->session->userdata('logged_in');
+	
+		$media 								= $this->media->records($userData['id']);	// disciples records
+		
+		
+		
+		$username							= $userData['username'];
+		$activeAcount						= $this->BusinessList->useraccount($userData['id']); // user profile table
+
+		$data['user_name']					= $username;
+		$data['listofmedia'] 				= $media;
+	
+		$data['active_account']				= $activeAcount;
+		$data['userID'] 					= $userData['id'];
+
+		$data['userRole'] 					= @$userData['Role'];
+		$data['total'] 						= 0;
+		$data['LeaderName'] 	  			= $userData['MentorID'];
+		//$data['addBtn']						= '<button type="button" class="pull-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Disciple</button>';
+		$data['settings']					= 'display';
+	
+		$data['username'] 					= $userData['username'];		
+		$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
+		
+		$data['usergender']					= $userData['gender'];
+		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
+		//chart 
+		
+		$chartRecordData= $this->BusinessList->chart();
+		
+		$data['jsonChartData'] 		= $chartRecordData;
+		$data['counthisopencell'] 	= $chartRecordData;
+	
+		//$data['getrole']			= $this->users->getrole($userData['id'],);
+		
+		
+		
+		//for my custom scripts and styles
+		//$data['baseURL'] = $this->baseURL;
+		
+		$data['progress'] = $this->users->getcounts();
+		$data['memberscount'] = $this->users->getmembercounts();
+		
+	
+		$data["realUserID"] = $userData['id'];
+		
+		$data['countDisciples'] = 1;
+		if($userData == NULL){
+			
+			redirect(base_url());
+			
+		}else{
+			$this->load->view('headers/adminhead',$data);
+			$this->load->view('sidebar');
+			$this->load->view('package',$data);
+			$this->load->view('footers/adminfooter',$data);
+			
+		}
+	}
+	
+	public function files(){
+		$data = $this->session->userdata('logged_in');
+		if(!empty($data)){
+			$userData  							= $this->session->userdata('logged_in');
+			echo json_encode($this->media->records($userData['id']));
 		}
 	}
 	

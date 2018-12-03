@@ -1,26 +1,3 @@
-<script src="<?php echo base_url(); ?>/resources/scripts/imagecrop.js"></script>
-<?php
-	$item = (array)$list_of_records;
-	$personalAcc			= (array)$active_account[0];
-	$first_name 			= $personalAcc['first_name'];
-	$activeIDD				= $personalAcc['id_no'];
-	$photo 					= $personalAcc['profile_pic'];
-	$maiden_name			= $personalAcc['maiden_name'];
-	$last_name				= $personalAcc['last_name'];
-	$email					= $personalAcc['email'];
-	$contactno 				= $personalAcc['contact'];
-	$CivilStatus			= $personalAcc['civil_status'];
-	$Address				= $personalAcc['address'];
-	$Role					= $personalAcc['role'];
-	$Gender					= $personalAcc['Gender'];
-	$birthmonth				= $personalAcc['birthmonth'];
-	$birthdate				= $personalAcc['birthdate'];
-	$birthyear				= $personalAcc['birthyear'];
-	?> 
-<link rel="stylesheet" href="<?php echo base_url(); ?>resources/css/circle.css">
-<input type="hidden" id="user-gender" value="<?php echo $Gender; ?>">
-<script src="<?php echo base_url(); ?>administrator/scripts/ajax.js"></script>
-<script src="<?php echo base_url(); ?>administrator/scripts/search.js"></script>
 <div id="content">
 	<!-- end content / left -->
 <div id="left">

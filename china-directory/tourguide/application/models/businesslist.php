@@ -13,6 +13,11 @@ class BusinessList extends CI_Model{
 		return $query->result();
 	}
 	
+	public function rdata(){
+		$query = $this->db->query("SELECT * FROM businesses");
+		return $query->result();
+	}
+	
 	public function useraccount($userID){
 		
 		
