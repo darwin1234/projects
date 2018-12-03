@@ -25,7 +25,7 @@ class Administrator extends CI_Controller {
 		if(!empty($data)){
 			$userData  							= $this->session->userdata('logged_in');
 		
-			$disciplesResult 					= $this->BusinessList->records($userData['id']);	
+			$disciplesResult 					= $this->BusinessList->records();	
 			
 			
 			
@@ -38,17 +38,17 @@ class Administrator extends CI_Controller {
 			$data['active_account']				= $activeAcount;
 			$data['userID'] 					= $userData['id'];
 
-			// $data['userRole'] 					= @$userData['Role'];
+			$data['userRole'] 					= @$userData['Role'];
 			$data['total'] 						= 0;
-			// $data['LeaderName'] 	  			= $userData['MentorID'];
+			$data['LeaderName'] 	  			= $userData['MentorID'];
 			//$data['addBtn']						= '<button type="button" class="pull-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Disciple</button>';
 			$data['settings']					= 'display';
 			
 			$data['username'] 					= $userData['username'];		
 			$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
 			
-			// $data['usergender']					= $userData['gender'];
-			//$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
+			$data['usergender']					= $userData['gender'];
+			$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
 			//chart 
 			
 			$chartRecordData= $this->BusinessList->chart();
@@ -175,17 +175,17 @@ class Administrator extends CI_Controller {
 				$data['active_account']				= $activeAcount;
 				$data['userID'] 					= $userData['id'];
 
-				// $data['userRole'] 					= @$userData['Role'];
+				$data['userRole'] 					= @$userData['Role'];
 				$data['total'] 						= 0;
-				// $data['LeaderName'] 	  			= $userData['MentorID'];
+				$data['LeaderName'] 	  			= $userData['MentorID'];
 				$data['settings']					= 'display';
 			
 				$data['username'] 					= $userData['username'];		
 				$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
 				
 				
-				// $data['usergender']					= $userData['gender'];
-				// $data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
+				$data['usergender']					= $userData['gender'];
+				$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
 				//chart 
 				
 				$chartRecordData= $this->BusinessList->chart();
@@ -1121,9 +1121,9 @@ class Administrator extends CI_Controller {
 			$data['active_account']				= $activeAcount;
 			$data['userID'] 					= $userData['id'];
 
-			// $data['userRole'] 					= @$userData['Role'];
+			$data['userRole'] 					= @$userData['Role'];
 			$data['total'] 						= 0;
-			// $data['LeaderName'] 	  			= $userData['MentorID'];
+			$data['LeaderName'] 	  			= $userData['MentorID'];
 			//$data['addBtn']						= '<button type="button" class="pull-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Disciple</button>';
 			$data['settings']					= 'display';
 		
@@ -1131,8 +1131,8 @@ class Administrator extends CI_Controller {
 			$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
 		
 			
-			// $data['usergender']					= $userData['gender'];
-			// $data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
+			$data['usergender']					= $userData['gender'];
+			$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
 			//chart 
 			
 			$chartRecordData= $this->BusinessList->chart();
@@ -1247,17 +1247,17 @@ class Administrator extends CI_Controller {
 		$data['active_account']				= $activeAcount;
 		$data['userID'] 					= $userData['id'];
 
-		// $data['userRole'] 					= @$userData['Role'];
+		$data['userRole'] 					= @$userData['Role'];
 		$data['total'] 						= 0;
-		// $data['LeaderName'] 	  			= $userData['MentorID'];
+		$data['LeaderName'] 	  			= $userData['MentorID'];
 		//$data['addBtn']						= '<button type="button" class="pull-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Disciple</button>';
 		$data['settings']					= 'display';
 	
 		$data['username'] 					= $userData['username'];		
 		$data['getRecordsDisplay']			= $this->BusinessList->getRecordsDisplay(Null);
 		
-		// $data['usergender']					= $userData['gender'];
-		// $data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
+		$data['usergender']					= $userData['gender'];
+		$data['getRole'] 	= $this->users->getrole( $this->users->getpastor($userData['id']) ,$userData['id']);
 		//chart 
 		
 		$chartRecordData= $this->BusinessList->chart();

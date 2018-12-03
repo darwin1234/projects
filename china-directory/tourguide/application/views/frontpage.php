@@ -31,52 +31,6 @@
    </div>
    	<button class="nearby" id="Nearby">Search Nearby</button>
     <div style="clear:both"></div>
-<<<<<<< HEAD
-=======
-   <script>
-		 function load_data(query)
-		 {
-		  $.ajax({
-		   url:"<?php echo base_url(); ?>actions/search",
-		   method:"POST",
-		   data:{query:query},
-		   success:function(data){
-			$('#result').html(data);
-		   }
-		  })
-		 }
-		 $('#search_text').keyup(function(event){
-		  var search = $(this).val();
-		  if(search != '')
-		  {
-		   load_data(search);
-		  } 
-		  else{
-			  $("#result").slideToggle();
-		  }
-			e.stopPropagation()
-		 	});   			
-	</script>
-  <div id="mapdiv">
-	
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.11/lib/OpenLayers.js"></script> 
-  <script>
-  
-  </script>
-  <script>
-    map = new OpenLayers.Map("mapdiv");
-    map.addLayer(new OpenLayers.Layer.OSM());
-    
-    epsg4326 =  new OpenLayers.Projection("EPSG:4326"); //WGS 1984 projection
-    projectTo = map.getProjectionObject(); //The map projection (Spherical Mercator)
-   
-    var lonLat = new OpenLayers.LonLat(116.363625 ,39.913818 ).transform(epsg4326, projectTo);
-          
-    
-    var zoom=14;
-    map.setCenter (lonLat, zoom);
->>>>>>> 7b89267358d391291300ca6e7dec81da766e81f3
 
 	<div id="menu">
 		<ul>
