@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <!--https://bootsnipp.com/snippets/featured/login-screen-with-form -->
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 	<title>TourGuide</title>

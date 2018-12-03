@@ -21,6 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		'password'		=> md5($this->input->post('password'))
 		);
 		$this->modelaction->registerQuery($insert);
-	}
+		}
+	
 	}
  }
