@@ -2,22 +2,33 @@
 
 class BusinessList extends CI_Model{
 	
-	public function records($id=NULL){
-		if($id==NULL){
+	public function records($id=NULL,$business_id=NULL,$show = NULL){
+		
+		if($show =="Detail"){
+				$query = $this->db->query("SELECT *  FROM businesses WHERE user_id='".$id."' AND business_id='".$business_id."' ORDER BY business_id asc");
+		}else{
+			if($id==NULL){
+	
 			$query = $this->db->query("SELECT * FROM businesses WHERE business_status=1 ORDER BY business_id asc");
 			
-		}
-		else{
-			$query = $this->db->query("SELECT *  FROM businesses WHERE business_id='".$id."' ORDER BY business_id asc");
+			}
+			else{
+				$query = $this->db->query("SELECT *  FROM businesses WHERE user_id='".$id."' ORDER BY business_id asc");
+			}
+		
+			
 		}
 		
 		return $query->result();
 	}
+
 	
 	public function rdata(){
 		$query = $this->db->query("SELECT * FROM businesses");
 		return $query->result();
 	}
+	
+	
 	
 	public function useraccount($userID){
 		

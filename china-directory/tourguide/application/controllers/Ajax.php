@@ -24,19 +24,17 @@ class Ajax extends CI_Controller {
 		
 		public function discipleslist(){
 			$userData  							= $this->session->userdata('logged_in');
-			
-			$disciplesResult 					= $this->BusinessList->records();	// disciples records
+		
+			$disciplesResult 					= $this->BusinessList->records($userData['id']);	// disciples records
 			$username							= $userData['username'];
 			$activeAcount						= $this->BusinessList->useraccount($username); // user profile table
 	
 			$data['user_name']					= $username;
 			$data['list_of_records'] 			= $disciplesResult;
-			$data['userID'] 					= $userData['id'];
+		
 			
-			
+			echo var_dump($disciplesResult);
 			$this->load->view('discipleslist',$data);
-			
-			
 			 
 			
 		}   
