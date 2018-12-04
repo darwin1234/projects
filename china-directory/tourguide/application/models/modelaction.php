@@ -67,5 +67,6 @@ class modelaction extends CI_Model{
 }
  public function registerQuery($data){
 	$this->db->insert('records',$data);
+	$this->load->view('login');
 }
 }

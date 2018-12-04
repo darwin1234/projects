@@ -8,7 +8,7 @@ class BusinessList extends CI_Model{
 				$query = $this->db->query("SELECT *  FROM businesses WHERE user_id='".$id."' AND business_id='".$business_id."' ORDER BY business_id asc");
 		}else{
 			if($id==NULL){
-	
+			
 			$query = $this->db->query("SELECT * FROM businesses WHERE business_status=1 ORDER BY business_id asc");
 			
 			}
@@ -24,7 +24,17 @@ class BusinessList extends CI_Model{
 
 	
 	public function rdata(){
-		$query = $this->db->query("SELECT * FROM businesses");
+		//$dslat = $this->input->post('lat');
+		//$dslng = $this->input->post('lng');
+		//3959 Mile
+		
+		$SQL = "SELECT business_id,business_name,business_image, dslat,dslong, ( 1.609344 * acos( cos( radians(16.6104339) ) * cos( radians( dslat ) ) * 
+				cos( radians( dslong ) - radians(120.3147096) ) + sin( radians(16.6104339) ) * 
+				sin( radians( dslat ) ) ) ) AS distance FROM businesses HAVING
+				distance < 25 ORDER BY distance LIMIT 0 , 20;";				
+		$query = $this->db->query($SQL);
+			
+		//$query = $this->db->query("SELECT * FROM businesses");
 		return $query->result();
 	}
 	

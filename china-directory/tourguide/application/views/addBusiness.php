@@ -27,8 +27,13 @@
 								<label for="business_category">Business Category:</label>
 								<select class="form-control" id="business_category" name="business_category">
 									<option value="Dentistry">Dentistry</option>
-									<option value="Beauty Salon">Salon</option>
+									<option value="Beauty Salon">Beuaty Salon</option>
 									<option value="Flower Shop">Flower Shop</option>
+									<option value="Food">Food</option>
+									<option value="Hiking">Hiking</option>
+									<option value="Fishing">Fishing</option>
+									<option value="Social Event">Social Event</option>
+									<option value="Laundry">Laundry</option>
 								</select>
 							  </div>
 							  

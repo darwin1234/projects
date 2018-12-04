@@ -9,7 +9,12 @@ class Map extends CI_Controller {
 	}
 
 	function index(){
+		
+		header('Access-Control-Allow-Origin: *');
+		header("Access-Control-Allow-Methods: GET, OPTIONS");
+		//echo "<pre>";
 		echo json_encode($this->BusinessList->rdata());
+		//echo "</pre>";
 		//echo "HELLO WORLD!";	
 	}
 }
