@@ -6,7 +6,10 @@
 	<link href="<?php echo base_url();?>resources/map/leaflet.css" rel="stylesheet">
 	<script src="<?php echo base_url();?>resources/map/leaflet.js"></script>
 	<link href="<?php echo base_url();?>resources/map/map.css" rel="stylesheet">
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+	 
 	<style>
 	body{padding:0;margin:0;}
 		.olFramedCloudPopupContent{overflow:hidden!important;}
@@ -23,23 +26,53 @@
   <body>
 
    <div id="search">
-		<form action="" method="POST">
 		<input type="text" name="search_text" id="search_text" placeholder="Where do you like to go?" style="text-align:center;" />
-		<div id="result"></div>
+		<div id="result" style="display:none;"></div>
 	
-		</form>
    </div>
    	<button class="nearby" id="Nearby">Search Nearby</button>
     <div style="clear:both"></div>
 
+	<div id="map"></div>
 	<div id="menu">
 		<ul>
 			<li><a href="#">Map</a></li>
 			<li><a href="#">Listing</a></li>
 		</ul>	
 	</div>
+	
+	<script>
+$(document).ready(function(){
 
-	<div id="map"></div>
+ load_data();
+  
+ function load_data(query)
+ {
+  $.ajax({
+   url:"<?php echo base_url(); ?>Actions/search",
+   method:"POST",
+   data:{query:query},
+   success:function(data){
+    $('#result').html(data);
+   }
+  })
+ }
+
+ $('#search_text').keyup(function(){
+  var search = $(this).val();
+  if(search != '')
+  {
+  $("#result").css("display","block");
+   load_data(search);
+  }
+	else{
+		$("#result").css("display","none");
+		load_data(search);
+	}
+ });
+});
+</script>
+
 	
 	<script src="<?php echo base_url();?>resources/map/map.js"></script>
 
