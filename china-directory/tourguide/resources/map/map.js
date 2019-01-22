@@ -31,7 +31,8 @@ window.onload = function(){
 	
 	
 
-	mylocation('16.6104339','120.3147096');
+	//mylocation('16.6104339','120.3147096');
+	mylocation(39.922478,116.443710);
 	//markerr();
 
 };
@@ -93,7 +94,7 @@ function mylocation(lat,lng){
 		popupAnchor: [0, -64]
 	})} ).addTo(leafletMap); // add to, adds marker to the map
 	testMarker.myPopupInfo = L.popup({autoClose: false, closeOnClick: true, autoPan: false});
-	testMarker.myPopupInfo.setContent("<p><img src='"+img+"' style='width:200px;'>" + " " +"<h3>"+ title+ "</h3>" + "<a href='#'>VIEW</a></p>");
+	testMarker.myPopupInfo.setContent("<p><img src='' style='width:200px;'>" + " " +"<h3></h3>" + "<a href='#'>VIEW</a></p>");
 	testMarker.bindPopup(testMarker.myPopupInfo);
 	testMarker.on('click', function(e){
 		//alert('marker');
